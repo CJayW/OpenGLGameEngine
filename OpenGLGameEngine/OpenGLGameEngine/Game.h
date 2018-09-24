@@ -11,12 +11,30 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/string_cast.hpp>
 
+#include <vector>
 #include <iostream>
+#include "GameObject.h"
+
 
 class Game {
 public:
 	Game();
 	~Game();
+	void Init(int width, int height, bool fullscreen, const char* title);
 
+	void Update(double deltaTime);
+
+	void Render();
+
+	static bool Running;
+
+	static int width;
+	static int height;
+	static GLFWwindow* window;
+	static std::vector<GameObject*> GameObjects;
+
+	static double getTime() {
+		return glfwGetTime();
+	}
 };
 
