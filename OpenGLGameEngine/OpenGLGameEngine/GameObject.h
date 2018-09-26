@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Component.h"
+class Transform;
 
 class GameObject {
 public:
@@ -13,10 +14,16 @@ public:
 	void Start();
 	void Update(double deltaTime);
 	void Render();
+	
+	Transform* transform;
+
+#pragma region components 
 
 	template <typename componentType, typename... ArgsT>
 	componentType* addComponent(ArgsT&&... Args) {
 		componentType* comp = new componentType(std::forward<ArgsT>(Args)...);
+		comp->gameObject = this;
+		comp->transform = transform;
 		comp->Start();
 		components.push_back(comp);
 		return comp;
@@ -33,6 +40,7 @@ public:
 		return nullptr;
 	}
 	
+
 	template <typename componentType>
 	int getComponentByIndex() {
 		for (int i = 0; i < components.size(); i++){ 
@@ -43,6 +51,7 @@ public:
 		return -1;
 	}
 
+
 	template<typename componentType>
 	void removeComponent() {
 		int i = getComponentByIndex<componentType>();
@@ -51,5 +60,8 @@ public:
 
 		components.erase(components.begin() + i);
 	}
+
+#pragma endregion
+
 };
 

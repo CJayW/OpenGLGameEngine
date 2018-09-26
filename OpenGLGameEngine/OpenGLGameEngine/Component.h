@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+class Transform;
+class GameObject;
+
 class Component {
 public:
 	Component();
@@ -10,5 +13,8 @@ public:
 	virtual void Start() {};
 	virtual void Update(double deltaTime) {};
 	virtual void Render() {};
+
+	Transform* transform;
+	GameObject* gameObject;
 };
 

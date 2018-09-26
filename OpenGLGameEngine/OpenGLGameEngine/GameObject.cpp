@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Transform.h"
 GameObject::GameObject() {
-	addComponent<Transform>();
+	transform = addComponent<Transform>();
 }
 
 GameObject::~GameObject() {
