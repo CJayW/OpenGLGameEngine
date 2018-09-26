@@ -162,6 +162,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="TestMove.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +174,9 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
+    <ClCompile Include="OpenGLInclude.h" />
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="TestMove.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>

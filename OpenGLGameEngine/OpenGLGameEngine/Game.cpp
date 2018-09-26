@@ -7,20 +7,20 @@
 //components
 #include "Transform.h"
 #include "MeshRenderer.h"
+#include "TestMove.h"
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-Game::Game() { }
-
-
-Game::~Game() { }
-
-GLFWwindow* Game::window;
 int Game::width;
 int Game::height;
 bool Game::Running;
-
 std::vector<GameObject*> Game::GameObjects;
+GLFWwindow* Game::window;
+
+Game::Game() { }
+
+Game::~Game() { }
 
 void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	width = Width;
@@ -51,11 +51,13 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 		return;
 	}
 
-	Input::Init();
-
-
 	GameObject* obj = GameObjectManager::Instantiate();
 
+}
+
+void Game::Start() {
+	GameObject* obj = GameObjectManager::Instantiate();
+	obj->addComponent<TestMove>();
 }
 
 void Game::Update(double deltaTime) {
