@@ -155,17 +155,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="TestMove.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -175,6 +179,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="OpenGLInclude.h" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="TestMove.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -182,6 +188,10 @@
   <ItemGroup>
     <Image Include="Resources\Assets\awesomeface.png" />
     <Image Include="Resources\Assets\container.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="core.frag" />
+    <None Include="core.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

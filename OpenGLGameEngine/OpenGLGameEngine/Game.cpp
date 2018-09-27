@@ -8,7 +8,8 @@
 #include "Transform.h"
 #include "MeshRenderer.h"
 #include "TestMove.h"
-
+#include "Shader.h"
+#include <glm/gtc/matrix_transform.hpp>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -33,6 +34,10 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+	#ifdef __APPLE__
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	#endif
+
 	window = glfwCreateWindow(width, height, Title, NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Error: Window Not Created" << std::endl;
@@ -51,25 +56,38 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 		return;
 	}
 
-	GameObject* obj = GameObjectManager::Instantiate();
+	glEnable(GL_DEPTH_TEST);
 
+	Camera::UpdateCameraProjection();
+	Camera::UpdateCameraView();
 }
 
 void Game::Start() {
 	GameObject* obj = GameObjectManager::Instantiate();
-	obj->addComponent<TestMove>();
+	camera = obj->addComponent<Camera>();
+
+	obj = GameObjectManager::Instantiate();
+	obj->addComponent<MeshRenderer>();
 }
 
 void Game::Update(double deltaTime) {
+
 	for (auto gameObject : GameObjects) {
 		gameObject->Update(deltaTime);
 	}
 }
 
 void Game::Render() {
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	
+
+
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();
 	}
+	glfwSwapBuffers(window);
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -79,4 +97,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 	Game::width = width;
 	Game::height = height;
+
+	Camera::UpdateCameraProjection();
 }

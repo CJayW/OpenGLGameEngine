@@ -1,13 +1,24 @@
 #pragma once
 
-#include "Component.h"
+#include "Renderer.h"
+#include "Shader.h"
 
-class MeshRenderer : public Component{
+class MeshRenderer : public Renderer{
 public:
 	MeshRenderer();
 	~MeshRenderer();
 	
-	void Start() override;
-	
-};
+	float verticies[216];
 
+	void Render() override;
+
+	void UpdateCameraView() override;
+	void UpdateCameraProjection() override;
+
+	Shader* shaderProgram;
+
+	unsigned int VAO, VBO;
+
+
+	unsigned int viewLoc, projectionLoc, modelLoc;
+};

@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include "GameObject.h"
+#include "Camera.h"
 
 class Game {
 public:
@@ -23,6 +24,8 @@ public:
 	static int height;
 	static GLFWwindow* window;
 	static std::vector<GameObject*> GameObjects;
+
+	Camera* camera;
 
 	static double getTime() {
 		return glfwGetTime();
