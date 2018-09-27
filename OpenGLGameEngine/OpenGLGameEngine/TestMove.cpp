@@ -21,6 +21,11 @@ void TestMove::Start() {
 
 void TestMove::Update(double deltaTime) {
 
+	std::cout << Input::getAxis(InputAxisMouseY) << std::endl;
+
+	transform->position.z -= Input::getAxis(InputAxisMouseY) * deltaTime;
+	transform->position.x -= Input::getAxis(InputAxisMouseX) * deltaTime;
+
 	if (Input::getKey(GLFW_KEY_W)) {
 		transform->position.z -= deltaTime * 5;
 	}

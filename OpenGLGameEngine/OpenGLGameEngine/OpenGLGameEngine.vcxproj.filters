@@ -108,7 +108,7 @@
       <Filter>Source Files\GameObject\Components</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObject\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

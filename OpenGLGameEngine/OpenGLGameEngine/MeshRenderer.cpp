@@ -101,11 +101,9 @@ void MeshRenderer::Render() {
 
 	glm::quat myQuat;
 	myQuat = glm::quat(glm::vec3(transform->rotation) / (180 / 3.1415972f));
-	// glm::quatToMat(myQuat);
-
-	model = model * glm::toMat4(myQuat);// *model;
-		
-		
+	
+	model = model * glm::toMat4(myQuat);
+	
 	//glm::rotate(model, glm::radians(mag), rotationDir);
 	
 	/*
@@ -113,9 +111,10 @@ void MeshRenderer::Render() {
 	model = glm::rotate(model, glm::radians(transform->rotation.y), glm::vec3(0,1,0));
 	model = glm::rotate(model, glm::radians(transform->rotation.z), glm::vec3(0,0,1));
 	*/
-
-	std::cout << glm::to_string(transform->rotation) << std::endl;
+	
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+	INT_MAX;
 
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 }
