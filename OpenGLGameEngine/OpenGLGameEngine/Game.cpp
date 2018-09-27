@@ -58,6 +58,8 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 
 	glEnable(GL_DEPTH_TEST);
 
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+
 	Camera::UpdateCameraProjection();
 	Camera::UpdateCameraView();
 }
@@ -68,6 +70,7 @@ void Game::Start() {
 
 	obj = GameObjectManager::Instantiate();
 	obj->addComponent<MeshRenderer>();
+	obj->addComponent<TestMove>();
 }
 
 void Game::Update(double deltaTime) {
@@ -78,7 +81,6 @@ void Game::Update(double deltaTime) {
 }
 
 void Game::Render() {
-	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	

@@ -18,7 +18,6 @@ public:
 	Shader* shaderProgram;
 
 	unsigned int VAO, VBO;
-
-
+	
 	unsigned int viewLoc, projectionLoc, modelLoc;
 };

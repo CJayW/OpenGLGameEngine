@@ -6,6 +6,8 @@ public:
 	TestMove();
 	~TestMove();
 
+	void Start() override;
+
 	void Update(double deltaTime) override;
 
 };
