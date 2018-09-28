@@ -1,8 +1,8 @@
 #pragma once
 #include "Component.h"
 #include <string>
-#include <glm/vec3.hpp>
-
+#include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 class Transform : public Component{
 public:
 	Transform();
@@ -10,7 +10,8 @@ public:
 	~Transform();
 
 	glm::vec3 position;
-	glm::vec3 rotation;
+	glm::quat rotation;
 	glm::vec3 scale;
-};
 
+	void rotate(glm::vec3 euler);
+};
