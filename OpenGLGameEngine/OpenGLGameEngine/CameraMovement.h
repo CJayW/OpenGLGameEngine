@@ -1,13 +1,12 @@
 #pragma once
 #include "Component.h"
-class TestMove : public Component
+class CameraMovement :
+	public Component
 {
 public:
-	TestMove();
-	~TestMove();
-
-	void Start() override;
+	CameraMovement();
+	~CameraMovement();
 
 	void Update(double deltaTime) override;
-
 };
+

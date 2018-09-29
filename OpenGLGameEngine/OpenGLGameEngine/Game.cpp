@@ -8,7 +8,10 @@
 #include "Transform.h"
 #include "MeshRenderer.h"
 #include "TestMove.h"
+#include "CameraMovement.h"
 #include "Shader.h"
+
+
 #include <glm/gtc/matrix_transform.hpp>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -61,16 +64,31 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 	Camera::UpdateCameraProjection();
-	Camera::UpdateCameraView();
 }
 
 void Game::Start() {
 	GameObject* obj = GameObjectManager::Instantiate();
 	camera = obj->addComponent<Camera>();
+	camera->UpdateCameraView();
+	obj->addComponent<CameraMovement>();
 
 	obj = GameObjectManager::Instantiate();
 	obj->addComponent<MeshRenderer>();
 	obj->addComponent<TestMove>();
+
+	obj = GameObjectManager::Instantiate();
+	obj->addComponent<MeshRenderer>();
+	obj->transform->position.z = -3;
+	obj->transform->position.x = -3;
+
+	obj = GameObjectManager::Instantiate();
+	obj->addComponent<MeshRenderer>();
+	obj->transform->position.z = 3;
+	obj->transform->position.x = -3;
+
+	obj = GameObjectManager::Instantiate();
+	obj->addComponent<MeshRenderer>();
+	obj->transform->position.x = -6;
 }
 
 void Game::Update(double deltaTime) {
@@ -82,9 +100,6 @@ void Game::Update(double deltaTime) {
 
 void Game::Render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	
-
 
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();

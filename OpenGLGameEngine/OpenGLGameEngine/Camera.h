@@ -4,7 +4,6 @@
 #include <glm/glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 
-#include "Transform.h"
 #include "Renderer.h"
 
 #include <vector>
@@ -17,16 +16,19 @@ public:
 
 	void Start() override;
 
+	void Update(double deltaTime) override;
+
 	static void UpdateCameraProjection();
 
-	static void UpdateCameraView();
+	void UpdateCameraView();
 
 	static void AddRenderer(Renderer* newRenderer);
 
-	float FOV = 45;
-
 	static glm::mat4 projection;
 	static glm::mat4 viewMatrix;
+
+private:
+	static float FOV;
 
 	static std::vector<Renderer*> Renderers;
 };

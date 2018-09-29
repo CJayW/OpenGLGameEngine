@@ -13,7 +13,7 @@ bool Input::keysPressed[GLFW_KEY_LAST];
 bool Input::keysReleased[GLFW_KEY_LAST];
 
 Input::Input() {
-	glfwSetInputMode(Game::window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	glfwSetInputMode(Game::window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetCursorPosCallback(Game::window, Input::updateMousePos);
 	for (int i = 0; i < GLFW_KEY_MENU; i++) {
 		keysDown[i] = false;
@@ -46,6 +46,10 @@ void Input::ProcessInput() {
 	for (unsigned int i = 330; i < GLFW_KEY_MENU; i++) {
 		checkKey(i);
 	}
+
+	if (Input::getKey(GLFW_KEY_ESCAPE)) {
+		Game::Running = false;
+	}
 }
 
 void Input::checkKey(unsigned int key) {
@@ -70,6 +74,7 @@ void Input::checkKey(unsigned int key) {
 }
 
 void Input::updateMousePos(GLFWwindow* window, double xpos, double ypos) {
+
 	if (firstMouse) {
 		InputAxisValues[InputAxisMouseX] = 0;
 		InputAxisValues[InputAxisMouseY] = 0;
