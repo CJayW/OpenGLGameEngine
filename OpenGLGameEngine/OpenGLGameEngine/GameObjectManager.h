@@ -9,6 +9,5 @@ public:
 	~GameObjectManager();
 	
 	static GameObject* Instantiate();
-
 };
 

@@ -6,10 +6,10 @@
 class MeshRenderer : public Renderer{
 public:
 	MeshRenderer();
+	MeshRenderer(std::string params);
 	~MeshRenderer();
 	
-	float verticies[216];
-
+	void Start() override;
 	void Render() override;
 
 	void UpdateCameraView() override;

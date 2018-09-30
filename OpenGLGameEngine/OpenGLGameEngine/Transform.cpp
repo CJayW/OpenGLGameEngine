@@ -10,6 +10,7 @@ Transform::Transform() {
 }
 
 Transform::Transform(std::string message) {
+	Transform();
 }
 
 Transform::~Transform() {

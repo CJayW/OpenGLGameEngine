@@ -11,8 +11,9 @@
 #include "CameraMovement.h"
 #include "Shader.h"
 
-
 #include <glm/gtc/matrix_transform.hpp>
+
+#include "LevelFileManager.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -21,6 +22,7 @@ int Game::height;
 bool Game::Running;
 std::vector<GameObject*> Game::GameObjects;
 GLFWwindow* Game::window;
+Camera* Game::camera;
 
 Game::Game() { }
 
@@ -67,6 +69,11 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 }
 
 void Game::Start() {
+	LevelFileManager::loadLevel();
+
+	//No Idea Whats Happening
+	return;
+
 	GameObject* obj = GameObjectManager::Instantiate();
 	camera = obj->addComponent<Camera>();
 	camera->UpdateCameraView();
@@ -74,7 +81,8 @@ void Game::Start() {
 
 	obj = GameObjectManager::Instantiate();
 	obj->addComponent<MeshRenderer>();
-	obj->addComponent<TestMove>();
+	//obj->addComponent<TestMove>();
+
 
 	obj = GameObjectManager::Instantiate();
 	obj->addComponent<MeshRenderer>();

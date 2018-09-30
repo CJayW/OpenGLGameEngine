@@ -1,0 +1,2 @@
+Camera(60:CameraMovement(5,5
+MeshRenderer(:TestMove(55,60,3.3333

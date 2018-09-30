@@ -5,8 +5,14 @@ class CameraMovement :
 {
 public:
 	CameraMovement();
+	CameraMovement(std::string params);
 	~CameraMovement();
 
 	void Update(double deltaTime) override;
+
+private:
+	float lookSpeed;
+	float moveSpeed;
+
 };
 

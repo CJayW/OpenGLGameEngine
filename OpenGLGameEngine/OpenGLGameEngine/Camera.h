@@ -12,21 +12,19 @@ class Camera : public Component
 {
 public:
 	Camera();
+	Camera(std::string params);
 	~Camera();
 
 	void Start() override;
-
 	void Update(double deltaTime) override;
 
+	static void AddRenderer(Renderer* newRenderer);
 	static void UpdateCameraProjection();
-
 	void UpdateCameraView();
 
-	static void AddRenderer(Renderer* newRenderer);
 
 	static glm::mat4 projection;
 	static glm::mat4 viewMatrix;
-
 private:
 	static float FOV;
 

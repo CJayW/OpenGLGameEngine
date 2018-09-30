@@ -11,7 +11,6 @@ Renderer::~Renderer()
 }
 
 void Renderer::Start() {
-
 	Camera::AddRenderer(this);
 }
 

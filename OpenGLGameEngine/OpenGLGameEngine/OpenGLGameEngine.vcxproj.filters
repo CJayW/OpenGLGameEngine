@@ -66,6 +66,9 @@
     <ClInclude Include="CameraMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -116,6 +119,9 @@
     <ClCompile Include="CameraMovement.cpp">
       <Filter>Source Files\GameObject\Components</Filter>
     </ClCompile>
+    <ClCompile Include="LevelFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Assets\awesomeface.png">
@@ -132,5 +138,8 @@
     <None Include="core.frag">
       <Filter>Source Files\Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Level.txt" />
   </ItemGroup>
 </Project>

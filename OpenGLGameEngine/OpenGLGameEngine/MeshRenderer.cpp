@@ -12,6 +12,20 @@
 #include "Transform.h"
 
 MeshRenderer::MeshRenderer() {
+
+}
+
+MeshRenderer::MeshRenderer(std::string params) {
+
+}
+
+
+MeshRenderer::~MeshRenderer() {
+
+}
+
+void MeshRenderer::Start() {
+	Renderer::Start();
 	float vertices[] = {
 		//Pos						//UV coordinates
 		-0.5f, -0.5f, -0.5f,		1.0f, 0.0f, 0.0f,
@@ -83,21 +97,12 @@ MeshRenderer::MeshRenderer() {
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(cameraProjection));
 }
 
-
-MeshRenderer::~MeshRenderer() {
-
-}
-
 void MeshRenderer::Render() {
-
 	glm::mat4 model = glm::mat4(1);
-
 	model = glm::translate(model, transform->position);
-	
 	model = model * glm::toMat4(transform->rotation);
-	
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
+	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
@@ -106,6 +111,7 @@ void MeshRenderer::UpdateCameraView()
 {
 	Renderer::UpdateCameraView();
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &cameraView[0][0]);
+
 }
 
 void MeshRenderer::UpdateCameraProjection()

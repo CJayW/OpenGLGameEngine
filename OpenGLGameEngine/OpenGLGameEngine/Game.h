@@ -25,7 +25,7 @@ public:
 	static GLFWwindow* window;
 	static std::vector<GameObject*> GameObjects;
 
-	Camera* camera;
+	static Camera* camera;
 
 	static double getTime() {
 		return glfwGetTime();

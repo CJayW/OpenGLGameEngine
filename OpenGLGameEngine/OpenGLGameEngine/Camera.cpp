@@ -6,15 +6,21 @@
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtx/quaternion.hpp>
 
+#include "Transform.h"
+
 glm::mat4 Camera::projection;
 glm::mat4 Camera::viewMatrix;
 
 std::vector<Renderer*> Camera::Renderers;
 float Camera::FOV = 60;
-#include "Transform.h"
+
 
 Camera::Camera()
 {
+}
+
+Camera::Camera(std::string params) {
+	FOV = std::stof(params);
 }
 
 Camera::~Camera()
@@ -22,7 +28,6 @@ Camera::~Camera()
 }
 
 void Camera::Start() {
-	transform->position.x -= 3;
 	UpdateCameraView();
 	UpdateCameraProjection();
 }

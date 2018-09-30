@@ -162,6 +162,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="LevelFileManager.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="LevelFileManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="OpenGLInclude.h" />
@@ -194,6 +196,9 @@
   <ItemGroup>
     <None Include="core.frag" />
     <None Include="core.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Level.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

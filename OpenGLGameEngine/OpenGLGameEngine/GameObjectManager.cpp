@@ -12,6 +12,5 @@ GameObject* GameObjectManager::Instantiate() {
 	GameObject* obj = new GameObject();
 
 	Game::GameObjects.push_back(obj);
-	obj->Start();
 	return obj;
 }
