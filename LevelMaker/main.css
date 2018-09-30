@@ -1,0 +1,101 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+    font-family: "Roboto", sans-serif;
+}
+
+
+body{
+    display: grid;
+    grid-template-columns: auto 350px;
+}
+
+main{
+    background-color: #4F4F4F;
+    width: 100%;
+    height: 100%;
+}
+
+aside{
+    background-color: #616161;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 80px 160px auto;
+}
+
+#CompTitle{
+    width: 90%;
+    height: 100%;
+    
+    margin-left: 5%;
+    margin-top: 5%;
+
+    color: white;
+    text-align: center;
+    font-size: 2.8em;
+}
+
+#Component{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #828282;
+    display: grid;
+    grid-template-rows: 40px auto;
+}
+
+#Component #title{
+    background-color: #828282;
+
+    text-align: center;
+    font-size: 2em;
+    color: #282828;
+    border-bottom: solid rgb(88, 88, 88) 2px;
+}
+
+#Component #body{
+    background-color: #828282;
+}
+
+
+#Component #paramParent{
+
+    list-style-type: none;
+    margin: 0;
+
+    line-height: 25px;
+
+    font-size: 1.2em;
+    color: #2B2B2B;
+    padding: 3% 0 5% 5%;
+}
+
+#vec3{
+    display: grid;
+    grid-template-columns: auto 170px;
+}
+
+#paramParent #vec3 #Inputs{
+    padding: 0;
+}
+
+#vec3 #Inputs li{
+    display: inline;
+}
+
+#vec3 #Inputs li{
+    font-size: 15px;
+}
+
+#vec3 #Inputs li input{
+    width: 35px;
+    background-color: #626262;
+    border: none;
+    outline: 1px #4C4C4C solid;
+    
+    stroke: none;
+}
