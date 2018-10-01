@@ -1,4 +1,4 @@
-//* represents that each parameter needs a different title
+//  * represents that each parameter needs a different title
 let componentTypes = [
     "Transform* Translate(vec3:Rotate(vec3:Scale(vec3",
     "Camera FOV(float",
