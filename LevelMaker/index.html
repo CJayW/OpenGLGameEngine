@@ -11,14 +11,37 @@
 </head>
 
 <body>
-    <main></main>
+    <div id="Export" onmousedown="Export()">
+        Export
+    </div>
+    <div id="gridParent">
+        <main></main>
+        <aside>
+            <div id="CompTitle">Components</div>
+            <div id="ComponentParent">
 
-    <aside>
-        <div id="CompTitle">Components</div>
-        <div id="ComponentParent">
+                
+            </div>
+            
+            <div id="ComponentControls">
+                <select id="ComponentSelector">
+                    <Option value="1">Camera</Option>
+                    <Option value="2">Mesh Renderer</Option>
+                    <Option value="3">Camera Move</Option>
+                    <Option value="4">Test Move</Option>
+                </select>
+                <div id="addComponentButton" onmousedown="AddSelectedComponent()">Add</div>
+            </div>
 
-    </aside>
-    <script src="InputTemplayes.js"></script>
+        </aside>
+    </div>
+
+
+
+    <script src="Parameters.js"></script>
+    <script src="Components.js"></script>
+    <script src="GameObjects.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

@@ -1,19 +1,15 @@
-//let comp = document.getElementById("ComponentBody");
+let ComponentSelector = document.getElementById("ComponentSelector");
 
-//let Position = new vec3(comp, "Position");
-//let Rotation = new vec3(comp, "Rotation");
-//let Scale = new vec3(comp, "Scale");
+let GameObjects = [];
+GameObjects.push(new GameObject());
 
-// document.addEventListener("keydown", (e)=>{
-//     if(e.key == "p"){
-//         console.log(Position.getX());
-//     }
-// })
+function Export(){
+    console.log(GameObjects[0].toString());
+}
 
-let transform = new Transform();
+function AddSelectedComponent(){
+    GameObjects[0].addComponent(ComponentSelector.value);
+}
 
-document.addEventListener("keydown", (e)=>{
-    if(e.key == "p"){
-        console.log(transform.toString());      
-    }
-})
+//components
+//Rewrite the toString functions

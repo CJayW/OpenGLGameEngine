@@ -1,5 +1,3 @@
-let componentParent = document.getElementById("ComponentParent");
-
 function forceNumber(Input){
  
     if(isNaN(Number(Input))){
@@ -9,8 +7,9 @@ function forceNumber(Input){
     return Number(Input);
 }
 
-
 let vec3 = function(component, title){
+    this.title = title;
+
     this.element = document.createElement("div");
     component.appendChild(this.element);
 
@@ -20,55 +19,60 @@ let vec3 = function(component, title){
 
     this.xElement = document.getElementById("FinderX");
     this.xElement.id = "";
+    this.xElement.value = "0.0";
     
     this.getX = function(){
         return forceNumber(this.xElement.value);
     }
+    
 
     this.yElement = document.getElementById("FinderY");
     this.yElement.id = "";
-    
+    this.yElement.value = "0.0";
     this.getY = function(){
         return forceNumber(this.yElement.value);
     }
 
     this.zElement = document.getElementById("FinderZ");
     this.zElement.id = "";
-    
+    this.zElement.value = "0.0";
     this.getZ = function(){
         return forceNumber(this.zElement.value);
     }
 
-    this.toString = function(){
-        return this.getX() + "," + this.getY() + "," + this.getZ();
+    this.toString = function(addTitle){
+        if(addTitle){
+            return this.title + "(" + this.getX() + "," + this.getY() + "," + this.getZ();
+        }else{
+            return this.getX() + "," + this.getY() + "," + this.getZ();
+        }
     }
 }
 
-let Component = function(title){
+let float = function(component, title){
+    this.title = title;
+
     this.element = document.createElement("div");
-    componentParent.appendChild(this.element);
-    this.element.outerHTML = "<div id='Finder'><div id='title'>" + title + "</div><ul id='FindParamParent'></ul></div>";
-    this.element = document.getElementById("Finder");
-    this.element.id = "Component";
-    this.paramParent = document.getElementById("FindParamParent")
-    this.paramParent.id = "paramParent";
+    component.appendChild(this.element);
 
-    this.addVec3 = function(title){
-        return new vec3(this.paramParent,title);
+    this.element.outerHTML = "<li id='FinderParam'><div id='Text'>" + title + "</div><div id='Inputs'><input id='FinderInput'></div></li>";
+
+    this.element = document.getElementById("FinderParam");
+    this.element.id = "float";
+    
+    this.input = document.getElementById("FinderInput");
+    this.input.id = "";
+    this.input.value = "0.0";
+    
+    this.getInput = function(){
+        return forceNumber(this.input.value);
     }
-}
 
-let Transform = function(){
-    let comp = new Component("Transform");
-    let position = comp.addVec3("Position");
-    let Rotation = comp.addVec3("Rotation");
-    let Scale = comp.addVec3("Scale");
-
-    this.toString = function(){
-        let data = "";
-        data += "Translate(" + position.toString() + "-";
-        data += "Rotate(" + Rotation.toString() + "-";
-        data += "Scale(" + Scale.toString();
-        return data;
+    this.toString = function(addTitle){
+        if(addTitle){
+            return this.title + "(" + forceNumber(this.input.value) + "";
+        }else{
+            return forceNumber(this.input.value) + "";
+        }
     }
 }

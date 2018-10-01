@@ -5,10 +5,32 @@ html, body{
     padding: 0;
     
     font-family: "Roboto", sans-serif;
+    -moz-user-select: none;
 }
 
+#Export{
+    position: fixed;
+    background-color: #C4C4C4;
+    width: 100px;
+    height: 35px;
+    z-index: 1000;
+    margin: 10px;
+    text-align: center;
+    line-height: 35px;
+}
+#Export:hover{
+    background-color: rgb(131, 131, 131);
+}
 
-body{
+#gridParent{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
     display: grid;
     grid-template-columns: auto 350px;
 }
@@ -24,7 +46,7 @@ aside{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 80px 160px auto;
+    grid-template-rows: 80px auto 50px;
 }
 
 #CompTitle{
@@ -34,13 +56,52 @@ aside{
     margin-left: 5%;
     margin-top: 5%;
 
-    color: white;
+    color: rgb(238, 238, 238);
     text-align: center;
     font-size: 2.8em;
 }
 
+#ComponentControls{
+    background-color: #3b3b3b;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 60% auto;
+}
+
+#ComponentControls select{
+    width: 100%;
+    height: 50%;
+    margin-top: 12px;
+    margin-left: 10px;
+    
+    background-color: #C4C4C4;
+    border: none;
+}
+
+#addComponentButton {
+    width: 50%;
+    height: 41%;
+    margin-top: 12px;
+    margin-left: 30%;
+
+    padding-top: 3%;
+    text-align: center;
+
+    background-color: #C4C4C4;
+}
+
+#addComponentButton:hover {
+    background-color: rgb(156, 156, 156);
+}
+
+#addComponentButton:hover {
+    background-color: rgb(156, 156, 156);
+}
+
 #Component{
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     margin-left: 20px;
     margin-right: 20px;
     background-color: #828282;
@@ -61,7 +122,6 @@ aside{
     background-color: #828282;
 }
 
-
 #Component #paramParent{
 
     list-style-type: none;
@@ -74,28 +134,39 @@ aside{
     padding: 3% 0 5% 5%;
 }
 
-#vec3{
-    display: grid;
-    grid-template-columns: auto 170px;
-}
 
-#paramParent #vec3 #Inputs{
-    padding: 0;
-}
-
-#vec3 #Inputs li{
-    display: inline;
-}
-
-#vec3 #Inputs li{
-    font-size: 15px;
-}
-
-#vec3 #Inputs li input{
-    width: 35px;
+input{
     background-color: #626262;
     border: none;
     outline: 1px #4C4C4C solid;
     
     stroke: none;
+}
+
+
+#vec3{
+    display: grid;
+    grid-template-columns: auto 170px;
+}
+
+#vec3 #Inputs{
+    padding: 0;
+}
+
+#vec3 #Inputs li{
+    display: inline;
+    font-size: 15px;
+}
+
+#vec3 #Inputs input{
+    width: 35px;
+}
+
+#float{
+    display: grid;
+    grid-template-columns: auto 170px;
+}
+
+#float #Inputs input{
+    width: 157px;
 }
