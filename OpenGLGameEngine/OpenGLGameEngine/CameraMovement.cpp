@@ -23,10 +23,10 @@ CameraMovement::~CameraMovement()
 
 void CameraMovement::Update(double deltaTime) {
 
-	float horizontalMoveSpeed = (float)deltaTime * lookSpeed * Input::getAxis(InputAxisMouseX);
+	float horizontalMoveSpeed = lookSpeed * Input::getAxis(InputAxisMouseX);
 	transform->rotate(glm::vec3(0, horizontalMoveSpeed, 0));
 
-	float verticalMoveSpeed = (float)deltaTime * lookSpeed * Input::getAxis(InputAxisMouseY);
+	float verticalMoveSpeed = lookSpeed * Input::getAxis(InputAxisMouseY);
 	transform->rotate(glm::vec3(verticalMoveSpeed, 0, verticalMoveSpeed) * (transform->rotation * glm::vec3(0, 0, 1)));
 
 

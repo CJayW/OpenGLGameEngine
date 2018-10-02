@@ -53,6 +53,9 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+	
+	//glfwSwapInterval(0); // <-- removes the FPS Cap
+	
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
