@@ -76,3 +76,26 @@ let float = function(component, title){
         }
     }
 }
+
+let string = function(component, title){
+    this.title = title;
+
+    this.element = document.createElement("div");
+    component.appendChild(this.element);
+
+    this.element.outerHTML = "<li id='FinderParam'><div id='text'>" + title + "</div><ul id='Inputs'><li><input id='FinderInput'></li></ul></li>";
+
+    this.element = document.getElementById("FinderParam");
+    this.element.id = "String";
+
+    this.input = document.getElementById("FinderInput");
+    this.input.id = "";
+
+    this.toString = function(addTitle){
+        if(addTitle){
+            return this.title + "(" + this.input.value + "";
+        }else{
+            return this.input.value + "";
+        }
+    }
+}

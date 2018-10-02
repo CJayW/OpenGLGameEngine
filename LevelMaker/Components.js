@@ -2,7 +2,7 @@
 let componentTypes = [
     "Transform* Translate(vec3:Rotate(vec3:Scale(vec3",
     "Camera FOV(float",
-    "MeshRenderer ",
+    "MeshRenderer FilePath(string",
     "CameraMovement moveSpeed(float:lookSpeed(float",
     "TestMove moveSpeed(float:rotateSpeed(float:rotateSpeedM(float"
 ]
@@ -37,6 +37,10 @@ let Component = function(componentTypeIndex){
         this.params.push(new float(this.paramParent,title));
     }
 
+    this.addString = function(title){
+        this.params.push(new string (this.paramParent,title));
+    }
+
     let sComponentParams = componentTypes[componentTypeIndex].split(" ")[1];
     componentParams = sComponentParams.split(':');
 
@@ -45,12 +49,16 @@ let Component = function(componentTypeIndex){
         switch (param[1]) {
             case "float":
                 this.addFloat(param[0]);
-                break;
 
+                break;
             case "vec3":
                 this.addVec3(param[0]);
-                break;
 
+                break;
+            case "string":
+                this.addString(param[0]);
+
+                break;
             default:
                 console.log("No Param Added with this name: " + param[1]);
                 break;

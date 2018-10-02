@@ -164,6 +164,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="LevelFileManager.h" />
     <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="LevelFileManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
+    <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="OpenGLInclude.h" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -196,6 +198,8 @@
   <ItemGroup>
     <None Include="core.frag" />
     <None Include="core.vert" />
+    <None Include="house.ply" />
+    <None Include="TreeTest.ply" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Level.txt" />

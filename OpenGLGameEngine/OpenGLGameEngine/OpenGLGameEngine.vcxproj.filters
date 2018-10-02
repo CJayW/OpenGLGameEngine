@@ -69,6 +69,9 @@
     <ClInclude Include="LevelFileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,6 +125,9 @@
     <ClCompile Include="LevelFileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ModelLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Assets\awesomeface.png">
@@ -138,6 +144,8 @@
     <None Include="core.frag">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="house.ply" />
+    <None Include="TreeTest.ply" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Level.txt" />

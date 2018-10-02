@@ -149,11 +149,11 @@ input{
     grid-template-columns: auto 170px;
 }
 
-#vec3 #Inputs{
+#Inputs{
     padding: 0;
 }
 
-#vec3 #Inputs li{
+#Inputs li{
     display: inline;
     font-size: 15px;
 }
@@ -168,5 +168,14 @@ input{
 }
 
 #float #Inputs input{
+    width: 157px;
+}
+
+#String{
+    display: grid;
+    grid-template-columns: auto 170px;
+}
+
+#String #Inputs input{
     width: 157px;
 }

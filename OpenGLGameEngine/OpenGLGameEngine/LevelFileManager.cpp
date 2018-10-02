@@ -18,10 +18,6 @@ LevelFileManager::~LevelFileManager() {
 
 void LevelFileManager::loadLevel() {
 	std::string file;
-	/*
-	transform(0,0,0)-MeshRenderer( )
-	transform(0,0,0)-Camera( )
-	*/
 
 	std::ifstream ip("Level.txt");
 	
