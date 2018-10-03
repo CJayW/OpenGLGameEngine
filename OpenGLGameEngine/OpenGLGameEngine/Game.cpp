@@ -55,7 +55,7 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 
 	
 	//glfwSwapInterval(0); // <-- removes the FPS Cap
-	
+
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -111,7 +111,6 @@ void Game::Update(double deltaTime) {
 
 void Game::Render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();
 	}

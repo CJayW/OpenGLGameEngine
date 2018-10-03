@@ -74,10 +74,15 @@ let Component = function(componentTypeIndex){
 
         for(let i = 0; i < this.params.length; i++){
             data += this.params[i].toString(!addComponentName);
-            if(i != this.params.length -1){
+		console.log(addComponentName);
+            if((i != this.params.length -1) && addComponentName){
                 data += ",";
+		console.log("comma");
             }
         }
+	if(!addComponentName){
+		return data.slice(0, data.length -1);
+	}
         return data;
     }
 }

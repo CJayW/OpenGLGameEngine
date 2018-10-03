@@ -34,7 +34,6 @@ void LevelFileManager::loadLevel() {
 		GameObject* obj = GameObjectManager::Instantiate();
 
 		for (auto componentString : splitBy(file, ':')) {
-			//std::cout << componentString << std::endl;
 			std::vector<std::string> componentInfo = splitBy(componentString, '(');
 
 			std::vector<std::string> params;
@@ -51,11 +50,12 @@ void LevelFileManager::loadLevel() {
 				//Rotate
 			case 1:
 				params = splitBy(componentInfo[1], ',');
-				obj->transform->rotation.y = std::stof(params[1]);
-				obj->transform->rotation.x = std::stof(params[0]);
-				obj->transform->rotation.z = std::stof(params[2]);
-				obj->transform->rotation.w = std::stof(params[3]);
+				glm::vec3 rot;
+				rot.x = glm::radians(std::stof(params[0]));
+				rot.y = glm::radians(std::stof(params[1]));
+				rot.z = glm::radians(std::stof(params[2]));
 
+				obj->transform->rotation = glm::quat(rot);
 				break;
 				//Scale
 			case 2:
@@ -63,7 +63,6 @@ void LevelFileManager::loadLevel() {
 				obj->transform->scale.x = std::stof(params[0]);
 				obj->transform->scale.y = std::stof(params[1]);
 				obj->transform->scale.z = std::stof(params[2]);
-
 				break;
 				//MeshRenderer
 			case 3:

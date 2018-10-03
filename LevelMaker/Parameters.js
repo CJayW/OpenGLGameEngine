@@ -42,7 +42,8 @@ let vec3 = function(component, title){
 
     this.toString = function(addTitle){
         if(addTitle){
-            return this.title + "(" + this.getX() + "," + this.getY() + "," + this.getZ();
+	    console.log(this.title);
+            return this.title + "(" + this.getX() + "," + this.getY() + "," + this.getZ() + ":";
         }else{
             return this.getX() + "," + this.getY() + "," + this.getZ();
         }
@@ -70,7 +71,7 @@ let float = function(component, title){
 
     this.toString = function(addTitle){
         if(addTitle){
-            return this.title + "(" + forceNumber(this.input.value) + "";
+            return this.title + "(" + forceNumber(this.input.value) + ";";
         }else{
             return forceNumber(this.input.value) + "";
         }
@@ -93,7 +94,7 @@ let string = function(component, title){
 
     this.toString = function(addTitle){
         if(addTitle){
-            return this.title + "(" + this.input.value + "";
+            return this.title + "(" + this.input.value + ";";
         }else{
             return this.input.value + "";
         }
