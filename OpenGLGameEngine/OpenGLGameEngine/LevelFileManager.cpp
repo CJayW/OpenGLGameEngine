@@ -5,10 +5,16 @@
 #include <fstream>
 
 #include "Transform.h"
+
 #include "Camera.h"
 #include "MeshRenderer.h"
+
 #include "CameraMovement.h"
 #include "TestMove.h"
+
+#include "DirectionalLight.h"
+#include "PointLight.h"
+#include "SpotLight.h"
 
 LevelFileManager::LevelFileManager() {
 }
@@ -17,9 +23,10 @@ LevelFileManager::~LevelFileManager() {
 }
 
 void LevelFileManager::loadLevel() {
+
 	std::string file;
 
-	std::ifstream ip("Level.txt");
+	std::ifstream ip("Resources/Levels/Level.txt");
 	
 	while (ip.good()) {
 		std::getline(ip, file);
@@ -28,6 +35,8 @@ void LevelFileManager::loadLevel() {
 			ip.close();
 			return;
 		} else if (file == "") {
+			continue;
+		} else if (file[0] == '/' && file[1] == '/') {
 			continue;
 		}
 
@@ -45,7 +54,6 @@ void LevelFileManager::loadLevel() {
 				obj->transform->position.x = std::stof(params[0]);
 				obj->transform->position.y = std::stof(params[1]);
 				obj->transform->position.z = std::stof(params[2]);
-
 				break;
 				//Rotate
 			case 1:
@@ -84,6 +92,20 @@ void LevelFileManager::loadLevel() {
 				obj->addComponent<TestMove>(componentInfo[1]);
 
 				break;
+				//DirectionalLight
+			case 7:
+				obj->addComponent<DirectionalLight>(componentInfo[1]);
+
+				break;
+				//PointLight
+			case 8:
+				obj->addComponent<PointLight>(componentInfo[1]);
+
+				break;
+				//spotLight
+			case 9:
+				obj->addComponent<SpotLight>(componentInfo[1]);
+				break;
 			case -1:
 				std::cout << "Failed To Find Component: '" << componentInfo[0] << "'" << std::endl;
 
@@ -95,6 +117,7 @@ void LevelFileManager::loadLevel() {
 			}
 		}
 	}
+
 
 	ip.close();
 }
@@ -118,7 +141,8 @@ int LevelFileManager::findComponentIndex(std::string compName ) {
 	if (compName == "")
 		return -1;
 
-	for (int i = 0; i < componentArr->size(); i++) {
+
+	for (int i = 0; (size_t)i < componentArr->capacity(); i++) {
 		if (compName == componentArr[i])
 			return i;
 	}
@@ -127,11 +151,14 @@ int LevelFileManager::findComponentIndex(std::string compName ) {
 }
 
 std::string LevelFileManager::componentArr[] = {
-	"Translate",
-	"Rotate",
-	"Scale",
-	"MeshRenderer",
-	"Camera",
-	"CameraMovement",
-	"TestMove"
+	"Translate",		
+	"Rotate",			
+	"Scale",			
+	"MeshRenderer",		
+	"Camera",			
+	"CameraMovement",	
+	"TestMove",			
+	"DirectionalLight",	
+	"PointLight",		
+	"SpotLight"			
 };

@@ -1,6 +1,19 @@
 #include "Shader.h"
 
-Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
+#include "Light.h"
+#include <string>
+
+#include "DirectionalLight.h"
+#include "PointLight.h"
+#include "SpotLight.h"
+
+#include "Transform.h"
+
+#define GLM_ENABLE_EXPERIMENTAL
+
+#include <glm/gtx/string_cast.hpp>
+
+Shader::Shader(const std::string vertexPath, const std::string fragmentPath) {
 
 	std::string vertexCode;
 	std::string fragmentCode;
@@ -14,8 +27,8 @@ Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
 	try
 	{
 		//open files
-		vShaderFile.open(vertexPath);
-		fShaderFile.open(fragmentPath);
+		vShaderFile.open("Resources/Shaders/" + vertexPath);
+		fShaderFile.open("Resources/Shaders/" + fragmentPath);
 		std::stringstream vShaderStream, fShaderStream;
 		//read file's buffer contents into streams
 		vShaderStream << vShaderFile.rdbuf();
@@ -82,18 +95,41 @@ Shader::Shader(const GLchar* vertexPath, const GLchar* fragmentPath) {
 void Shader::use() {
 	glUseProgram(ID);
 
-}
+	for (int i = 0; (size_t)i < Light::directionalLights.size(); i++) {
+		std::string iStr = std::to_string(i);
 
-void Shader::setBool(const std::string & name, bool value) const {
-	glUniform1i(glGetUniformLocation(ID, name.c_str()), (bool)value);
-}
+		setVec3("dirLights[" + iStr + "].direction", Light::directionalLights[i]->transform->rotation * glm::vec3(1, 0, 0));// glm::eulerAngles(Light::directionalLights[i]->transform->rotation));
+		setVec3("dirLights[" + iStr + "].ambient", Light::directionalLights[i]->ambient);
+		setVec3("dirLights[" + iStr + "].diffuse", Light::directionalLights[i]->diffuse);
+	}
 
-void Shader::setInt(const std::string & name, int value) const {
+	for (int i = 0; (size_t)i < Light::pointLights.size(); i++) {
+		std::string iStr = std::to_string(i);
+		setVec3( "pointLights[" + iStr + "].position", Light::pointLights[i]->transform->position);
 
-	glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
+		setVec3( "pointLights[" + iStr + "].ambient", Light::pointLights[i]->ambient);
+		setVec3( "pointLights[" + iStr + "].diffuse", Light::pointLights[i]->diffuse);
 
-}
+		setFloat("pointLights[" + iStr + "].constant", Light::pointLights[i]->constant);
+		setFloat("pointLights[" + iStr + "].linear", Light::pointLights[i]->linear);
+		setFloat("pointLights[" + iStr + "].quadratic", Light::pointLights[i]->quadratic);
 
-void Shader::setFloat(const std::string & name, float value) const {
-	glUniform1f(glGetUniformLocation(ID, name.c_str()), (float)value);
+	}
+
+	for (int i = 0; i < Light::spotLights.size(); i++) {
+		std::string iStr = std::to_string(i);
+
+		setVec3("spotLights[" + iStr + "].position", Light::spotLights[i]->transform->position);
+		setVec3("spotLights[" + iStr + "].direction", Light::spotLights[i]->transform->rotation * glm::vec3(1,0,0));
+
+		setVec3("spotLights[" + iStr + "].ambient", Light::spotLights[i]->ambient);
+		setVec3("spotLights[" + iStr + "].diffuse", Light::spotLights[i]->diffuse);
+
+		setFloat("spotLights[" + iStr + "].constant", Light::spotLights[i]->constant);
+		setFloat("spotLights[" + iStr + "].linear", Light::spotLights[i]->linear);
+		setFloat("spotLights[" + iStr + "].quadratic", Light::spotLights[i]->quadratic);
+
+		setFloat("spotLights[" + iStr + "].cutOff", glm::cos(glm::radians(Light::spotLights[i]->width * (1 - Light::spotLights[i]->blur))));
+		setFloat("spotLights[" + iStr + "].outerCutOff", glm::cos(glm::radians(Light::spotLights[i]->width)));
+	}
 }

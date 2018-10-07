@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Shaders">
       <UniqueIdentifier>{14a90fe3-cac6-42d6-a3c7-6eac08d8664f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObject\Components\Lighting">
+      <UniqueIdentifier>{88193f3f-80bf-447c-8f4f-6fc3d8811556}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -70,6 +73,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ModelLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -128,6 +143,18 @@
     <ClCompile Include="ModelLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>Source Files\GameObject\Components\Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\GameObject\Components\Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.cpp">
+      <Filter>Source Files\GameObject\Components\Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Source Files\GameObject\Components\Lighting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Assets\awesomeface.png">
@@ -146,8 +173,16 @@
     </None>
     <None Include="house.ply" />
     <None Include="TreeTest.ply" />
+    <None Include="Resources\Models\TreeTest.ply" />
+    <None Include="Resources\Models\house.ply" />
+    <None Include="Resources\Shaders\core.frag">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Resources\Shaders\core.vert">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Level.txt" />
+    <Text Include="Resources\Levels\Level.txt" />
   </ItemGroup>
 </Project>

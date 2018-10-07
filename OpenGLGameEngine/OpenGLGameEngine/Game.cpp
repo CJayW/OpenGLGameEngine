@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Input.h"
 #include "GameObjectManager.h"
+#include "LevelFileManager.h"
 
 #include <string>
 
@@ -12,8 +13,6 @@
 #include "Shader.h"
 
 #include <glm/gtc/matrix_transform.hpp>
-
-#include "LevelFileManager.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -33,7 +32,9 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	height = Height;
 	Running = true;
 
+
 	glfwInit();
+	
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -73,37 +74,9 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 
 void Game::Start() {
 	LevelFileManager::loadLevel();
-
-	//No Idea Whats Happening
-	return;
-
-	GameObject* obj = GameObjectManager::Instantiate();
-	camera = obj->addComponent<Camera>();
-	camera->UpdateCameraView();
-	obj->addComponent<CameraMovement>();
-
-	obj = GameObjectManager::Instantiate();
-	obj->addComponent<MeshRenderer>();
-	//obj->addComponent<TestMove>();
-
-
-	obj = GameObjectManager::Instantiate();
-	obj->addComponent<MeshRenderer>();
-	obj->transform->position.z = -3;
-	obj->transform->position.x = -3;
-
-	obj = GameObjectManager::Instantiate();
-	obj->addComponent<MeshRenderer>();
-	obj->transform->position.z = 3;
-	obj->transform->position.x = -3;
-
-	obj = GameObjectManager::Instantiate();
-	obj->addComponent<MeshRenderer>();
-	obj->transform->position.x = -6;
 }
 
 void Game::Update(double deltaTime) {
-
 	for (auto gameObject : GameObjects) {
 		gameObject->Update(deltaTime);
 	}
@@ -118,8 +91,6 @@ void Game::Render() {
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-	// make sure the viewport matches the new window dimensions; note that width and 
-	// height will be significantly larger than specified on retina displays.
 	glViewport(0, 0, width, height);
 
 	Game::width = width;

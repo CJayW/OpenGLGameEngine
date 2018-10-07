@@ -10,6 +10,8 @@ Renderer::~Renderer()
 {
 }
 
+Shader* Renderer::CurrentShaderProgram;
+
 void Renderer::Start() {
 	Camera::AddRenderer(this);
 }

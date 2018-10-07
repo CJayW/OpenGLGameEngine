@@ -158,15 +158,19 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LevelFileManager.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="ModelLoader.h" />
+    <ClInclude Include="PointLight.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="SpotLight.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="TestMove.h" />
     <ClInclude Include="Transform.h" />
@@ -175,18 +179,22 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LevelFileManager.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="OpenGLInclude.h" />
+    <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="SpotLight.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="TestMove.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -199,10 +207,14 @@
     <None Include="core.frag" />
     <None Include="core.vert" />
     <None Include="house.ply" />
+    <None Include="Resources\Models\house.ply" />
+    <None Include="Resources\Models\TreeTest.ply" />
+    <None Include="Resources\Shaders\core.frag" />
+    <None Include="Resources\Shaders\core.vert" />
     <None Include="TreeTest.ply" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Level.txt" />
+    <Text Include="Resources\Levels\Level.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

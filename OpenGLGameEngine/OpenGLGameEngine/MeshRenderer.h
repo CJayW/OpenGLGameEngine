@@ -18,8 +18,11 @@ public:
 	std::string modelLocation;
 
 	Shader* shaderProgram;
-
+	
 	unsigned int VAO, VBO, EBO, triangleCount;
 	
 	unsigned int viewLoc, projectionLoc, modelLoc;
+
+
+
 };

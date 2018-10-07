@@ -15,6 +15,7 @@ ModelLoader::~ModelLoader()
 }
 
 std::vector<float> ModelLoader::Vertices;
+
 std::vector<unsigned int> ModelLoader::Indices;
 
 void ModelLoader::loadModel(std::string fileName)
@@ -53,13 +54,18 @@ void ModelLoader::loadModel(std::string fileName)
 			for (int i = 0; i < totalVertexes; i++) {
 				std::getline(ip, line);
 				std::vector<std::string> splitLine = LevelFileManager::splitBy(line, ' ');
+				//pos
 				Vertices.push_back(std::stof(splitLine[0]));
 				Vertices.push_back(std::stof(splitLine[1]));
 				Vertices.push_back(std::stof(splitLine[2]));
+				//rbg
 				Vertices.push_back(std::stof(splitLine[6]) / 255);
 				Vertices.push_back(std::stof(splitLine[7]) / 255);
 				Vertices.push_back(std::stof(splitLine[8]) / 255);
-
+				//normals
+				Vertices.push_back(std::stof(splitLine[3]));
+				Vertices.push_back(std::stof(splitLine[4]));
+				Vertices.push_back(std::stof(splitLine[5]));
 			}
 			for (int i = 0; i < totalFaces; i++) {
 				std::getline(ip, line);
