@@ -96,14 +96,20 @@ void Shader::use() {
 	glUseProgram(ID);
 
 	for (int i = 0; (size_t)i < Light::directionalLights.size(); i++) {
+		if (i >= 10) {
+			break;
+		}
 		std::string iStr = std::to_string(i);
 
-		setVec3("dirLights[" + iStr + "].direction", Light::directionalLights[i]->transform->rotation * glm::vec3(1, 0, 0));// glm::eulerAngles(Light::directionalLights[i]->transform->rotation));
+		setVec3("dirLights[" + iStr + "].direction", Light::directionalLights[i]->transform->rotation * glm::vec3(1, 0, 0));
 		setVec3("dirLights[" + iStr + "].ambient", Light::directionalLights[i]->ambient);
 		setVec3("dirLights[" + iStr + "].diffuse", Light::directionalLights[i]->diffuse);
 	}
 
 	for (int i = 0; (size_t)i < Light::pointLights.size(); i++) {
+		if (i >= 10) {
+			break;
+		}
 		std::string iStr = std::to_string(i);
 		setVec3( "pointLights[" + iStr + "].position", Light::pointLights[i]->transform->position);
 
@@ -117,6 +123,9 @@ void Shader::use() {
 	}
 
 	for (int i = 0; i < Light::spotLights.size(); i++) {
+		if (i >= 10) {
+			break;
+		}
 		std::string iStr = std::to_string(i);
 
 		setVec3("spotLights[" + iStr + "].position", Light::spotLights[i]->transform->position);
