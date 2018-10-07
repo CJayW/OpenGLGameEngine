@@ -204,14 +204,11 @@
     <Image Include="Resources\Assets\container.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="core.frag" />
-    <None Include="core.vert" />
-    <None Include="house.ply" />
+    <None Include="Resources\Models\FlipTest.ply" />
     <None Include="Resources\Models\house.ply" />
     <None Include="Resources\Models\TreeTest.ply" />
     <None Include="Resources\Shaders\core.frag" />
     <None Include="Resources\Shaders\core.vert" />
-    <None Include="TreeTest.ply" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Levels\Level.txt" />

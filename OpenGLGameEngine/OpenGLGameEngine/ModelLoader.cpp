@@ -55,9 +55,9 @@ void ModelLoader::loadModel(std::string fileName)
 				std::getline(ip, line);
 				std::vector<std::string> splitLine = LevelFileManager::splitBy(line, ' ');
 				//pos
-				Vertices.push_back(std::stof(splitLine[0]));
 				Vertices.push_back(std::stof(splitLine[1]));
 				Vertices.push_back(std::stof(splitLine[2]));
+				Vertices.push_back(std::stof(splitLine[0]));
 				//rbg
 				Vertices.push_back(std::stof(splitLine[6]) / 255);
 				Vertices.push_back(std::stof(splitLine[7]) / 255);
