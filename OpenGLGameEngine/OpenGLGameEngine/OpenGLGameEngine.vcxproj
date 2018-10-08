@@ -200,10 +200,6 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\Assets\awesomeface.png" />
-    <Image Include="Resources\Assets\container.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Models\FlipTest.ply" />
     <None Include="Resources\Models\house.ply" />
     <None Include="Resources\Models\TreeTest.ply" />
