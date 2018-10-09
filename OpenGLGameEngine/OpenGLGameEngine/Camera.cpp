@@ -14,6 +14,7 @@ glm::mat4 Camera::viewMatrix;
 std::vector<Renderer*> Camera::Renderers;
 float Camera::FOV = 60;
 
+std::string Camera::name = "Camera";
 
 Camera::Camera()
 {

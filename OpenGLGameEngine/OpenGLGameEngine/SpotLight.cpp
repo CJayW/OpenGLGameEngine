@@ -1,5 +1,6 @@
 #include "SpotLight.h"
 
+std::string SpotLight::name = "SpotLight";
 
 
 SpotLight::SpotLight() {

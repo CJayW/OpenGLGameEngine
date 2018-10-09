@@ -13,17 +13,22 @@
 
 #include "ModelLoader.h"
 #include "Game.h"
-MeshRenderer::MeshRenderer() {
 
+std::string MeshRenderer::name = "MeshRenderer";
+
+MeshRenderer::MeshRenderer()
+{
+	loadModelFromFile = false;
 }
 
 MeshRenderer::MeshRenderer(std::string params) {
 	modelLocation =  "Resources/Models/" + params;
+	loadModelFromFile = true;
 }
 
 
 MeshRenderer::~MeshRenderer() {
-
+	loadModelFromFile = false;
 }
 
 void MeshRenderer::Start() {
@@ -31,9 +36,10 @@ void MeshRenderer::Start() {
 
 	std::vector<float> vertices;
 	std::vector<unsigned int> indices;
-
-	ModelLoader::loadModel(modelLocation);
-
+	
+	if (loadModelFromFile) {
+		ModelLoader::loadModel(modelLocation);
+	}
 	vertices = ModelLoader::Vertices;
 	indices = ModelLoader::Indices;
 
@@ -76,8 +82,6 @@ void MeshRenderer::Start() {
 
 void MeshRenderer::Render() {
 //	shaderProgram->use();
-	// ^^ https://www.opengl.org/discussion_boards/showthread.php/177775-Using-multiple-shader-programs-per-step
-	
 	UpdateCameraView();
 	UpdateCameraProjection();
 

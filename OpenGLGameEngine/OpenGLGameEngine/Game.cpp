@@ -55,7 +55,7 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	
-	//glfwSwapInterval(0); // <-- removes the FPS Cap
+	glfwSwapInterval(0); // <-- removes the FPS Cap
 
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------

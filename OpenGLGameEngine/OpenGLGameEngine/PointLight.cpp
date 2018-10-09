@@ -1,5 +1,6 @@
 #include "PointLight.h"
 
+std::string PointLight::name = "PointLight";
 
 
 PointLight::PointLight() {

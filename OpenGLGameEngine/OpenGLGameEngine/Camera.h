@@ -11,6 +11,9 @@
 class Camera : public Component
 {
 public:
+
+	static std::string name;
+
 	Camera();
 	Camera(std::string params);
 	~Camera();

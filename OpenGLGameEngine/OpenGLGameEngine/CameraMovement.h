@@ -4,6 +4,8 @@ class CameraMovement :
 	public Component
 {
 public:
+	static std::string name;
+
 	CameraMovement();
 	CameraMovement(std::string params);
 	~CameraMovement();

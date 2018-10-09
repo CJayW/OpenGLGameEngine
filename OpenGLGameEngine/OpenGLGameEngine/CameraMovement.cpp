@@ -7,6 +7,9 @@
 
 #include "Light.h"
 
+std::string CameraMovement::name = "CameraMovement";
+
+
 CameraMovement::CameraMovement()
 {
 	lookSpeed = 5;

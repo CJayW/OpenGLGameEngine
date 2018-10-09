@@ -3,6 +3,8 @@
 class TestMove : public Component
 {
 public:
+	static std::string name;
+
 	TestMove();
 	TestMove(std::string params);
 	~TestMove();

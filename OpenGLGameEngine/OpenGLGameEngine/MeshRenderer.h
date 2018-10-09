@@ -5,8 +5,12 @@
 
 class MeshRenderer : public Renderer{
 public:
+
+	static std::string name;
+
 	MeshRenderer();
-	MeshRenderer(std::string params);
+	MeshRenderer(std::string modelName);
+
 	~MeshRenderer();
 	
 	void Start() override;
@@ -15,14 +19,13 @@ public:
 	void UpdateCameraView() override;
 	void UpdateCameraProjection() override;
 
-	std::string modelLocation;
-
+	//shaders
 	Shader* shaderProgram;
-	
 	unsigned int VAO, VBO, EBO, triangleCount;
 	
 	unsigned int viewLoc, projectionLoc, modelLoc;
 
-
-
+	//model loading
+	bool loadModelFromFile;
+	std::string modelLocation;
 };

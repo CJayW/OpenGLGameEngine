@@ -6,6 +6,9 @@
 
 class SpotLight : public Light {
 public:
+	static std::string name;
+
+
 	SpotLight();
 	SpotLight(std::string params);
 	~SpotLight();

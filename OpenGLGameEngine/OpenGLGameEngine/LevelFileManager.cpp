@@ -11,10 +11,12 @@
 
 #include "CameraMovement.h"
 #include "TestMove.h"
+#include "Rigidbody.h"
 
 #include "DirectionalLight.h"
 #include "PointLight.h"
 #include "SpotLight.h"
+
 
 LevelFileManager::LevelFileManager() {
 }
@@ -27,7 +29,7 @@ void LevelFileManager::loadLevel() {
 	std::string file;
 
 	std::ifstream ip("Resources/Levels/Level.txt");
-	
+	//while there are more lines
 	while (ip.good()) {
 		std::getline(ip, file);
 		
@@ -47,16 +49,18 @@ void LevelFileManager::loadLevel() {
 
 			std::vector<std::string> params;
 
-			switch (LevelFileManager::findComponentIndex(componentInfo[0])) {
+			std::string componentName = componentInfo[0];
+
+			if (componentName == "Translate") {
 				//Translate
-			case 0:
 				params = splitBy(componentInfo[1], ',');
 				obj->transform->position.x = std::stof(params[0]);
 				obj->transform->position.y = std::stof(params[1]);
 				obj->transform->position.z = std::stof(params[2]);
-				break;
 				//Rotate
-			case 1:
+			} 
+			else if (componentName == "Rotate"){
+
 				params = splitBy(componentInfo[1], ',');
 				glm::vec3 rot;
 				rot.x = glm::radians(std::stof(params[0]));
@@ -64,61 +68,60 @@ void LevelFileManager::loadLevel() {
 				rot.z = glm::radians(std::stof(params[2]));
 
 				obj->transform->rotation = glm::quat(rot);
-				break;
+			}
+			else if (componentName == "Scale") {
 				//Scale
-			case 2:
+
 				params = splitBy(componentInfo[1], ',');
 				obj->transform->scale.x = std::stof(params[0]);
 				obj->transform->scale.y = std::stof(params[1]);
 				obj->transform->scale.z = std::stof(params[2]);
-				break;
+			}
+			else if (componentName == MeshRenderer::name) {
 				//MeshRenderer
-			case 3:
 				obj->addComponent<MeshRenderer>(componentInfo[1]);
-
-				break;
+			}
+			else if (componentName == Camera::name) {
 				//Camera
-			case 4:
+
 				Game::camera = obj->addComponent<Camera>(componentInfo[1]);
-
-				break;
+			}
+			else if (componentName == CameraMovement::name) {
 				//CameraMovement
-			case 5:
 				obj->addComponent<CameraMovement>(componentInfo[1]);
-
-				break;
+			}
+			else if (componentName == TestMove::name) {
 				//TestMove
-			case 6:
 				obj->addComponent<TestMove>(componentInfo[1]);
-
-				break;
+			}
+			else if (componentName == DirectionalLight::name) {
 				//DirectionalLight
-			case 7:
 				obj->addComponent<DirectionalLight>(componentInfo[1]);
-
-				break;
+			}
+			else if (componentName == PointLight::name) {
 				//PointLight
-			case 8:
 				obj->addComponent<PointLight>(componentInfo[1]);
-
-				break;
+			}
+			else if (componentName == SpotLight::name) {
 				//spotLight
-			case 9:
 				obj->addComponent<SpotLight>(componentInfo[1]);
-				break;
-			case -1:
-				std::cout << "Failed To Find Component: '" << componentInfo[0] << "'" << std::endl;
+			}
+			else if (componentName == Rigidbody::name) {
+				//ComponentTemplate
+				obj->addComponent<Rigidbody>(componentInfo[1]);
+			}
+			/*
+			else if (componentName == ComponentTemplate::name) {
+				//ComponentTemplate
+				obj->addComponent<ComponentTemplate>(componentInfo[1]);
+			}
+			*/
+			else {
 
-				break;
-				//-1 Fail
-			default:
-				std::cout << "This component doesnt seem to have a full implamentation: '" << componentInfo[0] << "' "<< LevelFileManager::findComponentIndex(componentInfo[0]) << std::endl;
-				break;
+				std::cout << "Failed To Find Component: '" << componentName << "'" << std::endl;
 			}
 		}
 	}
-
-
 	ip.close();
 }
 
@@ -126,7 +129,6 @@ std::vector<std::string> LevelFileManager::splitBy(std::string str, char div) {
 	
 	std::vector<std::string> splitVals;
 	splitVals.push_back("");
-	
 	for (int i = 0; i < str.length(); i++) {
 		if (str[i] == div) {
 			splitVals.push_back("");
@@ -136,29 +138,3 @@ std::vector<std::string> LevelFileManager::splitBy(std::string str, char div) {
 	}
 	return splitVals;
 }
-
-int LevelFileManager::findComponentIndex(std::string compName ) {
-	if (compName == "")
-		return -1;
-
-
-	for (int i = 0; (size_t)i < componentArr->capacity(); i++) {
-		if (compName == componentArr[i])
-			return i;
-	}
-
-	return -1;
-}
-
-std::string LevelFileManager::componentArr[] = {
-	"Translate",		
-	"Rotate",			
-	"Scale",			
-	"MeshRenderer",		
-	"Camera",			
-	"CameraMovement",	
-	"TestMove",			
-	"DirectionalLight",	
-	"PointLight",		
-	"SpotLight"			
-};

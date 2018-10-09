@@ -13,5 +13,5 @@ Translate(0,0,0:Rotate(0,0,0:Scale(1,1,1:MeshRenderer(FlipTest.ply
 
 Translate(0,0,3:Rotate(0,0,0:Scale(1,1,1:MeshRenderer(house.ply:TestMove(55,60,3.3333
 
-Translate(0,0,-5:Rotate(0,0,0:Scale(1,1,1:MeshRenderer(TreeTest.ply
+Translate(0,100,-5:Rotate(0,0,0:Scale(1,1,1:MeshRenderer(TreeTest.ply:Rigidbody(
 Translate(0,0,-100:Rotate(0,0,0:Scale(1,1,1:MeshRenderer(TreeTest.ply

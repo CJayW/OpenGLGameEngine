@@ -7,6 +7,9 @@ class DirectionalLight :
 	public Light
 {
 public:
+
+	static std::string name;
+
 	DirectionalLight();
 	DirectionalLight(std::string params);
 	~DirectionalLight();

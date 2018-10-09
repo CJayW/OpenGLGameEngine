@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include "Transform.h"
 #include "LevelFileManager.h"
+std::string TestMove::name = "TestMove";
 
 TestMove::TestMove()
 {

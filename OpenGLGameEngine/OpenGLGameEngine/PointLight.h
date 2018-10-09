@@ -7,6 +7,9 @@
 
 class PointLight : public Light {
 public:
+
+	static std::string name;
+
 	PointLight();
 	PointLight(std::string params);
 	~PointLight();
