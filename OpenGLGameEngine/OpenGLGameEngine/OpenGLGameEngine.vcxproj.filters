@@ -28,6 +28,9 @@
     <Filter Include="Source Files\GameObject\Components\Lighting">
       <UniqueIdentifier>{88193f3f-80bf-447c-8f4f-6fc3d8811556}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObject\Components\Template">
+      <UniqueIdentifier>{47d45ebd-e9c8-48fe-b8cf-831a73a34332}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -85,6 +88,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SpotLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -154,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="PointLight.cpp">
       <Filter>Source Files\GameObject\Components\Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>Source Files\GameObject\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
