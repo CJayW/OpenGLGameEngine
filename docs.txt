@@ -1,0 +1,57 @@
+Level File Info
+
+//Comment
+
+
+
+PARAMS:
+string
+
+float / int / double
+
+vec3
+float float float
+
+
+
+COMMANDS:
+Translate(
+float x, float y, float z
+Rotate(
+float x, float y, float z
+Scale(
+float x, float y, float z
+
+
+
+LIGHTING:
+DirectionalLight(
+vec3 ambient, vec3 diffuse
+
+PointLight(
+vec3 ambient, vec3 diffuse, float constant, float linear, float quadratic
+
+SpotLight(
+none
+
+
+
+PHYSICS:
+Rigidbody(
+vec3 Velocity, float mass, float drag
+
+RENDERING:
+Camera(
+float FOV
+
+MeshRenderer(
+string Name
+
+
+
+MOVEMENT:
+CameraMovement(
+float MoveSpeed, float LookSpeed
+
+TestMove(
+float moveSpeed, float rotationSpeed, float rotationSpeedMultiplier

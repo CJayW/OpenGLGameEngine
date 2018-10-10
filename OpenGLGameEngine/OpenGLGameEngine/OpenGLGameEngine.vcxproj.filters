@@ -28,8 +28,14 @@
     <Filter Include="Source Files\GameObject\Components\Lighting">
       <UniqueIdentifier>{88193f3f-80bf-447c-8f4f-6fc3d8811556}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameObject\Components\Template">
-      <UniqueIdentifier>{47d45ebd-e9c8-48fe-b8cf-831a73a34332}</UniqueIdentifier>
+    <Filter Include="Source Files\GameObject\Components\Movement">
+      <UniqueIdentifier>{635e9b76-3e82-4bc6-94c5-1063d4346e2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject\Components\Rendering">
+      <UniqueIdentifier>{f122f82d-a45b-43e0-87fb-871e798ecc01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObject\Components\Physics">
+      <UniqueIdentifier>{127b2316-4a73-4f6f-a3ff-8dc77916f9a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -125,23 +131,8 @@
     <ClCompile Include="OpenGLInclude.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestMove.cpp">
-      <Filter>Source Files\GameObject\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshRenderer.cpp">
-      <Filter>Source Files\GameObject\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\GameObject\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files\GameObject\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraMovement.cpp">
-      <Filter>Source Files\GameObject\Components</Filter>
     </ClCompile>
     <ClCompile Include="LevelFileManager.cpp">
       <Filter>Source Files</Filter>
@@ -161,8 +152,23 @@
     <ClCompile Include="PointLight.cpp">
       <Filter>Source Files\GameObject\Components\Lighting</Filter>
     </ClCompile>
+    <ClCompile Include="CameraMovement.cpp">
+      <Filter>Source Files\GameObject\Components\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="TestMove.cpp">
+      <Filter>Source Files\GameObject\Components\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\GameObject\Components\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRenderer.cpp">
+      <Filter>Source Files\GameObject\Components\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\GameObject\Components\Rendering</Filter>
+    </ClCompile>
     <ClCompile Include="RigidBody.cpp">
-      <Filter>Source Files\GameObject\Components</Filter>
+      <Filter>Source Files\GameObject\Components\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

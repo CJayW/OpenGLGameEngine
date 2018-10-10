@@ -17,7 +17,6 @@
 #include "PointLight.h"
 #include "SpotLight.h"
 
-
 LevelFileManager::LevelFileManager() {
 }
 
@@ -51,7 +50,7 @@ void LevelFileManager::loadLevel() {
 
 			std::string componentName = componentInfo[0];
 
-			if (componentName == "Translate") {
+			if		(componentName == "Translate") {
 				//Translate
 				params = splitBy(componentInfo[1], ',');
 				obj->transform->position.x = std::stof(params[0]);
@@ -125,6 +124,7 @@ void LevelFileManager::loadLevel() {
 	ip.close();
 }
 
+
 std::vector<std::string> LevelFileManager::splitBy(std::string str, char div) {
 	
 	std::vector<std::string> splitVals;
@@ -137,4 +137,23 @@ std::vector<std::string> LevelFileManager::splitBy(std::string str, char div) {
 		}
 	}
 	return splitVals;
+}
+
+
+glm::vec3 LevelFileManager::stringToVec3(std::string str) {
+	std::vector<std::string> split = splitBy(str, ' ');
+
+	if (split.size() < 3) {
+		return glm::vec3(0);
+	}
+
+	glm::vec3 vec = glm::vec3(0);
+
+	std::cout << split.size() << std::endl;
+
+	vec.x = std::stof(split[0]);
+	vec.y = std::stof(split[1]);
+	vec.z = std::stof(split[2]);
+
+	return vec;
 }

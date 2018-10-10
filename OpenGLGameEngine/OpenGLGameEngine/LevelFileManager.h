@@ -3,6 +3,8 @@
 
 #include "GameObject.h"
 
+#include <glm/glm.hpp>
+
 class LevelFileManager {
 public:
 	LevelFileManager();
@@ -12,4 +14,5 @@ public:
 
 	static std::vector<std::string> splitBy(std::string str, char div);
 
+	static glm::vec3 stringToVec3(std::string str);
 };

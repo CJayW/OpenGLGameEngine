@@ -1,18 +1,36 @@
 #include "Rigidbody.h"
 #include "Transform.h"
 
+#include "Input.h"
+#include "LevelFileManager.h"
+
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/string_cast.hpp>
-#include "Input.h"
+
 
 std::string Rigidbody::name = "Rigidbody";
 
 Rigidbody::Rigidbody()
 {
+	velocity = glm::vec3(0);
+	mass = 1.0f;
+	drag = 0.5f;
+
+	gravity = glm::vec3(0, -15.0f, 0);
+
 }
+
+//velocity, mass, drag
 
 Rigidbody::Rigidbody(std::string params)
 {
+	std::vector<std::string> sParams = LevelFileManager::splitBy(params, ',');
+
+	velocity = LevelFileManager::stringToVec3(sParams[0]);
+	mass = std::stof(sParams[1]);
+	drag = std::stof(sParams[2]);
+
+	gravity = glm::vec3(0, -15.0f, 0);
 }
 
 Rigidbody::~Rigidbody()
@@ -21,26 +39,10 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::Start()
 {
-	velocity = glm::vec3(0);
-	gravity = glm::vec3(0, -15.0f, 0);
-	drag = 0.5f;
-	mass = 1.0f;
-
-	playing = false;
 }
 
 void Rigidbody::Update(double deltaTime)
 {
-	if (!playing) {
-
-		if (Input::getKeyDown(GLFW_KEY_O)) {
-			playing = true;
-		}
-		else {
-			return;
-		}
-	}
-
 	if (Input::getKey(GLFW_KEY_B)) {
 		addForce(0, 0.008 , 0);
 	}

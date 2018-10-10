@@ -1,7 +1,9 @@
 #include "SpotLight.h"
 
-std::string SpotLight::name = "SpotLight";
+#include "LevelFileManager.h"
 
+
+std::string SpotLight::name = "SpotLight";
 
 SpotLight::SpotLight() {
 	spotLights.push_back(this);

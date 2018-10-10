@@ -62,6 +62,10 @@ void ModelLoader::loadModel(std::string fileName)
 				Vertices.push_back(std::stof(splitLine[6]) / 255);
 				Vertices.push_back(std::stof(splitLine[7]) / 255);
 				Vertices.push_back(std::stof(splitLine[8]) / 255);
+
+				//Vertices.push_back(1);
+				//Vertices.push_back(1);
+				//Vertices.push_back(1);
 				//normals
 				Vertices.push_back(std::stof(splitLine[3]));
 				Vertices.push_back(std::stof(splitLine[4]));
