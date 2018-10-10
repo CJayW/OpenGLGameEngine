@@ -22,7 +22,7 @@ Rigidbody::~Rigidbody()
 void Rigidbody::Start()
 {
 	velocity = glm::vec3(0);
-	gravity = glm::vec3(0, -9.8f, 0);
+	gravity = glm::vec3(0, -15.0f, 0);
 	drag = 0.5f;
 	mass = 1.0f;
 
@@ -40,7 +40,11 @@ void Rigidbody::Update(double deltaTime)
 			return;
 		}
 	}
-	
+
+	if (Input::getKey(GLFW_KEY_B)) {
+		addForce(0, 0.008 , 0);
+	}
+
 	glm::vec3 temp = velocity;
 	temp *= drag;
 	temp *= drag;
@@ -58,6 +62,7 @@ void Rigidbody::Update(double deltaTime)
 	temp *= deltaTime;
 
 	addForce(temp);
+
 
 	if (transform->position.y <= 0) {
 		velocity *= 0;
