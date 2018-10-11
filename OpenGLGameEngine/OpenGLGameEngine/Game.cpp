@@ -14,6 +14,8 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "EditorMode.h"
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 int Game::width;
@@ -32,10 +34,8 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	height = Height;
 	Running = true;
 
-
 	glfwInit();
 	
-
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -69,6 +69,8 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
+	EditorMode::Init();
+
 	Camera::UpdateCameraProjection();
 }
 
@@ -77,6 +79,8 @@ void Game::Start() {
 }
 
 void Game::Update(double deltaTime) {
+	EditorMode::Update();
+	
 	for (auto gameObject : GameObjects) {
 		gameObject->Update(deltaTime);
 	}
@@ -84,9 +88,13 @@ void Game::Update(double deltaTime) {
 
 void Game::Render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();
 	}
+
+	EditorMode::Render();
+
 	glfwSwapBuffers(window);
 }
 

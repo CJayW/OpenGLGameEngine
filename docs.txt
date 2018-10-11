@@ -1,6 +1,9 @@
 Level File Info
 
-//Comment
+
+
+// Comment
+:  seperates each component
 
 
 
