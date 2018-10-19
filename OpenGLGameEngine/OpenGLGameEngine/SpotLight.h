@@ -8,13 +8,9 @@ class SpotLight : public Light {
 public:
 	static std::string name;
 
-
 	SpotLight();
 	SpotLight(std::string params);
 	~SpotLight();
-
-	glm::vec3 ambient;
-	glm::vec3 diffuse;
 
 	float constant;
 	float linear;
@@ -22,4 +18,7 @@ public:
 
 	float width;
 	float blur;
+
+	void RenderUIEditor() override;
+
 };

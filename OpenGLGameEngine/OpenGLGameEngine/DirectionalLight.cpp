@@ -1,6 +1,7 @@
 #include "DirectionalLight.h"
 #include <string>
 #include "LevelFileManager.h"
+#include "Transform.h"
 
 std::string DirectionalLight::name = "DirectionalLight";
 
@@ -11,22 +12,30 @@ DirectionalLight::DirectionalLight()
 
 	ambient = glm::vec3(0.1f);
 	diffuse = glm::vec3(0.8f);
+	
+	DisplayName = name;
 }
-
-//vec3 ambient, vec3 diffuse
 
 DirectionalLight::DirectionalLight(std::string params) {
 	directionalLights.push_back(this);
-
 	
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
 
 	ambient = LevelFileManager::stringToVec3(splitParams[0]);
 	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
-	
 
+	DisplayName = name;
 }
 
 DirectionalLight::~DirectionalLight()
 {
+}
+
+void DirectionalLight::RenderUIEditor() {
+	Light::RenderUIEditor();
+
+	if (lastRot != transform->rotation) {
+		UpdateLighting = true;
+		lastRot = transform->rotation;
+	}
 }

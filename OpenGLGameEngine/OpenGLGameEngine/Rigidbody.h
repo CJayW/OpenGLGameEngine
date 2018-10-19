@@ -24,4 +24,6 @@ public:
 
 	void addForce(glm::vec3 force);
 	void addForce(float x, float y, float z);
+
+	void RenderUIEditor() override;
 };

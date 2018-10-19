@@ -16,4 +16,20 @@ public:
 	static std::vector<DirectionalLight*> directionalLights;
 	static std::vector<PointLight*> pointLights;
 	static std::vector<SpotLight*> spotLights;
+
+	glm::vec3 ambient;
+	glm::vec3 diffuse;
+
+	void RenderUIEditor() override;
+
+	void Update(double deltaTime) override;
+
+	static double lastDealtTime;
+	static bool UpdateLighting;
+
+	void RenderUIEditorLightAttenuation();
+
+	float constant;
+	float linear;
+	float quadratic;
 };

@@ -18,10 +18,12 @@ std::string Camera::name = "Camera";
 
 Camera::Camera()
 {
+	DisplayName = name;
 }
 
 Camera::Camera(std::string params) {
 	FOV = std::stof(params);
+	DisplayName = name;
 }
 
 Camera::~Camera()
@@ -65,4 +67,14 @@ void Camera::AddRenderer(Renderer* newRenderer) {
 	Camera::Renderers.push_back(newRenderer);
 	newRenderer->UpdateCameraView();
 	newRenderer->UpdateCameraProjection();
+}
+
+void Camera::RenderUIEditor() {
+	float lastFOV = FOV;
+	
+	ImGui::DragFloat("FOV", &FOV, 0.1f);
+
+	if (lastFOV != FOV)
+		UpdateCameraProjection();
+
 }

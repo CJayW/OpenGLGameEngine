@@ -50,7 +50,7 @@ in vec3 FragPos;
 void main()
 {
 	vec3 norm = normalize(Normal);
-	
+
 	vec3 result;
 
     // phase 1: Directional lighting
@@ -65,6 +65,7 @@ void main()
     for(int i = 0; i < MaxPointLightCount; i++) {
 		if(pointLights[i].ambient != vec3(0) || pointLights[i].diffuse != vec3(0)){
 			 result += CalcPointLight(pointLights[i], norm, FragPos);  
+
 		}else{
 			break;
 		}

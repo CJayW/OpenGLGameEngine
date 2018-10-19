@@ -17,5 +17,4 @@ public:
 	static void ChangeEditorMode(bool newMode);
 
 	static bool EditorModeActive;
-
 };

@@ -14,12 +14,14 @@ CameraMovement::CameraMovement()
 {
 	lookSpeed = 5;
 	moveSpeed = 5;
+	DisplayName = name;
 }
 
 CameraMovement::CameraMovement(std::string params) {
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
 	moveSpeed = std::stof(splitParams[0]);
 	lookSpeed = std::stof(splitParams[1]);
+	DisplayName = name;
 }
 
 CameraMovement::~CameraMovement()
@@ -28,7 +30,7 @@ CameraMovement::~CameraMovement()
 
 void CameraMovement::Update(double deltaTime) {
 	if (Input::mouseHidden) {
-		float horizontalMoveSpeed = lookSpeed * Input::getAxis(InputAxisMouseX);
+		float horizontalMoveSpeed = lookSpeed * (float)Input::getAxis(InputAxisMouseX);
 		transform->rotate(glm::vec3(0, horizontalMoveSpeed, 0));
 
 		float verticalMoveSpeed = lookSpeed * Input::getAxis(InputAxisMouseY);
@@ -54,4 +56,9 @@ void CameraMovement::Update(double deltaTime) {
 	if (Input::getKey(GLFW_KEY_Q)) {
 		transform->position -= (transform->rotation * glm::vec3(0, 1, 0)) * glm::vec3(deltaTime * currentMoveSpeed, deltaTime * currentMoveSpeed, deltaTime * currentMoveSpeed);
 	}
+}
+
+void CameraMovement::RenderUIEditor() {
+	ImGui::DragFloat("moveSpeed", &moveSpeed);
+	ImGui::DragFloat("lookSpeed", &lookSpeed);
 }

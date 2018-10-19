@@ -26,6 +26,10 @@ public:
 	unsigned int viewLoc, projectionLoc, modelLoc;
 
 	//model loading
+	void RenderUIEditor() override;
+
 	bool loadModelFromFile;
 	std::string modelLocation;
+
+
 };

@@ -19,11 +19,13 @@ std::string MeshRenderer::name = "MeshRenderer";
 MeshRenderer::MeshRenderer()
 {
 	loadModelFromFile = false;
+	DisplayName = name;
 }
 
 MeshRenderer::MeshRenderer(std::string params) {
 	modelLocation =  "Resources/Models/" + params;
 	loadModelFromFile = true;
+	DisplayName = name;
 }
 
 
@@ -110,4 +112,10 @@ void MeshRenderer::UpdateCameraProjection()
 {
 	Renderer::UpdateCameraProjection();
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(cameraProjection));
+}
+
+void MeshRenderer::RenderUIEditor() {
+
+	ImGui::Text((std::string("Loaded From: ") + modelLocation).c_str());
+
 }

@@ -2,6 +2,7 @@
 #include "Light.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 class DirectionalLight :
 	public Light
@@ -14,6 +15,8 @@ public:
 	DirectionalLight(std::string params);
 	~DirectionalLight();
 
-	glm::vec3 ambient;
-	glm::vec3 diffuse;
+	//Editor
+	void RenderUIEditor() override;
+
+	glm::quat lastRot;
 };

@@ -20,8 +20,6 @@ Rigidbody::Rigidbody()
 
 }
 
-//velocity, mass, drag
-
 Rigidbody::Rigidbody(std::string params)
 {
 	std::vector<std::string> sParams = LevelFileManager::splitBy(params, ',');
@@ -39,6 +37,7 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::Start()
 {
+	DisplayName = name;
 }
 
 void Rigidbody::Update(double deltaTime)
@@ -79,4 +78,12 @@ void Rigidbody::addForce(glm::vec3 force)
 void Rigidbody::addForce(float x, float y, float z)
 {
 	addForce(glm::vec3(x, y, z));
+}
+
+void Rigidbody::RenderUIEditor() {
+
+	ImGui::DragFloat("Mass", &mass, 0.1f);
+	ImGui::DragFloat("Drag", &drag, 0.1f);
+	ImGui::DragFloat3("Gravity", glm::value_ptr(gravity), 0.1f);
+	ImGui::DragFloat3("Velocity", glm::value_ptr(velocity), 0.1f);
 }

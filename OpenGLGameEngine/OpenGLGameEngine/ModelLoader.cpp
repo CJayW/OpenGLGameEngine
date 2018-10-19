@@ -66,10 +66,11 @@ void ModelLoader::loadModel(std::string fileName)
 				//Vertices.push_back(1);
 				//Vertices.push_back(1);
 				//Vertices.push_back(1);
+
 				//normals
-				Vertices.push_back(std::stof(splitLine[3]));
 				Vertices.push_back(std::stof(splitLine[4]));
 				Vertices.push_back(std::stof(splitLine[5]));
+				Vertices.push_back(std::stof(splitLine[3]));
 			}
 			for (int i = 0; i < totalFaces; i++) {
 				std::getline(ip, line);

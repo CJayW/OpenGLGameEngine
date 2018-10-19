@@ -26,7 +26,6 @@ TestMove::~TestMove()
 }
 
 void TestMove::Start() {
-	//transform->position.y -= 2;
 }
 
 

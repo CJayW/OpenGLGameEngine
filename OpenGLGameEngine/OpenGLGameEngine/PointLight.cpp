@@ -10,6 +10,8 @@ std::string PointLight::name = "PointLight";
 PointLight::PointLight() {
 	pointLights.push_back(this);
 
+	DisplayName = name;
+
 }
 
 //vec3 ambient, vec3 diffuse, float constant, float linear, float quadratic
@@ -26,6 +28,7 @@ PointLight::PointLight(std::string params) {
 	linear = std::stof(splitParams[2]);
 	quadratic = std::stof(splitParams[2]);
 
+	DisplayName = name;
 
 	//TODO implament a range to this
 	//http://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
@@ -33,4 +36,11 @@ PointLight::PointLight(std::string params) {
 
 
 PointLight::~PointLight() {
+}
+
+void PointLight::RenderUIEditor() {
+	Light::RenderUIEditor();
+	RenderUIEditorLightAttenuation();
+
+	//TODO Update Pos
 }

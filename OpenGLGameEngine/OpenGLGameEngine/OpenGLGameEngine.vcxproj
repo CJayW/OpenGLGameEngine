@@ -73,7 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\..\OpenGl Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\..\OpenGl Libraries\libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)\..\OpenGl Libraries\libs;$(LibraryPath) </LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -96,6 +96,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -182,6 +183,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SpotLight.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="TestMove.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
@@ -211,6 +213,7 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SpotLight.cpp" />
+    <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="TestMove.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>

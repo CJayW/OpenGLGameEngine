@@ -17,6 +17,9 @@ SpotLight::SpotLight() {
 
 	float width = 15;
 	float blur = 0.17;
+
+	DisplayName = name;
+
 }
 
 SpotLight::SpotLight(std::string params) {
@@ -31,7 +34,18 @@ SpotLight::SpotLight(std::string params) {
 
 	width = 15;
 	blur = 0.17;
+
+	DisplayName = name;
+
 }
 
 SpotLight::~SpotLight() {
+}
+
+void SpotLight::RenderUIEditor() {
+	Light::RenderUIEditor();
+	RenderUIEditorLightAttenuation();
+
+	//TODO use this at some point
+
 }

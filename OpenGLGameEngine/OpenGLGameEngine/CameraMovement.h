@@ -16,5 +16,7 @@ private:
 	float lookSpeed;
 	float moveSpeed;
 
+	//Editor
+	void RenderUIEditor() override;
 };
 

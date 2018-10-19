@@ -44,7 +44,14 @@ void LevelFileManager::loadLevel() {
 		GameObject* obj = GameObjectManager::Instantiate();
 
 		for (auto componentString : splitBy(file, ':')) {
+
 			std::vector<std::string> componentInfo = splitBy(componentString, '(');
+
+			//sets the name of the object
+			if (componentInfo.size() < 2) {
+				obj->Name = componentInfo[0];
+				continue;
+			}
 
 			std::vector<std::string> params;
 
@@ -148,8 +155,6 @@ glm::vec3 LevelFileManager::stringToVec3(std::string str) {
 	}
 
 	glm::vec3 vec = glm::vec3(0);
-
-	std::cout << split.size() << std::endl;
 
 	vec.x = std::stof(split[0]);
 	vec.y = std::stof(split[1]);

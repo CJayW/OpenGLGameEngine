@@ -14,4 +14,12 @@ public:
 	glm::vec3 scale;
 
 	void rotate(glm::vec3 euler);
+
+
+	//Editor
+	void OpenUIEditor() override;
+
+	void RenderUIEditor() override;
+
+	glm::vec3 EditorRotation;
 };

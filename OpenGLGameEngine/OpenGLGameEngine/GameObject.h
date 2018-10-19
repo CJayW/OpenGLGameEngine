@@ -15,8 +15,14 @@ public:
 	void Update(double deltaTime);
 	void Render();
 	
-	Transform* transform;
 
+	Transform* transform;
+	
+	//Editor
+	void RenderUIEditor();
+
+	std::string Name;
+	bool componentDetailsOpen;
 #pragma region components 
 
 	template <typename componentType, typename... ArgsT>
@@ -62,6 +68,5 @@ public:
 	}
 
 #pragma endregion
-
 };
 

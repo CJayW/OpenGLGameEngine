@@ -25,9 +25,11 @@ public:
 	static void UpdateCameraProjection();
 	void UpdateCameraView();
 
-
 	static glm::mat4 projection;
 	static glm::mat4 viewMatrix;
+
+	void RenderUIEditor() override;
+
 private:
 	static float FOV;
 

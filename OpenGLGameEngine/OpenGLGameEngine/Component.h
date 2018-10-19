@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+//for subclasses
+#include "imGUI/imgui.h"
+#include <glm/gtc/type_ptr.hpp>
 class Transform;
 class GameObject;
 
@@ -16,5 +19,10 @@ public:
 
 	Transform* transform;
 	GameObject* gameObject;
+
+	virtual void RenderUIEditor() {};
+	virtual void OpenUIEditor() {};
+
+	std::string DisplayName;
 };
 
