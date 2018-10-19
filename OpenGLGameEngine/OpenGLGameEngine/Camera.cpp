@@ -8,10 +8,12 @@
 
 #include "Transform.h"
 
+#include "Renderer.h"
+
+
 glm::mat4 Camera::projection;
 glm::mat4 Camera::viewMatrix;
 
-std::vector<Renderer*> Camera::Renderers;
 float Camera::FOV = 60;
 
 std::string Camera::name = "Camera";
@@ -43,7 +45,8 @@ void Camera::UpdateCameraProjection() {
 	float ratio = ((float)Game::width / (float)Game::height);
 	projection = glm::perspective(glm::radians(FOV), ratio, 0.1f, 100.0f);
 	
-	for (auto renderer : Renderers) {
+
+	for (auto renderer : Renderer::Renderers) {
 		renderer->UpdateCameraProjection();
 	}
 }
@@ -58,15 +61,9 @@ void Camera::UpdateCameraView() {
 
 	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 
-	for (auto renderer : Renderers) {
+	for (auto renderer : Renderer::Renderers) {
 		renderer->UpdateCameraView();
 	}
-}
-
-void Camera::AddRenderer(Renderer* newRenderer) {
-	Camera::Renderers.push_back(newRenderer);
-	newRenderer->UpdateCameraView();
-	newRenderer->UpdateCameraProjection();
 }
 
 void Camera::RenderUIEditor() {

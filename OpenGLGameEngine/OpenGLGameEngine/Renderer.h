@@ -4,6 +4,8 @@
 #include "Shader.h"
 #include <glm/glm.hpp>
 
+#include <vector>
+
 class Renderer : public Component {
 public:
 	Renderer();
@@ -18,4 +20,6 @@ public:
 
 	glm::mat4 cameraProjection;
 	glm::mat4 cameraView;
+
+	static std::vector<Renderer*> Renderers;
 };

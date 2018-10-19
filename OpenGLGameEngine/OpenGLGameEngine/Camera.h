@@ -4,8 +4,6 @@
 #include <glm/glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 
-#include "Renderer.h"
-
 #include <vector>
 
 class Camera : public Component
@@ -21,7 +19,6 @@ public:
 	void Start() override;
 	void Update(double deltaTime) override;
 
-	static void AddRenderer(Renderer* newRenderer);
 	static void UpdateCameraProjection();
 	void UpdateCameraView();
 
@@ -32,6 +29,4 @@ public:
 
 private:
 	static float FOV;
-
-	static std::vector<Renderer*> Renderers;
 };

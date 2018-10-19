@@ -10,10 +10,12 @@ Renderer::~Renderer()
 {
 }
 
+std::vector<Renderer*> Renderer::Renderers;
+
 Shader* Renderer::CurrentShaderProgram;
 
 void Renderer::Start() {
-	Camera::AddRenderer(this);
+	Renderers.push_back(this);
 }
 
 void Renderer::UpdateCameraView() {
