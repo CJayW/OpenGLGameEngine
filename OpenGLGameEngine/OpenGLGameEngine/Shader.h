@@ -14,7 +14,9 @@ class Shader {
 public:
 	unsigned int ID;
 	//Reads and builds the shaders
-	Shader(const std::string vertexPath, const std::string fragmentPath);
+	Shader(const std::string vertexPath, const std::string fragmentPath, bool useLightData = true);
+
+	bool useLightData;
 
 	//Activates or deactivates the shader
 	void use();

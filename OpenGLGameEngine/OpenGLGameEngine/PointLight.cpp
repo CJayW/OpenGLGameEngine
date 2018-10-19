@@ -11,7 +11,6 @@ PointLight::PointLight() {
 	pointLights.push_back(this);
 
 	DisplayName = name;
-
 }
 
 //vec3 ambient, vec3 diffuse, float constant, float linear, float quadratic
@@ -25,8 +24,8 @@ PointLight::PointLight(std::string params) {
 	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
 	
 	constant = std::stof(splitParams[2]);
-	linear = std::stof(splitParams[2]);
-	quadratic = std::stof(splitParams[2]);
+	linear = std::stof(splitParams[3]);
+	quadratic = std::stof(splitParams[4]);
 
 	DisplayName = name;
 
@@ -41,6 +40,4 @@ PointLight::~PointLight() {
 void PointLight::RenderUIEditor() {
 	Light::RenderUIEditor();
 	RenderUIEditorLightAttenuation();
-
-	//TODO Update Pos
 }

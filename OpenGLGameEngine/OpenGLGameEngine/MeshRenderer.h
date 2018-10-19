@@ -20,7 +20,7 @@ public:
 	void UpdateCameraProjection() override;
 
 	//shaders
-	Shader* shaderProgram;
+	static Shader* shaderProgram;
 	unsigned int VAO, VBO, EBO, triangleCount;
 	
 	unsigned int viewLoc, projectionLoc, modelLoc;
@@ -30,6 +30,5 @@ public:
 
 	bool loadModelFromFile;
 	std::string modelLocation;
-
 
 };

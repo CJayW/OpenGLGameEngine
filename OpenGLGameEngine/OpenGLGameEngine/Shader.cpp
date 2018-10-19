@@ -9,11 +9,15 @@
 
 #include "Transform.h"
 
+#include "Renderer.h"
+
 #define GLM_ENABLE_EXPERIMENTAL
 
 #include <glm/gtx/string_cast.hpp>
 
-Shader::Shader(const std::string vertexPath, const std::string fragmentPath) {
+Shader::Shader(const std::string vertexPath, const std::string fragmentPath, bool _useLightData) {
+
+	useLightData = _useLightData;
 
 	std::string vertexCode;
 	std::string fragmentCode;
@@ -89,56 +93,59 @@ Shader::Shader(const std::string vertexPath, const std::string fragmentPath) {
 		glGetProgramInfoLog(ID, 512, NULL, infoLog);
 		std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 	}
-
 }
 
 void Shader::use() {
 	glUseProgram(ID);
 
-	for (int i = 0; (size_t)i < Light::directionalLights.size(); i++) {
-		if (i >= 10) {
-			break;
+	Renderer::CurrentShaderProgram = this;
+
+	if (useLightData) {
+		for (int i = 0; (size_t)i < Light::directionalLights.size(); i++) {
+			if (i >= 10) {
+				break;
+			}
+			std::string iStr = std::to_string(i);
+
+			setVec3("dirLights[" + iStr + "].direction", Light::directionalLights[i]->transform->rotation * glm::vec3(1, 0, 0));
+			setVec3("dirLights[" + iStr + "].ambient", Light::directionalLights[i]->ambient);
+			setVec3("dirLights[" + iStr + "].diffuse", Light::directionalLights[i]->diffuse);
 		}
-		std::string iStr = std::to_string(i);
 
-		setVec3("dirLights[" + iStr + "].direction", Light::directionalLights[i]->transform->rotation * glm::vec3(1, 0, 0));
-		setVec3("dirLights[" + iStr + "].ambient", Light::directionalLights[i]->ambient);
-		setVec3("dirLights[" + iStr + "].diffuse", Light::directionalLights[i]->diffuse);
-	}
+		for (int i = 0; (size_t)i < Light::pointLights.size(); i++) {
+			if (i >= 10) {
+				break;
+			}
+			std::string iStr = std::to_string(i);
+			setVec3("pointLights[" + iStr + "].position", Light::pointLights[i]->transform->position);
 
-	for (int i = 0; (size_t)i < Light::pointLights.size(); i++) {
-		if (i >= 10) {
-			break;
+			setVec3("pointLights[" + iStr + "].ambient", Light::pointLights[i]->ambient);
+			setVec3("pointLights[" + iStr + "].diffuse", Light::pointLights[i]->diffuse);
+
+			setFloat("pointLights[" + iStr + "].constant", Light::pointLights[i]->constant);
+			setFloat("pointLights[" + iStr + "].linear", Light::pointLights[i]->linear);
+			setFloat("pointLights[" + iStr + "].quadratic", Light::pointLights[i]->quadratic);
+
 		}
-		std::string iStr = std::to_string(i);
-		setVec3( "pointLights[" + iStr + "].position", Light::pointLights[i]->transform->position);
 
-		setVec3( "pointLights[" + iStr + "].ambient", Light::pointLights[i]->ambient);
-		setVec3( "pointLights[" + iStr + "].diffuse", Light::pointLights[i]->diffuse);
+		for (int i = 0; i < Light::spotLights.size(); i++) {
+			if (i >= 10) {
+				break;
+			}
+			std::string iStr = std::to_string(i);
 
-		setFloat("pointLights[" + iStr + "].constant", Light::pointLights[i]->constant);
-		setFloat("pointLights[" + iStr + "].linear", Light::pointLights[i]->linear);
-		setFloat("pointLights[" + iStr + "].quadratic", Light::pointLights[i]->quadratic);
+			setVec3("spotLights[" + iStr + "].position", Light::spotLights[i]->transform->position);
+			setVec3("spotLights[" + iStr + "].direction", Light::spotLights[i]->transform->rotation * glm::vec3(1, 0, 0));
 
-	}
+			setVec3("spotLights[" + iStr + "].ambient", Light::spotLights[i]->ambient);
+			setVec3("spotLights[" + iStr + "].diffuse", Light::spotLights[i]->diffuse);
 
-	for (int i = 0; i < Light::spotLights.size(); i++) {
-		if (i >= 10) {
-			break;
+			setFloat("spotLights[" + iStr + "].constant", Light::spotLights[i]->constant);
+			setFloat("spotLights[" + iStr + "].linear", Light::spotLights[i]->linear);
+			setFloat("spotLights[" + iStr + "].quadratic", Light::spotLights[i]->quadratic);
+
+			setFloat("spotLights[" + iStr + "].cutOff", glm::cos(glm::radians(Light::spotLights[i]->width * (1 - Light::spotLights[i]->blur))));
+			setFloat("spotLights[" + iStr + "].outerCutOff", glm::cos(glm::radians(Light::spotLights[i]->width)));
 		}
-		std::string iStr = std::to_string(i);
-
-		setVec3("spotLights[" + iStr + "].position", Light::spotLights[i]->transform->position);
-		setVec3("spotLights[" + iStr + "].direction", Light::spotLights[i]->transform->rotation * glm::vec3(1,0,0));
-
-		setVec3("spotLights[" + iStr + "].ambient", Light::spotLights[i]->ambient);
-		setVec3("spotLights[" + iStr + "].diffuse", Light::spotLights[i]->diffuse);
-
-		setFloat("spotLights[" + iStr + "].constant", Light::spotLights[i]->constant);
-		setFloat("spotLights[" + iStr + "].linear", Light::spotLights[i]->linear);
-		setFloat("spotLights[" + iStr + "].quadratic", Light::spotLights[i]->quadratic);
-
-		setFloat("spotLights[" + iStr + "].cutOff", glm::cos(glm::radians(Light::spotLights[i]->width * (1 - Light::spotLights[i]->blur))));
-		setFloat("spotLights[" + iStr + "].outerCutOff", glm::cos(glm::radians(Light::spotLights[i]->width)));
 	}
 }

@@ -37,11 +37,11 @@
     <Filter Include="Source Files\GameObject\Components\Physics">
       <UniqueIdentifier>{127b2316-4a73-4f6f-a3ff-8dc77916f9a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="imGUI">
-      <UniqueIdentifier>{a8c7babe-1ebd-464e-9dc1-8b36e6ef5a5e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Loading">
       <UniqueIdentifier>{ab0b99fc-3298-4a97-ae74-641e97704f6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\imGUI">
+      <UniqueIdentifier>{a8c7babe-1ebd-464e-9dc1-8b36e6ef5a5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -112,21 +112,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imgui_impl_glfw_gl3.h">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imgui_internal.h">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imgui.h">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClInclude>
     <ClInclude Include="imGUI\imconfig.h">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClInclude>
     <ClInclude Include="EditorMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IconRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -192,16 +195,16 @@
       <Filter>Source Files\GameObject\Components\Physics</Filter>
     </ClCompile>
     <ClCompile Include="imGUI\imgui.cpp">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClCompile>
     <ClCompile Include="imGUI\imgui_demo.cpp">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClCompile>
     <ClCompile Include="imGUI\imgui_draw.cpp">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClCompile>
     <ClCompile Include="imGUI\imgui_impl_glfw_gl3.cpp">
-      <Filter>imGUI</Filter>
+      <Filter>Libs\imGUI</Filter>
     </ClCompile>
     <ClCompile Include="EditorMode.cpp">
       <Filter>Source Files</Filter>
@@ -214,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IconRenderer.cpp">
+      <Filter>Source Files\GameObject\Components\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +237,13 @@
     </None>
     <None Include="Resources\Models\house.ply">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="imgui.ini" />
+    <None Include="Resources\Shaders\icon.frag">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Resources\Shaders\icon.vert">
+      <Filter>Source Files\Shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

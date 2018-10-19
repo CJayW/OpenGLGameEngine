@@ -1,9 +1,6 @@
 #include "MeshRenderer.h"
 
-#include <glm\gtc\type_ptr.hpp>
-
 #define GLM_ENABLE_EXPERIMENTAL
-
 #include <glm/gtx/quaternion.hpp>
 
 #include <glm/gtx/string_cast.hpp>
@@ -16,6 +13,8 @@
 
 std::string MeshRenderer::name = "MeshRenderer";
 
+Shader* MeshRenderer::shaderProgram;
+
 MeshRenderer::MeshRenderer()
 {
 	loadModelFromFile = false;
@@ -27,7 +26,6 @@ MeshRenderer::MeshRenderer(std::string params) {
 	loadModelFromFile = true;
 	DisplayName = name;
 }
-
 
 MeshRenderer::~MeshRenderer() {
 	loadModelFromFile = false;
@@ -66,13 +64,9 @@ void MeshRenderer::Start() {
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(float), indices.data(), GL_STATIC_DRAW);
-	if (!CurrentShaderProgram) {
+	if (!shaderProgram) {
 		shaderProgram = new Shader("core.vert", "core.frag");
-		CurrentShaderProgram = shaderProgram;
 		shaderProgram->use();
-	}
-	else {
-		shaderProgram = CurrentShaderProgram;
 	}
 
 	projectionLoc = glGetUniformLocation(CurrentShaderProgram->ID, "projection");
@@ -83,9 +77,11 @@ void MeshRenderer::Start() {
 }
 
 void MeshRenderer::Render() {
-//	shaderProgram->use();
-	UpdateCameraView();
-	UpdateCameraProjection();
+	if (CurrentShaderProgram != shaderProgram) {
+		shaderProgram->use();
+		UpdateCameraView();
+		UpdateCameraProjection();
+	}
 
 	glm::mat4 model = glm::mat4(1);
 	model = glm::translate(model, transform->position);

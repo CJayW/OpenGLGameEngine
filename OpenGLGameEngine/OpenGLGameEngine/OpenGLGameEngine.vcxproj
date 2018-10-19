@@ -162,6 +162,7 @@
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EditorMode.h" />
+    <ClInclude Include="IconRenderer.h" />
     <ClInclude Include="imGUI\imconfig.h" />
     <ClInclude Include="imGUI\imgui.h" />
     <ClInclude Include="imGUI\imgui_impl_glfw_gl3.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="EditorMode.cpp" />
+    <ClCompile Include="IconRenderer.cpp" />
     <ClCompile Include="imGUI\imgui.cpp" />
     <ClCompile Include="imGUI\imgui_demo.cpp" />
     <ClCompile Include="imGUI\imgui_draw.cpp" />
@@ -218,11 +220,14 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="imgui.ini" />
     <None Include="Resources\Models\FlipTest.ply" />
     <None Include="Resources\Models\house.ply" />
     <None Include="Resources\Models\TreeTest.ply" />
     <None Include="Resources\Shaders\core.frag" />
     <None Include="Resources\Shaders\core.vert" />
+    <None Include="Resources\Shaders\icon.frag" />
+    <None Include="Resources\Shaders\icon.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Levels\Level.txt" />

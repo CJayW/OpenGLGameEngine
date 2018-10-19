@@ -73,5 +73,4 @@ void Camera::RenderUIEditor() {
 
 	if (lastFOV != FOV)
 		UpdateCameraProjection();
-
 }

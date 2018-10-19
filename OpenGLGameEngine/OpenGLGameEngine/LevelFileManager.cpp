@@ -8,6 +8,7 @@
 
 #include "Camera.h"
 #include "MeshRenderer.h"
+#include "IconRenderer.h"
 
 #include "CameraMovement.h"
 #include "TestMove.h"
@@ -89,7 +90,6 @@ void LevelFileManager::loadLevel() {
 			}
 			else if (componentName == Camera::name) {
 				//Camera
-
 				Game::camera = obj->addComponent<Camera>(componentInfo[1]);
 			}
 			else if (componentName == CameraMovement::name) {
@@ -115,6 +115,10 @@ void LevelFileManager::loadLevel() {
 			else if (componentName == Rigidbody::name) {
 				//ComponentTemplate
 				obj->addComponent<Rigidbody>(componentInfo[1]);
+			} 
+			else if (componentName == IconRenderer::name) {
+				//Icon Renderer
+				obj->addComponent<IconRenderer>(componentInfo[1]);
 			}
 			/*
 			else if (componentName == ComponentTemplate::name) {
