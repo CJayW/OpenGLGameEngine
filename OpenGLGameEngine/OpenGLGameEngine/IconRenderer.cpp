@@ -2,6 +2,8 @@
 #include "stb_image.h"
 #include "Transform.h"
 
+#include "Game.h"
+
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
@@ -98,6 +100,14 @@ void IconRenderer::Start()
 	modelLoc = glGetUniformLocation(CurrentShaderProgram->ID, "model");
 
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(cameraProjection));
+}
+
+void IconRenderer::Update(double deltaTime) {
+	transform->rotation = glm::quat(glm::vec3(0, 0, 0));
+	glm::vec3 diff = Game::camera->transform->position - transform->position;
+	diff = glm::normalize(diff);
+
+	transform->rotate(glm::vec3(0, atan2(diff.x, diff.z) * (180 / 3.141) + 180, 0));
 }
 
 void IconRenderer::Render()
