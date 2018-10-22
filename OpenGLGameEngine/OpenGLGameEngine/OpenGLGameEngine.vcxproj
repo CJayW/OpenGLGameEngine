@@ -232,6 +232,11 @@
   <ItemGroup>
     <Text Include="Resources\Levels\Level.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Icons\directional_icon.jpg" />
+    <Image Include="Resources\Icons\pointLightIcon.jpg" />
+    <Image Include="Resources\Icons\spot_icon.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

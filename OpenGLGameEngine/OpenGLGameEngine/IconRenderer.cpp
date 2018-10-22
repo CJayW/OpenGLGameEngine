@@ -22,6 +22,8 @@ IconRenderer::IconRenderer()
 IconRenderer::IconRenderer(std::string params)
 {
 	DisplayName = "Icon Renderer";
+
+	fileName = params;
 }
 
 // pointLightIcon.jpg
@@ -77,11 +79,12 @@ void IconRenderer::Start()
 	int width, height, nrChannels;
 	stbi_set_flip_vertically_on_load(true);
 
-	unsigned char *data = stbi_load("Resources/Icons/pointLightIcon.jpg", &width, &height, &nrChannels, 0);
+	unsigned char *data = stbi_load((std::string("Resources/Icons/") + fileName).c_str(), &width, &height, &nrChannels, 0);
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
+		std::cout << height << " : " << width << std::endl;
 	} else
 	{
 		std::cout << "Failed to load texture" << std::endl;
@@ -103,11 +106,9 @@ void IconRenderer::Start()
 }
 
 void IconRenderer::Update(double deltaTime) {
-	transform->rotation = glm::quat(glm::vec3(0, 0, 0));
-	glm::vec3 diff = Game::camera->transform->position - transform->position;
-	diff = glm::normalize(diff);
 
-	transform->rotate(glm::vec3(0, atan2(diff.x, diff.z) * (180 / 3.141) + 180, 0));
+	glm::vec3 diff = glm::normalize(Game::camera->transform->position - transform->position);
+	transform->rotation = glm::vec3(0, atan2(diff.x, diff.z), 0);
 }
 
 void IconRenderer::Render()

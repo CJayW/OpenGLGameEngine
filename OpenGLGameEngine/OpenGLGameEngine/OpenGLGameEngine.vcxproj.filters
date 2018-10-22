@@ -251,4 +251,15 @@
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Icons\pointLightIcon.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Icons\spot_icon.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Icons\directional_icon.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

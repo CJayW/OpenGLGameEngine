@@ -7,6 +7,8 @@ std::string PointLight::name = "PointLight";
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/string_cast.hpp>
 
+#include "IconRenderer.h"
+
 PointLight::PointLight() {
 	pointLights.push_back(this);
 
@@ -33,6 +35,10 @@ PointLight::PointLight(std::string params) {
 	//http://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
 }
 
+void PointLight::Start() {
+	gameObject->addComponent<IconRenderer>("pointLightIcon.jpg");
+
+}
 
 PointLight::~PointLight() {
 }

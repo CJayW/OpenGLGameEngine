@@ -15,6 +15,8 @@ public:
 	DirectionalLight(std::string params);
 	~DirectionalLight();
 
+	void Start() override;
+
 	//Editor
 	void RenderUIEditor() override;
 

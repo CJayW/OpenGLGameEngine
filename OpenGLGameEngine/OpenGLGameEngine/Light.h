@@ -20,6 +20,10 @@ public:
 	glm::vec3 ambient;
 	glm::vec3 diffuse;
 
+	float constant;
+	float linear;
+	float quadratic;
+
 	void RenderUIEditor() override;
 
 	void Update(double deltaTime) override;
@@ -29,7 +33,5 @@ public:
 
 	void RenderUIEditorLightAttenuation();
 
-	float constant;
-	float linear;
-	float quadratic;
+
 };

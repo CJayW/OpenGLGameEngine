@@ -14,5 +14,7 @@ public:
 	PointLight(std::string params);
 	~PointLight();
 
+	void Start() override;
+
 	void RenderUIEditor() override;
 };

@@ -2,6 +2,7 @@
 #include <string>
 #include "LevelFileManager.h"
 #include "Transform.h"
+#include "IconRenderer.h"
 
 std::string DirectionalLight::name = "DirectionalLight";
 
@@ -25,6 +26,10 @@ DirectionalLight::DirectionalLight(std::string params) {
 	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
 
 	DisplayName = name;
+}
+
+void DirectionalLight::Start() {
+	gameObject->addComponent<IconRenderer>("directional_icon.jpg");
 }
 
 DirectionalLight::~DirectionalLight()

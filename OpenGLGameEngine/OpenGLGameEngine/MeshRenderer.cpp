@@ -73,7 +73,8 @@ void MeshRenderer::Start() {
 	viewLoc = glGetUniformLocation(CurrentShaderProgram->ID, "view");
 	modelLoc = glGetUniformLocation(CurrentShaderProgram->ID, "model");
 
-	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(cameraProjection));
+	UpdateCameraProjection();
+	UpdateCameraView();
 }
 
 void MeshRenderer::Render() {

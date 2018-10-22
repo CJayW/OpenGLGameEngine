@@ -25,6 +25,8 @@ public:
 
 	unsigned int texture;
 
+	std::string fileName;
+
 	//Editor
 	void RenderUIEditor() override;
 };
