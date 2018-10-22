@@ -104,12 +104,6 @@ void IconRenderer::Start()
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(cameraProjection));
 }
 
-void IconRenderer::Update(double deltaTime) {
-
-	glm::vec3 diff = glm::normalize(Game::camera->transform->position - transform->position);
-	transform->rotation = glm::vec3(0, atan2(diff.x, diff.z), 0);
-}
-
 void IconRenderer::Render()
 {
 	if (CurrentShaderProgram != shaderProgram) {
@@ -125,9 +119,15 @@ void IconRenderer::Render()
 		glBindTexture(GL_TEXTURE_2D, texture);
 	}
 
+
+
 	glm::mat4 model = glm::mat4(1);
 	model = glm::translate(model, transform->position);
-	model = model * glm::toMat4(transform->rotation);
+
+	//makes the icon face the camera along the y axis
+	glm::vec3 diff = glm::normalize(Game::camera->transform->position - transform->position);
+	model = glm::rotate(model, glm::length(glm::vec3(0, atan2(diff.x, diff.z), 0)), glm::normalize(glm::vec3(0, atan2(diff.x, diff.z),0)));
+
 	model = glm::scale(model, transform->scale);
 	
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));

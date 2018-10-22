@@ -13,7 +13,6 @@ public:
 
 	void Start() override;
 	void Render() override;
-	void Update(double deltaTime) override;
 	void UpdateCameraView() override;
 	void UpdateCameraProjection() override;
 
