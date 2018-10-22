@@ -84,7 +84,6 @@ void IconRenderer::Start()
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
-		std::cout << height << " : " << width << std::endl;
 	} else
 	{
 		std::cout << "Failed to load texture" << std::endl;
