@@ -57,6 +57,7 @@ void main()
 	for(int i = 0; i < MaxPointLightCount; i++) {
 		if(dirLights[i].ambient != vec3(0) || dirLights[i].diffuse != vec3(0)){
 			 result += CalcDirLight(dirLights[i], norm);
+
 		}else{
 			break;
 		}
@@ -107,7 +108,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos){
     // combine results
     vec3 ambient  = light.ambient  * Color;
     vec3 diffuse  = light.diffuse  * diff * Color;
-    ambient *= attenuation;
+   // ambient *= attenuation;
     diffuse *= attenuation;
 
     return (ambient + diffuse);
@@ -128,7 +129,7 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos)
     // combine results
     vec3 ambient = light.ambient * Color;
     vec3 diffuse = light.diffuse * diff * Color;
-    ambient *= attenuation * intensity;
+    //ambient *= attenuation * intensity;
     diffuse *= attenuation * intensity;
     return (ambient + diffuse);
 }

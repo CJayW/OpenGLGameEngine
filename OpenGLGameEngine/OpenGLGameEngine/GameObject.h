@@ -70,6 +70,7 @@ public:
 			if (components[i] == comp) {
 
 				Component* comp = components[i];
+
 				delete comp;
 
 				components.erase(components.begin() + i);

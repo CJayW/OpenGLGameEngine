@@ -28,8 +28,8 @@ IconRenderer::IconRenderer(std::string params)
 
 // pointLightIcon.jpg
 
-IconRenderer::~IconRenderer()
-{
+IconRenderer::~IconRenderer(){
+
 }
 
 void IconRenderer::Start()
@@ -80,6 +80,7 @@ void IconRenderer::Start()
 	stbi_set_flip_vertically_on_load(true);
 
 	unsigned char *data = stbi_load((std::string("Resources/Icons/") + fileName).c_str(), &width, &height, &nrChannels, 0);
+
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -114,18 +115,16 @@ void IconRenderer::Render()
 		shaderProgram->setInt("Texture", 0);
 
 		glActiveTexture(GL_TEXTURE0);
-
-		//TODO optimize this so that you can have different textures for different objects without setting the texture for each object if they are the same
-		glBindTexture(GL_TEXTURE_2D, texture);
 	}
 
-
+	//TODO Optimize this
+	glBindTexture(GL_TEXTURE_2D, texture);
 
 	glm::mat4 model = glm::mat4(1);
 	model = glm::translate(model, transform->position);
 
 	//makes the icon face the camera along the y axis
-	glm::vec3 diff = glm::normalize(Game::camera->transform->position - transform->position);
+	glm::vec3 diff = glm::normalize(Camera::cameraPos - transform->position);
 	model = glm::rotate(model, glm::length(glm::vec3(0, atan2(diff.x, diff.z), 0)), glm::normalize(glm::vec3(0, atan2(diff.x, diff.z),0)));
 
 	model = glm::scale(model, transform->scale);

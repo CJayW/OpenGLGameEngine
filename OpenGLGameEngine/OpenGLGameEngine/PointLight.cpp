@@ -15,13 +15,12 @@ PointLight::PointLight() {
 	DisplayName = name;
 }
 
-//vec3 ambient, vec3 diffuse, float constant, float linear, float quadratic
-
 PointLight::PointLight(std::string params) {
+	
+	index = pointLights.size();
 	pointLights.push_back(this);
 
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
-
 	ambient = LevelFileManager::stringToVec3(splitParams[0]);
 	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
 	
@@ -31,7 +30,6 @@ PointLight::PointLight(std::string params) {
 
 	DisplayName = name;
 
-	//TODO implament a range to this
 	//http://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
 }
 
@@ -41,6 +39,16 @@ void PointLight::Start() {
 }
 
 PointLight::~PointLight() {
+	for (int i = 0; i < pointLights.size(); i++) {
+		if (pointLights[i]->gameObject == gameObject) {
+			pointLights.erase(pointLights.begin() + i);
+			return;
+		}
+	}
+
+	std::cout << "Error Finding PointLight" << std::endl;
+
+	//TODO, Use an ID for this instead of comparing objects
 }
 
 void PointLight::RenderUIEditor() {

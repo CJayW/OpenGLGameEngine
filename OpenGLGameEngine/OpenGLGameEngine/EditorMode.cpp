@@ -66,17 +66,22 @@ void EditorMode::Render() {
 		ImGui::End();
 
 		if (addingComponent) {
+			if (!addComponentObject) {
+				
+				addingComponent = false;
 
-			ImGui::Begin("Add Component", &addingComponent);
+			} else {
+				ImGui::Begin("Add Component", &addingComponent);
 
-			ImGui::Text((std::string("Adding Component To:  ") + addComponentObject->Name).c_str());
+				ImGui::Text((std::string("Adding Component To:  ") + addComponentObject->Name).c_str());
 
-			if(ImGui::Button("RigidBody")) {
+				if (ImGui::Button("RigidBody")) {
 
-				addComponentObject->addComponent<Rigidbody>();
+					addComponentObject->addComponent<Rigidbody>();
+				}
+
+				ImGui::End();
 			}
-
-			ImGui::End();
 		}
 
 	}

@@ -5,6 +5,7 @@
 
 #include "imGUI/imgui.h"
 #include "EditorMode.h"
+#include "GameObjectManager.h"
 
 GameObject::GameObject() {
 	transform = addComponent<Transform>();
@@ -12,7 +13,11 @@ GameObject::GameObject() {
 }
 
 GameObject::~GameObject() {
-
+	int total = components.size();
+	for (int i = 0; i < total; i++) {
+		std::cout << components[i]->DisplayName << std::endl;
+		delete components[i];
+	}
 }
 
 void GameObject::Start() {
@@ -45,16 +50,20 @@ void GameObject::RenderUIEditor() {
 		ImGui::Begin(Name.c_str(), &open);
 		componentDetailsOpen = open;
 
-		for (auto comp : components) {
-			ImGui::Text(comp->DisplayName.c_str());
+		ImGui::Text(transform->DisplayName.c_str());
+		transform->RenderUIEditor();
+		ImGui::Separator();
+
+		for(int i = 1; i < components.size(); i++) {
+			ImGui::Text(components[i]->DisplayName.c_str());
 			ImGui::SameLine();
 			
-			if (ImGui::Button((std::string("X##") + comp->DisplayName).c_str())) {
-				std::cout << comp->DisplayName << std::endl;
+			if (ImGui::Button((std::string("X##") + components[i]->DisplayName).c_str())) {
+				std::cout << components[i]->DisplayName << std::endl;
 
-				removeComponentByReferance(comp);
+				removeComponentByReferance(components[i]);
 			} else {
-				comp->RenderUIEditor();
+				components[i]->RenderUIEditor();
 				ImGui::Separator();
 			}
 		}
@@ -85,8 +94,7 @@ void GameObject::RenderUIEditor() {
 	ImGui::Text("  ");
 	ImGui::SameLine();
 	if (ImGui::Button((std::string("X##") + Name).c_str())) {
-		std::cout << "Remove Object:  " << Name << std::endl;
-		//TODO Implament this
+		GameObjectManager::DestroyObject(this);
 	}
 
 	for (auto comp : components) {

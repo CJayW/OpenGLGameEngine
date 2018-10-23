@@ -12,4 +12,5 @@ public:
 
 	static GameObject* GetObjectByName(std::string name);
 
+	static void DestroyObject(GameObject* obj);
 };

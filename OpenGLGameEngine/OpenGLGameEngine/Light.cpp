@@ -33,15 +33,10 @@ void Light::RenderUIEditor() {
 
 void Light::Update(double deltaTime) {
 
-	if (deltaTime != lastDealtTime) {
-		lastDealtTime = deltaTime;
+	if (UpdateLighting) {
 
-		if (UpdateLighting) {
-
-			
-			Renderer::CurrentShaderProgram->use();
-			UpdateLighting = false;
-		}
+		Renderer::CurrentShaderProgram->use();
+		UpdateLighting = false;
 	}
 }
 

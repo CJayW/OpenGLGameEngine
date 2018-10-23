@@ -101,7 +101,9 @@ void Shader::use() {
 	Renderer::CurrentShaderProgram = this;
 
 	if (useLightData) {
-		for (int i = 0; (size_t)i < Light::directionalLights.size(); i++) {
+		int i;
+
+		for (i = 0; (size_t)i < Light::directionalLights.size(); i++) {
 			if (i >= 10) {
 				break;
 			}
@@ -111,8 +113,16 @@ void Shader::use() {
 			setVec3("dirLights[" + iStr + "].ambient", Light::directionalLights[i]->ambient);
 			setVec3("dirLights[" + iStr + "].diffuse", Light::directionalLights[i]->diffuse);
 		}
+		//makes sure to remove the final one 
+		//TODO, make it so that you can remove more than one light per refresh
+		for(; i < 10; i++){
+			std::string iStr = std::to_string(i);;
+			setVec3("dirLights[" + iStr + "].ambient", glm::vec3(0));
+			setVec3("dirLights[" + iStr + "].diffuse", glm::vec3(0));
+		}
 
-		for (int i = 0; (size_t)i < Light::pointLights.size(); i++) {
+
+		for (i = 0; (size_t)i < Light::pointLights.size(); i++) {
 			if (i >= 10) {
 				break;
 			}
@@ -125,10 +135,15 @@ void Shader::use() {
 			setFloat("pointLights[" + iStr + "].constant", Light::pointLights[i]->constant);
 			setFloat("pointLights[" + iStr + "].linear", Light::pointLights[i]->linear);
 			setFloat("pointLights[" + iStr + "].quadratic", Light::pointLights[i]->quadratic);
-
 		}
 
-		for (int i = 0; i < Light::spotLights.size(); i++) {
+		for (; i < 10; i++) {
+			std::string iStr = std::to_string(i);;
+			setVec3("pointLights[" + iStr + "].ambient", glm::vec3(0));
+			setVec3("pointLights[" + iStr + "].diffuse", glm::vec3(0));
+		}
+
+		for (i = 0; i < Light::spotLights.size(); i++) {
 			if (i >= 10) {
 				break;
 			}

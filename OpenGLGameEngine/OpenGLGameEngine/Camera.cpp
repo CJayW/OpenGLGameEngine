@@ -10,9 +10,9 @@
 
 #include "Renderer.h"
 
-
 glm::mat4 Camera::projection;
 glm::mat4 Camera::viewMatrix;
+glm::vec3 Camera::cameraPos;
 
 float Camera::FOV = 60;
 
@@ -39,6 +39,7 @@ void Camera::Start() {
 
 void Camera::Update(double deltaTime) {
 	UpdateCameraView();
+	cameraPos = transform->position;
 }
 
 void Camera::UpdateCameraProjection() {
@@ -52,7 +53,6 @@ void Camera::UpdateCameraProjection() {
 }
 
 void Camera::UpdateCameraView() {
-
 	glm::vec3 cameraPos = transform->position;
 
 	glm::vec3 cameraFront = transform->rotation * glm::vec3(1, 0, 0);

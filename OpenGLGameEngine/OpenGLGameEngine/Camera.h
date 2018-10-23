@@ -27,6 +27,8 @@ public:
 
 	void RenderUIEditor() override;
 
+	static glm::vec3 cameraPos;
+
 private:
 	static float FOV;
 };

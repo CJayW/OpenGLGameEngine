@@ -79,16 +79,17 @@ void Game::Start() {
 }
 
 void Game::Update(double deltaTime) {
+
 	EditorMode::Update();
 	
 	for (auto gameObject : GameObjects) {
 		gameObject->Update(deltaTime);
 	}
+
 }
 
 void Game::Render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();
 	}
@@ -96,6 +97,7 @@ void Game::Render() {
 	EditorMode::Render();
 
 	glfwSwapBuffers(window);
+
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
