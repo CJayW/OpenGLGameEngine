@@ -14,3 +14,14 @@ GameObject* GameObjectManager::Instantiate() {
 	Game::GameObjects.push_back(obj);
 	return obj;
 }
+
+GameObject* GameObjectManager::GetObjectByName(std::string name) {
+	
+	for (auto obj : Game::GameObjects) {
+
+		if (obj->Name == name)
+			return obj;
+	}
+
+	return nullptr;
+}

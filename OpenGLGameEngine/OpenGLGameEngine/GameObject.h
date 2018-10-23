@@ -57,14 +57,24 @@ public:
 		return -1;
 	}
 
-
 	template<typename componentType>
 	void removeComponent() {
 		int i = getComponentByIndex<componentType>();
 		Component* comp = components[i];
-		delete dynamic_cast<componentType*>(comp);
 
 		components.erase(components.begin() + i);
+	}
+
+	void removeComponentByReferance(Component* comp) {
+		for (int i = 0; i < components.size(); i++) {
+			if (components[i] == comp) {
+
+				Component* comp = components[i];
+				delete comp;
+
+				components.erase(components.begin() + i);
+			}
+		}
 	}
 
 #pragma endregion

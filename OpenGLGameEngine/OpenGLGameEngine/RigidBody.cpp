@@ -18,6 +18,8 @@ Rigidbody::Rigidbody()
 
 	gravity = glm::vec3(0, -15.0f, 0);
 
+
+
 }
 
 Rigidbody::Rigidbody(std::string params)
@@ -33,6 +35,7 @@ Rigidbody::Rigidbody(std::string params)
 
 Rigidbody::~Rigidbody()
 {
+	std::cout << "Rigidbody Deconstructor" << std::endl;
 }
 
 void Rigidbody::Start()

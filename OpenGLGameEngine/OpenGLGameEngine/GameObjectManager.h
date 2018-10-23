@@ -9,5 +9,7 @@ public:
 	~GameObjectManager();
 	
 	static GameObject* Instantiate();
-};
 
+	static GameObject* GetObjectByName(std::string name);
+
+};

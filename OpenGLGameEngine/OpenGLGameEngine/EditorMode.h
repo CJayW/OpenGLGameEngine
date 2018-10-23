@@ -2,6 +2,8 @@
 
 #include "Camera.h"
 
+class GameObject;
+
 class EditorMode
 {
 public:
@@ -17,4 +19,9 @@ public:
 	static void ChangeEditorMode(bool newMode);
 
 	static bool EditorModeActive;
+
+	static void OpenAddComponent(GameObject* obj);
+
+	static bool addingComponent;
+	static GameObject* addComponentObject;
 };

@@ -4,6 +4,7 @@
 #include "Transform.h"
 
 #include "imGUI/imgui.h"
+#include "EditorMode.h"
 
 GameObject::GameObject() {
 	transform = addComponent<Transform>();
@@ -46,14 +47,28 @@ void GameObject::RenderUIEditor() {
 
 		for (auto comp : components) {
 			ImGui::Text(comp->DisplayName.c_str());
+			ImGui::SameLine();
+			
+			if (ImGui::Button((std::string("X##") + comp->DisplayName).c_str())) {
+				std::cout << comp->DisplayName << std::endl;
 
-			comp->RenderUIEditor();
-			ImGui::Separator();
+				removeComponentByReferance(comp);
+			} else {
+				comp->RenderUIEditor();
+				ImGui::Separator();
+			}
 		}
 
-		ImGui::End();
+		ImGui::NewLine();
 
+		if(ImGui::Button("Add Component")) {
+			EditorMode::OpenAddComponent(this);
+
+		}
+		
+		ImGui::End();
 		ImGui::Begin("hierarchy");
+
 	}
 
 	if(ImGui::Button(Name.c_str())) {
@@ -66,7 +81,16 @@ void GameObject::RenderUIEditor() {
 		}
 	}
 
+	ImGui::SameLine();
+	ImGui::Text("  ");
+	ImGui::SameLine();
+	if (ImGui::Button((std::string("X##") + Name).c_str())) {
+		std::cout << "Remove Object:  " << Name << std::endl;
+		//TODO Implament this
+	}
+
 	for (auto comp : components) {
 		ImGui::Text(comp->DisplayName.c_str());
 	}
+
 }

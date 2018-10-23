@@ -11,7 +11,7 @@ class GameObject;
 class Component {
 public:
 	Component();
-	~Component();
+	virtual ~Component();
 
 	virtual void Start() {};
 	virtual void Update(double deltaTime) {};
