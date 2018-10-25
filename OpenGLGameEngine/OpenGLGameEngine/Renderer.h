@@ -13,13 +13,11 @@ public:
 
 	void Start() override;
 
-	virtual void UpdateCameraView();
 	virtual void UpdateCameraProjection();
 
 	static Shader* CurrentShaderProgram;
 
 	glm::mat4 cameraProjection;
-	glm::mat4 cameraView;
 
 	static std::vector<Renderer*> Renderers;
 };

@@ -15,17 +15,18 @@ public:
 
 	void ProcessInput();
 
+
 	static bool getKey(int key) {
-		return keysDown[key];
+		return   ImGui::IsAnyItemActive() ? false : keysDown[key];
 	}
 	static bool getKeyDown(int key) {
-		return keysPressed[key];
+		return ImGui::IsAnyItemActive() ? false : keysPressed[key];
 	}
 	static bool getKeyUp(int key) {
-		return keysReleased[key];
+		return ImGui::IsAnyItemActive() ? false : keysReleased[key];
 	}
 	static double getAxis(int Axis) {
-		return InputAxisValues[Axis];
+		return ImGui::IsAnyItemActive() ? 0 : InputAxisValues[Axis];
 	}
 
 	static void updateMousePos(GLFWwindow* window, double xpos, double ypos);

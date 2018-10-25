@@ -18,8 +18,6 @@ Rigidbody::Rigidbody()
 
 	gravity = glm::vec3(0, -15.0f, 0);
 
-
-
 }
 
 Rigidbody::Rigidbody(std::string params)
@@ -35,7 +33,6 @@ Rigidbody::Rigidbody(std::string params)
 
 Rigidbody::~Rigidbody()
 {
-	std::cout << "Rigidbody Deconstructor" << std::endl;
 }
 
 void Rigidbody::Start()
@@ -84,7 +81,6 @@ void Rigidbody::addForce(float x, float y, float z)
 }
 
 void Rigidbody::RenderUIEditor() {
-
 	ImGui::DragFloat("Mass", &mass, 0.1f);
 	ImGui::DragFloat("Drag", &drag, 0.1f);
 	ImGui::DragFloat3("Gravity", glm::value_ptr(gravity), 0.1f);

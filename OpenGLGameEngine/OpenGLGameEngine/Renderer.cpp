@@ -26,9 +26,7 @@ void Renderer::Start() {
 	Renderers.push_back(this);
 }
 
-void Renderer::UpdateCameraView() {
-	cameraView = Camera::viewMatrix;
-}
+
 
 void Renderer::UpdateCameraProjection() {
 	cameraProjection = Camera::projection;

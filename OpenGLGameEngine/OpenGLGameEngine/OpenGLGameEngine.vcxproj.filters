@@ -161,9 +161,6 @@
     <ClCompile Include="OpenGLInclude.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DirectionalLight.cpp">
       <Filter>Source Files\GameObject\Components\Lighting</Filter>
     </ClCompile>
@@ -220,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="IconRenderer.cpp">
       <Filter>Source Files\GameObject\Components\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Shaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

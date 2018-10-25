@@ -39,6 +39,7 @@ void Camera::Start() {
 
 void Camera::Update(double deltaTime) {
 	UpdateCameraView();
+
 	cameraPos = transform->position;
 }
 
@@ -61,9 +62,7 @@ void Camera::UpdateCameraView() {
 
 	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 
-	for (auto renderer : Renderer::Renderers) {
-		renderer->UpdateCameraView();
-	}
+	Renderer::CurrentShaderProgram->setMat4("view", viewMatrix);
 }
 
 void Camera::RenderUIEditor() {

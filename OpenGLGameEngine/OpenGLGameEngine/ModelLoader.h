@@ -8,7 +8,8 @@ public:
 	ModelLoader();
 	~ModelLoader();
 
-	static void loadModel(std::string fileName	);
+	static bool CheckFileExists(std::string fileName);
+	static void loadModel(std::string fileName);
 
 	static std::vector<float> Vertices;
 	static std::vector<unsigned int> Indices;

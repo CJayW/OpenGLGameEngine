@@ -18,6 +18,16 @@ std::vector<float> ModelLoader::Vertices;
 
 std::vector<unsigned int> ModelLoader::Indices;
 
+bool ModelLoader::CheckFileExists(std::string fileName)
+{
+
+	std::ifstream ip(fileName);
+	if (!ip.good()) {
+		return false;
+	}
+	return true;
+}
+
 void ModelLoader::loadModel(std::string fileName)
 {
 	Vertices.clear();

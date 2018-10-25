@@ -13,8 +13,9 @@ public:
 
 	void Start() override;
 	void Render() override;
-	void UpdateCameraView() override;
 	void UpdateCameraProjection() override;
+
+	void loadIcon();
 
 	unsigned int VBO, VAO, EBO;
 
@@ -24,8 +25,11 @@ public:
 
 	unsigned int texture;
 
-	std::string fileName;
+	std::string iconLocation;
+
+	bool iconLoaded;
 
 	//Editor
 	void RenderUIEditor() override;
+	char editorModelLocation[128];
 };

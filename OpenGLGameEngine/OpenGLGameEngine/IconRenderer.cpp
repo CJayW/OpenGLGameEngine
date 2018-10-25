@@ -3,12 +3,12 @@
 #include "Transform.h"
 
 #include "Game.h"
+#include "ModelLoader.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
 #include <glm/gtx/string_cast.hpp>
-
 
 std::string IconRenderer::name = "IconRenderer";
 
@@ -17,16 +17,15 @@ Shader* IconRenderer::shaderProgram;
 IconRenderer::IconRenderer()
 {
 	DisplayName = "Icon Renderer";
+	iconLoaded = false;
 }
 
 IconRenderer::IconRenderer(std::string params)
 {
 	DisplayName = "Icon Renderer";
 
-	fileName = params;
+	iconLocation = std::string("Resources/Icons/") + params;
 }
-
-// pointLightIcon.jpg
 
 IconRenderer::~IconRenderer(){
 
@@ -67,29 +66,6 @@ void IconRenderer::Start()
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 	
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	int width, height, nrChannels;
-	stbi_set_flip_vertically_on_load(true);
-
-	unsigned char *data = stbi_load((std::string("Resources/Icons/") + fileName).c_str(), &width, &height, &nrChannels, 0);
-
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	} else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
 
 	if (!shaderProgram) {
 		shaderProgram = new Shader("icon.vert", "icon.frag", false);
@@ -103,19 +79,60 @@ void IconRenderer::Start()
 	modelLoc = glGetUniformLocation(CurrentShaderProgram->ID, "model");
 
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(cameraProjection));
+
+	loadIcon();
+}
+
+void IconRenderer::loadIcon() {
+
+	if (iconLoaded) {
+		glDeleteTextures(0, &texture);
+	}
+
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true);
+
+	unsigned char *data = stbi_load(iconLocation.c_str(), &width, &height, &nrChannels, 0);
+
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+		iconLoaded = true;
+	}
+	else
+	{
+		std::cout << "Failed to load texture" << std::endl;
+		iconLoaded = false;
+	}
+	stbi_image_free(data);
+
 }
 
 void IconRenderer::Render()
 {
+	if (!iconLoaded) 
+		return;
+
 	if (CurrentShaderProgram != shaderProgram) {
 		shaderProgram->use();
-		UpdateCameraView();
 		UpdateCameraProjection();
 
 		shaderProgram->setInt("Texture", 0);
 
 		glActiveTexture(GL_TEXTURE0);
 	}
+
+	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(Camera::viewMatrix));
 
 	//TODO Optimize this
 	glBindTexture(GL_TEXTURE_2D, texture);
@@ -138,12 +155,6 @@ void IconRenderer::Render()
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void IconRenderer::UpdateCameraView() {
-	Renderer::UpdateCameraView();
-	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(cameraView));
-
-}
-
 void IconRenderer::UpdateCameraProjection() {
 	Renderer::UpdateCameraProjection();
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(cameraProjection));
@@ -151,6 +162,20 @@ void IconRenderer::UpdateCameraProjection() {
 
 void IconRenderer::RenderUIEditor() {
 
-	ImGui::Text((std::string("  ") + std::string("loaded From: File")).c_str());
+	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
+
+	ImGui::SetKeyboardFocusHere;
+	if (ImGui::InputText("Model", editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
+		if (ModelLoader::CheckFileExists("Resources/Icons/" + std::string(editorModelLocation))) {
+			iconLocation = "Resources/Icons/" + std::string(editorModelLocation);
+			
+			loadIcon();
+		}
+		else {
+			std::cout << "Cannot Load Model" << "Resources/Icons/" + std::string(editorModelLocation) << std::endl;
+		}
+	}
+
+	ImGui::Text((std::string("  loaded From:  ") + iconLocation).c_str());
 
 }

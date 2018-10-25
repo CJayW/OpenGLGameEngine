@@ -16,9 +16,9 @@ public:
 	void Start() override;
 	void Render() override;
 
-	void UpdateCameraView() override;
 	void UpdateCameraProjection() override;
 
+	void loadModel();
 	//shaders
 	static Shader* shaderProgram;
 	unsigned int VAO, VBO, EBO, triangleCount;
@@ -28,7 +28,11 @@ public:
 	//model loading
 	void RenderUIEditor() override;
 
+	char editorModelLocation[128];
+
 	bool loadModelFromFile;
 	std::string modelLocation;
+
+	bool modelLoaded;
 
 };

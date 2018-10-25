@@ -15,7 +15,6 @@ GameObject::GameObject() {
 GameObject::~GameObject() {
 	int total = components.size();
 	for (int i = 0; i < total; i++) {
-		std::cout << components[i]->DisplayName << std::endl;
 		delete components[i];
 	}
 }
@@ -59,7 +58,6 @@ void GameObject::RenderUIEditor() {
 			ImGui::SameLine();
 			
 			if (ImGui::Button((std::string("X##") + components[i]->DisplayName).c_str())) {
-				std::cout << components[i]->DisplayName << std::endl;
 
 				removeComponentByReferance(components[i]);
 			} else {
