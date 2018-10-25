@@ -16,8 +16,6 @@ PointLight::PointLight() {
 }
 
 PointLight::PointLight(std::string params) {
-	
-	index = pointLights.size();
 	pointLights.push_back(this);
 
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
@@ -39,7 +37,7 @@ void PointLight::Start() {
 }
 
 PointLight::~PointLight() {
-	for (int i = 0; i < pointLights.size(); i++) {
+	for (int i = 0; (size_t)i < pointLights.size(); i++) {
 		if (pointLights[i]->gameObject == gameObject) {
 			pointLights.erase(pointLights.begin() + i);
 			return;

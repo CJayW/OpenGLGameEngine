@@ -15,6 +15,7 @@ public:
 	~PointLight();
 
 	void Start() override;
-
+	
+	//Editor
 	void RenderUIEditor() override;
 };

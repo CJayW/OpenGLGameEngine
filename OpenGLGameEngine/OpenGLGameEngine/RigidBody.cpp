@@ -18,6 +18,7 @@ Rigidbody::Rigidbody()
 
 	gravity = glm::vec3(0, -15.0f, 0);
 
+	DisplayName = name;
 }
 
 Rigidbody::Rigidbody(std::string params)
@@ -29,6 +30,8 @@ Rigidbody::Rigidbody(std::string params)
 	drag = std::stof(sParams[2]);
 
 	gravity = glm::vec3(0, -15.0f, 0);
+
+	DisplayName = name;
 }
 
 Rigidbody::~Rigidbody()
@@ -37,34 +40,29 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::Start()
 {
-	DisplayName = name;
 }
 
 void Rigidbody::Update(double deltaTime)
 {
-	if (Input::getKey(GLFW_KEY_B)) {
-		addForce(0, 0.008 , 0);
-	}
 
+	//Drag
 	glm::vec3 temp = velocity;
-	temp *= drag;
+	//TODO velocity^2 ??
 	temp *= drag;
 	temp *= deltaTime;
-
 	velocity -= temp;
 
+	//Movement
 	temp = velocity;
-	
 	temp *= deltaTime;
-
 	transform->position += temp;
 	
+	//Gravity
 	temp = gravity;
 	temp *= deltaTime;
-
 	addForce(temp);
 
-
+	//Super Complex Collision Check
 	if (transform->position.y <= 0) {
 		velocity *= 0;
 	}

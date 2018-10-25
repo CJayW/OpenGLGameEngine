@@ -53,7 +53,7 @@ void GameObject::RenderUIEditor() {
 		transform->RenderUIEditor();
 		ImGui::Separator();
 
-		for(int i = 1; i < components.size(); i++) {
+		for(int i = 1; (size_t)i < components.size(); i++) {
 			ImGui::Text(components[i]->DisplayName.c_str());
 			ImGui::SameLine();
 			

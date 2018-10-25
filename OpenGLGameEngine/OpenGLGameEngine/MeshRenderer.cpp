@@ -1,15 +1,13 @@
 #include "MeshRenderer.h"
+#include "Transform.h"
+#include "ModelLoader.h"
+#include "Game.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
-
 #include <glm/gtx/string_cast.hpp>
-
 #include <vector>
-#include "Transform.h"
 
-#include "ModelLoader.h"
-#include "Game.h"
 
 std::string MeshRenderer::name = "MeshRenderer";
 
@@ -26,10 +24,6 @@ MeshRenderer::MeshRenderer(std::string params) {
 	modelLocation =  "Resources/Models/" + params;
 	loadModelFromFile = true;
 	DisplayName = name;
-}
-
-MeshRenderer::~MeshRenderer() {
-	loadModelFromFile = false;
 }
 
 void MeshRenderer::Start() {
@@ -129,7 +123,6 @@ void MeshRenderer::UpdateCameraProjection()
 void MeshRenderer::RenderUIEditor() {
 	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
 	
-	ImGui::SetKeyboardFocusHere;
 	if (ImGui::InputText("Model", editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
 		if (ModelLoader::CheckFileExists("Resources/Models/" + std::string(editorModelLocation))) {
 			modelLocation = "Resources/Models/" + std::string(editorModelLocation);

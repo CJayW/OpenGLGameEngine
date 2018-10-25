@@ -143,7 +143,7 @@ void Shader::use() {
 			setVec3("pointLights[" + iStr + "].diffuse", glm::vec3(0));
 		}
 
-		for (i = 0; i < Light::spotLights.size(); i++) {
+		for (i = 0; (size_t)i < Light::spotLights.size(); i++) {
 			if (i >= 10) {
 				break;
 			}

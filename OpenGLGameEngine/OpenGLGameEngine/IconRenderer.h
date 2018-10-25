@@ -9,7 +9,6 @@ public:
 
 	IconRenderer();
 	IconRenderer(std::string params);
-	~IconRenderer();
 
 	void Start() override;
 	void Render() override;
@@ -17,16 +16,14 @@ public:
 
 	void loadIcon();
 
-	unsigned int VBO, VAO, EBO;
-
-	unsigned int viewLoc, projectionLoc, modelLoc;
-
+	//Shaders
 	static Shader* shaderProgram;
-
+	unsigned int VBO, VAO, EBO;
+	unsigned int viewLoc, projectionLoc, modelLoc;
 	unsigned int texture;
 
+	//loading
 	std::string iconLocation;
-
 	bool iconLoaded;
 
 	//Editor

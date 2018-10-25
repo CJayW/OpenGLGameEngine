@@ -44,8 +44,6 @@ void EditorMode::Update() {
 
 void EditorMode::Render() {
 
-	bool test;
-
 	glm::vec4 col(0);
 
 	ImGui_ImplGlfwGL3_NewFrame();
@@ -67,7 +65,7 @@ void EditorMode::Render() {
 
 		ImGui::Separator();
 
-		for (int i = 0; i < Game::GameObjects.size(); i++) {
+		for (int i = 0; (size_t)i < Game::GameObjects.size(); i++) {
 			Game::GameObjects[i]->RenderUIEditor();
 		}
 		

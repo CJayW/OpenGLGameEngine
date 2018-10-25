@@ -10,7 +10,7 @@ TestMove::TestMove()
 {
 	moveSpeed = 5;
 	rotationSpeed = 60;
-	rotationSpeedMultiplier = 3.333;
+	rotationSpeedMultiplier = 3.333f;
 }
 
 TestMove::TestMove(std::string params) {
@@ -31,16 +31,16 @@ void TestMove::Start() {
 
 void TestMove::Update(double deltaTime) {
 	if (Input::getKey(GLFW_KEY_I)) {
-		transform->position.z -= deltaTime * moveSpeed;
+		transform->position.z -= (float)deltaTime * moveSpeed;
 	}
 	if (Input::getKey(GLFW_KEY_K)) {
-		transform->position.z += deltaTime * moveSpeed;
+		transform->position.z += (float)deltaTime * moveSpeed;
 	}
 	if (Input::getKey(GLFW_KEY_J)) {
-		transform->position.x -= deltaTime * moveSpeed;
+		transform->position.x -= (float)deltaTime * moveSpeed;
 	}
 	if (Input::getKey(GLFW_KEY_L)) {
-		transform->position.x += deltaTime * moveSpeed;
+		transform->position.x += (float)deltaTime * moveSpeed;
 	}
 
 	

@@ -49,7 +49,7 @@ public:
 
 	template <typename componentType>
 	int getComponentByIndex() {
-		for (int i = 0; i < components.size(); i++){ 
+		for (int i = 0; (size_t)i < components.size(); i++){ 
 			if (componentType* comp = dynamic_cast<componentType*>(components[i])) {
 				return i;
 			}
@@ -66,7 +66,7 @@ public:
 	}
 
 	void removeComponentByReferance(Component* comp) {
-		for (int i = 0; i < components.size(); i++) {
+		for (int i = 0; (size_t)i < components.size(); i++) {
 			if (components[i] == comp) {
 
 				Component* comp = components[i];

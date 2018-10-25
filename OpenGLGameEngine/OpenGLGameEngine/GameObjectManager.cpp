@@ -28,7 +28,7 @@ GameObject* GameObjectManager::GetObjectByName(std::string name) {
 
 void GameObjectManager::DestroyObject(GameObject * obj)
 {
-	for (int i = 0; i < Game::GameObjects.size(); i++) {
+	for (int i = 0; (size_t)i < Game::GameObjects.size(); i++) {
 
 		if (Game::GameObjects[i] == obj) {
 			delete obj;

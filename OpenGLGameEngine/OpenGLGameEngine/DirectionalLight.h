@@ -8,7 +8,6 @@ class DirectionalLight :
 	public Light
 {
 public:
-
 	static std::string name;
 
 	DirectionalLight();
@@ -19,6 +18,5 @@ public:
 
 	//Editor
 	void RenderUIEditor() override;
-
 	glm::quat lastRot;
 };

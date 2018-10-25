@@ -140,7 +140,7 @@ std::vector<std::string> LevelFileManager::splitBy(std::string str, char div) {
 	
 	std::vector<std::string> splitVals;
 	splitVals.push_back("");
-	for (int i = 0; i < str.length(); i++) {
+	for (int i = 0; (size_t)i < str.length(); i++) {
 		if (str[i] == div) {
 			splitVals.push_back("");
 		} else {

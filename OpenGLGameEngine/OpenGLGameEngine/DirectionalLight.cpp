@@ -9,7 +9,6 @@ std::string DirectionalLight::name = "DirectionalLight";
 
 DirectionalLight::DirectionalLight()
 {
-	index = directionalLights.size();
 	directionalLights.push_back(this);
 
 	ambient = glm::vec3(0.1f);
@@ -19,7 +18,6 @@ DirectionalLight::DirectionalLight()
 }
 
 DirectionalLight::DirectionalLight(std::string params) {
-	index = directionalLights.size();
 	directionalLights.push_back(this);
 	
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
@@ -30,19 +28,19 @@ DirectionalLight::DirectionalLight(std::string params) {
 	DisplayName = name;
 }
 
-void DirectionalLight::Start() {
-	gameObject->addComponent<IconRenderer>("directional_icon.jpg");
-
-}
-
 DirectionalLight::~DirectionalLight() {
-	for (int i = 0; i < directionalLights.size(); i++) {
+	for (int i = 0; (size_t)i < directionalLights.size(); i++) {
 		if (directionalLights[i]->gameObject == gameObject) {
 			directionalLights.erase(directionalLights.begin() + i);
 			return;
 		}
 	}
 	std::cout << "Error Finding DirectionalLight" << std::endl;
+}
+
+void DirectionalLight::Start() {
+	gameObject->addComponent<IconRenderer>("directional_icon.jpg");
+
 }
 
 void DirectionalLight::RenderUIEditor() {

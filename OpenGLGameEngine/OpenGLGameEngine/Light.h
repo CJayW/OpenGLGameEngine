@@ -13,12 +13,15 @@ public:
 	Light();
 	virtual ~Light();
 
+	void Update(double deltaTime) override;
+
+	//Lighting Vectors
 	static std::vector<DirectionalLight*> directionalLights;
 	static std::vector<PointLight*> pointLights;
 	static std::vector<SpotLight*> spotLights;
 
-	int index;
-
+	
+	//Lighting Variables
 	glm::vec3 ambient;
 	glm::vec3 diffuse;
 
@@ -26,14 +29,9 @@ public:
 	float linear;
 	float quadratic;
 
-	void Update(double deltaTime) override;
-
-	void RenderUIEditor() override;
-
-	static double lastDealtTime;
 	static bool UpdateLighting;
 
+	//Editor
 	void RenderUIEditorLightAttenuation();
-
-	bool find;
+	void RenderUIEditor() override;
 };

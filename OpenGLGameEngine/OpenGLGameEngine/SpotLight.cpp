@@ -16,7 +16,7 @@ SpotLight::SpotLight() {
 	float quadratic = 0.032f;
 
 	float width = 15;
-	float blur = 0.17;
+	float blur = 0.17f;
 
 	DisplayName = name;
 
@@ -33,7 +33,7 @@ SpotLight::SpotLight(std::string params) {
 	quadratic = 0.032f;
 
 	width = 15;
-	blur = 0.17;
+	blur = 0.17f;
 
 	DisplayName = name;
 

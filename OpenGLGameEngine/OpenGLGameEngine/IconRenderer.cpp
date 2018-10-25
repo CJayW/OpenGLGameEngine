@@ -1,13 +1,12 @@
 #include "IconRenderer.h"
-#include "stb_image.h"
 #include "Transform.h"
 
 #include "Game.h"
 #include "ModelLoader.h"
+#include "stb_image.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
-
 #include <glm/gtx/string_cast.hpp>
 
 std::string IconRenderer::name = "IconRenderer";
@@ -25,10 +24,6 @@ IconRenderer::IconRenderer(std::string params)
 	DisplayName = "Icon Renderer";
 
 	iconLocation = std::string("Resources/Icons/") + params;
-}
-
-IconRenderer::~IconRenderer(){
-
 }
 
 void IconRenderer::Start()
@@ -164,7 +159,6 @@ void IconRenderer::RenderUIEditor() {
 
 	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
 
-	ImGui::SetKeyboardFocusHere;
 	if (ImGui::InputText("Model", editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
 		if (ModelLoader::CheckFileExists("Resources/Icons/" + std::string(editorModelLocation))) {
 			iconLocation = "Resources/Icons/" + std::string(editorModelLocation);
@@ -177,5 +171,4 @@ void IconRenderer::RenderUIEditor() {
 	}
 
 	ImGui::Text((std::string("  loaded From:  ") + iconLocation).c_str());
-
 }
