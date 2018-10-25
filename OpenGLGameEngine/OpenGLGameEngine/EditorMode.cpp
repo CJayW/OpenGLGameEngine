@@ -72,7 +72,7 @@ void EditorMode::Render() {
 		ImGui::End();
 
 		if (addingComponent) {
-			if (addComponentObject->components.capacity() == 0) {
+			if (addComponentObject->components.size() == 0) {
 				
 				addingComponent = false;
 			} else {

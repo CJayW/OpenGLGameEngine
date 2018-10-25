@@ -14,7 +14,7 @@ public:
 	glm::vec3 scale;
 
 	void rotate(glm::vec3 euler);
-
+	glm::mat4 GetModelMat();
 
 	//Editor
 	void OpenUIEditor() override;

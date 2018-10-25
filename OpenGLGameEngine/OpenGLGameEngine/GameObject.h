@@ -15,9 +15,10 @@ public:
 	void Update(double deltaTime);
 	void Render();
 	
-
 	Transform* transform;
-	
+
+	GameObject* parent;
+	std::vector<GameObject*> children;
 	//Editor
 	void RenderUIEditor();
 

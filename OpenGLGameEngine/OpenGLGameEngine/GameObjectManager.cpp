@@ -15,6 +15,15 @@ GameObject* GameObjectManager::Instantiate() {
 	return obj;
 }
 
+GameObject * GameObjectManager::Instantiate(GameObject * parent)
+{
+	GameObject* obj = new GameObject();
+	parent->children.push_back(obj);
+	obj->parent = parent;
+
+	return obj;
+}
+
 GameObject* GameObjectManager::GetObjectByName(std::string name) {
 	
 	for (auto obj : Game::GameObjects) {

@@ -20,6 +20,9 @@ GameObject::~GameObject() {
 }
 
 void GameObject::Start() {
+	for (auto obj : children) {
+		obj->Start();
+	}
 	for (auto component : components) {
 		component->Start();
 	}
@@ -27,12 +30,20 @@ void GameObject::Start() {
 
 void GameObject::Update(double deltaTime) {
 
+	for (auto obj : children) {
+		obj->Update(deltaTime);
+	}
+	//TODO Replace this with function pointers
+
 	for (auto component : components) {
 		component->Update(deltaTime);
 	}
 }
 
 void GameObject::Render() {
+	for (auto obj : children) {
+		obj->Render();
+	}
 
 	for (auto component : components) {
 		component->Render();
@@ -40,6 +51,10 @@ void GameObject::Render() {
 }
 
 void GameObject::RenderUIEditor() {
+
+	for (auto child : children) {
+		child->RenderUIEditor();
+	}
 
 	if (componentDetailsOpen) {
 

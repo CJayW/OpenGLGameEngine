@@ -3,10 +3,10 @@
 #include "ModelLoader.h"
 #include "Game.h"
 
+#include <vector>
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/string_cast.hpp>
-#include <vector>
 
 
 std::string MeshRenderer::name = "MeshRenderer";
@@ -31,7 +31,11 @@ void MeshRenderer::Start() {
 
 	if (!shaderProgram) {
 		shaderProgram = new Shader("core.vert", "core.frag");
+	}
+	if (CurrentShaderProgram != shaderProgram) {
 		shaderProgram->use();
+		shaderProgram->setMat4("view", Camera::viewMatrix);
+		UpdateCameraProjection();
 	}
 
 	projectionLoc = glGetUniformLocation(CurrentShaderProgram->ID, "projection");
@@ -100,11 +104,14 @@ void MeshRenderer::Render() {
 		UpdateCameraProjection();
 	}
 
-	glm::mat4 model = glm::mat4(1);
-	model = glm::translate(model, transform->position);
-	model = model * glm::toMat4(transform->rotation);
-	model = glm::scale(model, transform->scale);
+	glm::mat4 model =transform->GetModelMat();
+	// glm::mat4(1);//
+	//model = glm::translate(model, transform->position);
+	//model = model * glm::toMat4(transform->rotation);
+	//model = glm::scale(model, transform->scale);
+
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+	
 
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -121,6 +128,7 @@ void MeshRenderer::UpdateCameraProjection()
 }
 
 void MeshRenderer::RenderUIEditor() {
+
 	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
 	
 	if (ImGui::InputText("Model", editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {

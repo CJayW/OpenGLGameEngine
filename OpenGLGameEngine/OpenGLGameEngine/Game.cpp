@@ -11,6 +11,7 @@
 #include "TestMove.h"
 #include "CameraMovement.h"
 #include "Shader.h"
+#include "IconRenderer.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -57,8 +58,7 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	
 	glfwSwapInterval(0); // <-- removes the FPS Cap
 
-	// glad: load all OpenGL function pointers
-	// ---------------------------------------
+
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "Failed to initialize GLAD" << std::endl;
@@ -76,6 +76,14 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 
 void Game::Start() {
 	LevelFileManager::loadLevel();
+
+	GameObject* obj = GameObjectManager::Instantiate();
+	obj->addComponent<IconRenderer>("pointLightIcon.jpg");
+	obj->Name = "Parent Obj";
+
+	obj = GameObjectManager::Instantiate(obj);
+	obj->Name = "Child OBJ";
+	obj->addComponent<MeshRenderer>("house.ply");
 }
 
 void Game::Update(double deltaTime) {

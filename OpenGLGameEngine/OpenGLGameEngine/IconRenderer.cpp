@@ -103,14 +103,11 @@ void IconRenderer::loadIcon() {
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 		iconLoaded = true;
-	}
-	else
-	{
+	} else {
 		std::cout << "Failed to load texture" << std::endl;
 		iconLoaded = false;
 	}
 	stbi_image_free(data);
-
 }
 
 void IconRenderer::Render()
@@ -132,14 +129,14 @@ void IconRenderer::Render()
 	//TODO Optimize this
 	glBindTexture(GL_TEXTURE_2D, texture);
 
-	glm::mat4 model = glm::mat4(1);
-	model = glm::translate(model, transform->position);
-
-	//makes the icon face the camera along the y axis
-	glm::vec3 diff = glm::normalize(Camera::cameraPos - transform->position);
-	model = glm::rotate(model, glm::length(glm::vec3(0, atan2(diff.x, diff.z), 0)), glm::normalize(glm::vec3(0, atan2(diff.x, diff.z),0)));
-
-	model = glm::scale(model, transform->scale);
+	glm::mat4 model = transform->GetModelMat();
+	//model = glm::translate(model, transform->position);
+	//
+	////makes the icon face the camera along the y axis
+	//glm::vec3 diff = glm::normalize(Camera::cameraPos - transform->position);
+	//model = glm::rotate(model, glm::length(glm::vec3(0, atan2(diff.x, diff.z), 0)), glm::normalize(glm::vec3(0, atan2(diff.x, diff.z),0)));
+	//TODO Make the icons face the camera again
+	//model = glm::scale(model, transform->scale);
 	
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
