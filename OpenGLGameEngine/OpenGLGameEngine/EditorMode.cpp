@@ -16,6 +16,9 @@
 
 #include "CameraMovement.h"
 #include "TestMove.h"
+
+#include "Time.h"
+
 EditorMode::EditorMode()
 {
 }
@@ -44,9 +47,9 @@ void EditorMode::Update() {
 
 void EditorMode::Render() {
 
-	glm::vec4 col(0);
-
 	ImGui_ImplGlfwGL3_NewFrame();
+
+	//GameObjects
 	{
 		ImGui::Begin("hierarchy");
 
@@ -62,45 +65,53 @@ void EditorMode::Render() {
 		}
 		
 		ImGui::End();
+	}
 
-		if (addingComponent) {
-			if (addComponentObject->components.size() == 0) {
-				
-				addingComponent = false;
-			} else {
-				ImGui::Begin("Add Component", &addingComponent);
+	
+	if (addingComponent) {
+		if (addComponentObject->components.size() == 0) {
 
-				ImGui::Text((std::string("Adding Component To:  ") + addComponentObject->Name).c_str());
+			addingComponent = false;
+		} else {
+			ImGui::Begin("Add Component", &addingComponent);
 
-				if (ImGui::Button("RigidBody")) {
-					addComponentObject->addComponent<Rigidbody>();
-				} else if (ImGui::Button("Camera")) {
-					addComponentObject->addComponent<Camera>();
-				} else if (ImGui::Button("Mesh Renderer")) {
-					addComponentObject->addComponent<MeshRenderer>();
-				} else if (ImGui::Button("Icon Renderer")) {
-					addComponentObject->addComponent<IconRenderer>();
-				} else if (ImGui::Button("Directional Light")) {
-					addComponentObject->addComponent<DirectionalLight>();
-				} else if (ImGui::Button("Point Light")) {
-					addComponentObject->addComponent<PointLight>();
-				} else if (ImGui::Button("Spot Light")) {
-					addComponentObject->addComponent<SpotLight>();
-				} else if (ImGui::Button("CameraMovement")) {
-					addComponentObject->addComponent<CameraMovement>();
-				} else if (ImGui::Button("Test Movement")) {
-					addComponentObject->addComponent<TestMove>();
-				}
+			ImGui::Text((std::string("Adding Component To:  ") + addComponentObject->Name).c_str());
 
-				ImGui::End();
+			if (ImGui::Button("RigidBody")) {
+				addComponentObject->addComponent<Rigidbody>();
+			} else if (ImGui::Button("Camera")) {
+				addComponentObject->addComponent<Camera>();
+			} else if (ImGui::Button("Mesh Renderer")) {
+				addComponentObject->addComponent<MeshRenderer>();
+			} else if (ImGui::Button("Icon Renderer")) {
+				addComponentObject->addComponent<IconRenderer>();
+			} else if (ImGui::Button("Directional Light")) {
+				addComponentObject->addComponent<DirectionalLight>();
+			} else if (ImGui::Button("Point Light")) {
+				addComponentObject->addComponent<PointLight>();
+			} else if (ImGui::Button("Spot Light")) {
+				addComponentObject->addComponent<SpotLight>();
+			} else if (ImGui::Button("CameraMovement")) {
+				addComponentObject->addComponent<CameraMovement>();
+			} else if (ImGui::Button("Test Movement")) {
+				addComponentObject->addComponent<TestMove>();
 			}
-		}
 
+			ImGui::End();
+		}
+	}
+	
+	//Time
+	{
+		ImGui::Begin("Time");
+
+		ImGui::DragFloat("TimeScale", &Time::timeScale, 0.1f, 0, 5);
+
+		ImGui::End();
 	}
 
 	ImGui::Render();
 	ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
-
 }
 
 void EditorMode::ChangeEditorMode(bool newMode)
