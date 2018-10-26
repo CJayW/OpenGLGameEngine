@@ -30,6 +30,8 @@ Camera::Camera(std::string params) {
 
 Camera::~Camera()
 {	
+	std::cout << "Camera decon" << std::endl;
+	Game::camera = NULL;
 }
 
 void Camera::Start() {
@@ -38,27 +40,26 @@ void Camera::Start() {
 }
 
 void Camera::Update(double deltaTime) {
-	UpdateCameraView();
-
-	cameraPos = transform->position;
 }
 
 void Camera::UpdateCameraProjection() {
 	float ratio = ((float)Game::width / (float)Game::height);
 	projection = glm::perspective(glm::radians(FOV), ratio, 0.1f, 100.0f);
 	
-
 	for (auto renderer : Renderer::Renderers) {
 		renderer->UpdateCameraProjection();
 	}
 }
 
 void Camera::UpdateCameraView() {
-	glm::vec3 cameraPos = transform->position;
+	if (gameObject == nullptr)
+		return;
 
-	glm::vec3 cameraFront = transform->rotation * glm::vec3(1, 0, 0);
+	cameraPos = transform->getPosition();
+	
+	glm::vec3 cameraFront = transform->getRotation() * glm::vec3(1, 0, 0);
 
-	glm::vec3 cameraUp = transform->rotation * glm::vec3(0, 1, 0);
+	glm::vec3 cameraUp = transform->getRotation() * glm::vec3(0, 1, 0);
 
 	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 
@@ -66,10 +67,8 @@ void Camera::UpdateCameraView() {
 }
 
 void Camera::RenderUIEditor() {
-	float lastFOV = FOV;
-	
-	ImGui::DragFloat("FOV", &FOV, 0.1f);
 
-	if (lastFOV != FOV)
+	if (ImGui::DragFloat("FOV", &FOV, 0.1f)) {
 		UpdateCameraProjection();
+	}
 }

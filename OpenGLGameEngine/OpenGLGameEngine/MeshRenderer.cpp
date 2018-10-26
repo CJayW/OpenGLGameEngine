@@ -94,7 +94,6 @@ void MeshRenderer::loadModel() {
 }
 
 void MeshRenderer::Render() {
-	
 	if (!modelLoaded)
 		return;
 
@@ -104,14 +103,10 @@ void MeshRenderer::Render() {
 		UpdateCameraProjection();
 	}
 
-	glm::mat4 model =transform->GetModelMat();
-	// glm::mat4(1);//
-	//model = glm::translate(model, transform->position);
-	//model = model * glm::toMat4(transform->rotation);
-	//model = glm::scale(model, transform->scale);
 
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(transform->GetModelMat()));
 	
+
 
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);

@@ -45,7 +45,6 @@ PointLight::~PointLight() {
 	}
 
 	std::cout << "Error Finding PointLight" << std::endl;
-
 	//TODO, Use an ID for this instead of comparing objects
 }
 

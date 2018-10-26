@@ -9,17 +9,21 @@ public:
 	Transform(std::string message);
 	~Transform();
 
-	glm::vec3 position;
+	glm::vec3 localPos;
 	glm::quat rotation;
 	glm::vec3 scale;
 
 	void rotate(glm::vec3 euler);
 	glm::mat4 GetModelMat();
-
+	glm::vec3 getPosition();
+	glm::quat getRotation();
 	//Editor
 	void OpenUIEditor() override;
 
 	void RenderUIEditor() override;
 
 	glm::vec3 EditorRotation;
+
+
+
 };

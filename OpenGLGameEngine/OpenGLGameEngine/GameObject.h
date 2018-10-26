@@ -20,7 +20,7 @@ public:
 	GameObject* parent;
 	std::vector<GameObject*> children;
 	//Editor
-	void RenderUIEditor();
+	void RenderUIEditor(std::string prefix = "");
 
 	std::string Name;
 	bool componentDetailsOpen;

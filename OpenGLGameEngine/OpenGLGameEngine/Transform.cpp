@@ -6,7 +6,7 @@
 #include <glm/gtx/string_cast.hpp>
 
 Transform::Transform() {
-	position = glm::vec3(0);
+	localPos = glm::vec3(0);
 	rotation = glm::quat(glm::vec3(0, 0, 0));
 	scale = glm::vec3(1);
 	DisplayName = "Transform";
@@ -17,10 +17,12 @@ Transform::Transform(std::string message) {
 }
 
 Transform::~Transform() {
-
 }
+
 glm::mat4 Transform::GetModelMat() {
 	std::vector<Transform*> parents;
+
+
 
 	GameObject* obj = gameObject;
 
@@ -34,14 +36,37 @@ glm::mat4 Transform::GetModelMat() {
 	glm::mat4 model = glm::mat4(1);
 
 	for (int i = parents.size() -1; i >= 0; i--) {
-		std::cout << gameObject->Name << std::endl;
-
-		model = glm::translate(model, parents[i]->position);
+		model = glm::translate(model, parents[i]->localPos);
 		model = model * glm::toMat4(parents[i]->rotation);
 		model = glm::scale(model, parents[i]->scale);
 	}
 
 	return model;
+}
+
+glm::vec3 Transform::getPosition() {
+	//optimized to use this instead of glm::decompose
+	//#include <glm/gtx/matrix_decompose.hpp>
+
+	glm::mat4 model = GetModelMat();
+
+	glm::vec3 temp = glm::vec3(model[3]);
+	temp /= model[3][3];
+
+	return temp;
+}
+#include <glm/gtx/matrix_decompose.hpp>
+
+glm::quat Transform::getRotation() {
+	//TODO Optimize this
+	glm::vec3 pos;
+	glm::vec3 scale;
+	glm::vec3 skew;
+	glm::quat rot;
+	glm::vec4 perspectivce;
+	glm::decompose(GetModelMat(), scale, rot, pos, skew, perspectivce);
+
+	return rot;
 }
 
 void Transform::rotate(glm::vec3 euler) {
@@ -57,7 +82,7 @@ void Transform::OpenUIEditor() {
 void Transform::RenderUIEditor() {
 	glm::vec3 lastEditorRot = EditorRotation;
 
-	ImGui::DragFloat3("Position", glm::value_ptr(position), 0.1f);
+	ImGui::DragFloat3("Position", glm::value_ptr(localPos), 0.1f);
 
 	ImGui::DragFloat3("Rotation", glm::value_ptr(EditorRotation), 0.1f);
 	ImGui::SameLine();

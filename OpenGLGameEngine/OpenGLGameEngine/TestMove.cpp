@@ -31,16 +31,16 @@ void TestMove::Start() {
 
 void TestMove::Update(double deltaTime) {
 	if (Input::getKey(GLFW_KEY_I)) {
-		transform->position.z -= (float)deltaTime * moveSpeed;
+		transform->localPos.z -= (float)deltaTime * moveSpeed;
 	}
 	if (Input::getKey(GLFW_KEY_K)) {
-		transform->position.z += (float)deltaTime * moveSpeed;
+		transform->localPos.z += (float)deltaTime * moveSpeed;
 	}
 	if (Input::getKey(GLFW_KEY_J)) {
-		transform->position.x -= (float)deltaTime * moveSpeed;
+		transform->localPos.x -= (float)deltaTime * moveSpeed;
 	}
 	if (Input::getKey(GLFW_KEY_L)) {
-		transform->position.x += (float)deltaTime * moveSpeed;
+		transform->localPos.x += (float)deltaTime * moveSpeed;
 	}
 
 	
@@ -65,6 +65,6 @@ void TestMove::Update(double deltaTime) {
 		transform->rotate(-glm::vec3(0, deltaTime * RotationSpeed, 0));
 	}
 	
-	transform->position = glm::vec3(fmod(transform->position.x, 360), fmod(transform->position.y, 360), fmod(transform->position.z, 360));
+	transform->localPos = glm::vec3(fmod(transform->localPos.x, 360), fmod(transform->localPos.y, 360), fmod(transform->localPos.z, 360));
 }
 

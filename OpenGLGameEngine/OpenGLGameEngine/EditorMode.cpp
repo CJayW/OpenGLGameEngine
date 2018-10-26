@@ -53,20 +53,12 @@ void EditorMode::Render() {
 		if (ImGui::Button("New GameObject")) {
 
 			GameObject* obj = GameObjectManager::Instantiate();
-
-			int nameIndex = 1;
-
-			while (GameObjectManager::GetObjectByName(std::string("New Object") + std::to_string(nameIndex)) != nullptr) {
-				nameIndex++;
-			}
-
-			obj->Name = std::string("New Object") + std::to_string(nameIndex);
 		}
 
 		ImGui::Separator();
 
 		for (int i = 0; (size_t)i < Game::GameObjects.size(); i++) {
-			Game::GameObjects[i]->RenderUIEditor();
+			Game::GameObjects[i]->RenderUIEditor("");
 		}
 		
 		ImGui::End();

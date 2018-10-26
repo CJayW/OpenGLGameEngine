@@ -129,15 +129,14 @@ void IconRenderer::Render()
 	//TODO Optimize this
 	glBindTexture(GL_TEXTURE_2D, texture);
 
-	glm::mat4 model = transform->GetModelMat();
-	//model = glm::translate(model, transform->position);
-	//
-	////makes the icon face the camera along the y axis
-	//glm::vec3 diff = glm::normalize(Camera::cameraPos - transform->position);
-	//model = glm::rotate(model, glm::length(glm::vec3(0, atan2(diff.x, diff.z), 0)), glm::normalize(glm::vec3(0, atan2(diff.x, diff.z),0)));
-	//TODO Make the icons face the camera again
-	//model = glm::scale(model, transform->scale);
-	
+	glm::vec3 pos = transform->getPosition();
+
+	glm::mat4 model = glm::mat4(1);
+	model = glm::translate(model, pos);
+
+	glm::vec3 diff = glm::normalize(Camera::cameraPos - pos);
+	model = glm::rotate(model, glm::length(glm::vec3(0, atan2(diff.x, diff.z), 0)), glm::normalize(glm::vec3(0, atan2(diff.x, diff.z), 0)));
+
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
 	glBindVertexArray(VAO);

@@ -61,9 +61,9 @@ void LevelFileManager::loadLevel() {
 			if		(componentName == "Translate") {
 				//Translate
 				params = splitBy(componentInfo[1], ',');
-				obj->transform->position.x = std::stof(params[0]);
-				obj->transform->position.y = std::stof(params[1]);
-				obj->transform->position.z = std::stof(params[2]);
+				obj->transform->localPos.x = std::stof(params[0]);
+				obj->transform->localPos.y = std::stof(params[1]);
+				obj->transform->localPos.z = std::stof(params[2]);
 				//Rotate
 			} 
 			else if (componentName == "Rotate"){

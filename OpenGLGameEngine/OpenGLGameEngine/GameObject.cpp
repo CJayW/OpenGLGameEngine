@@ -17,6 +17,10 @@ GameObject::~GameObject() {
 	for (int i = 0; i < total; i++) {
 		delete components[i];
 	}
+	for (int i = 0; (size_t)i < children.size(); i++) {
+		delete children[i];
+	}
+	std::cout << "Decon: " << Name << std::endl;
 }
 
 void GameObject::Start() {
@@ -29,14 +33,12 @@ void GameObject::Start() {
 }
 
 void GameObject::Update(double deltaTime) {
+	for (auto component : components) {
+		component->Update(deltaTime);
+	}
 
 	for (auto obj : children) {
 		obj->Update(deltaTime);
-	}
-	//TODO Replace this with function pointers
-
-	for (auto component : components) {
-		component->Update(deltaTime);
 	}
 }
 
@@ -50,11 +52,7 @@ void GameObject::Render() {
 	}
 }
 
-void GameObject::RenderUIEditor() {
-
-	for (auto child : children) {
-		child->RenderUIEditor();
-	}
+void GameObject::RenderUIEditor(std::string prefix) {
 
 	if (componentDetailsOpen) {
 
@@ -92,7 +90,9 @@ void GameObject::RenderUIEditor() {
 		ImGui::Begin("hierarchy");
 
 	}
-
+	
+	ImGui::Text(prefix.c_str());
+	ImGui::SameLine();
 	if(ImGui::Button(Name.c_str())) {
 		componentDetailsOpen = !componentDetailsOpen;
 		if (componentDetailsOpen) {
@@ -104,14 +104,29 @@ void GameObject::RenderUIEditor() {
 	}
 
 	ImGui::SameLine();
-	ImGui::Text("  ");
+	ImGui::Text("   ");
 	ImGui::SameLine();
 	if (ImGui::Button((std::string("X##") + Name).c_str())) {
 		GameObjectManager::DestroyObject(this);
+		return;
 	}
 
+	ImGui::SameLine();
+	ImGui::Text(" ");
+	ImGui::SameLine();
+	if (ImGui::Button((std::string("+##") + Name).c_str())) {
+		GameObjectManager::Instantiate(this);
+	}
+
+
 	for (auto comp : components) {
+		ImGui::Text(prefix.c_str());
+		ImGui::SameLine();
 		ImGui::Text(comp->DisplayName.c_str());
+	}
+
+	for (auto child : children) {
+		child->RenderUIEditor(prefix + "    ");
 	}
 
 }

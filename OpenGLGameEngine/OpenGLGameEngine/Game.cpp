@@ -84,6 +84,17 @@ void Game::Start() {
 	obj = GameObjectManager::Instantiate(obj);
 	obj->Name = "Child OBJ";
 	obj->addComponent<MeshRenderer>("house.ply");
+
+	obj = GameObjectManager::Instantiate();
+	obj->addComponent<IconRenderer>("pointLightIcon.jpg");
+	obj->Name = "Parent Obj 2";
+
+	obj = GameObjectManager::Instantiate(obj);
+	obj->Name = "Child OBJ 2";
+	obj->addComponent<MeshRenderer>("house.ply");
+
+	GameObjectManager::Instantiate(GameObjectManager::GetObjectByName("Player"));
+
 }
 
 void Game::Update(double deltaTime) {
@@ -94,9 +105,16 @@ void Game::Update(double deltaTime) {
 		gameObject->Update(deltaTime);
 	}
 
+	if (Input::getKeyDown(GLFW_KEY_Y)) {
+		std::cout << "Y" << std::endl << std::endl;
+	}
+
 }
 
 void Game::Render() {
+	if(Game::camera)
+		camera->UpdateCameraView();
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();

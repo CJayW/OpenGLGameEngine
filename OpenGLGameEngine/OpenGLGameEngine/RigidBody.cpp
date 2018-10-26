@@ -55,7 +55,7 @@ void Rigidbody::Update(double deltaTime)
 	//Movement
 	temp = velocity;
 	temp *= deltaTime;
-	transform->position += temp;
+	transform->localPos += temp;
 	
 	//Gravity
 	temp = gravity;
@@ -63,7 +63,7 @@ void Rigidbody::Update(double deltaTime)
 	addForce(temp);
 
 	//Super Complex Collision Check
-	if (transform->position.y <= 0) {
+	if (transform->localPos.y <= 0) {
 		velocity *= 0;
 	}
 }
