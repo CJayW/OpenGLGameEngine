@@ -29,7 +29,7 @@ CameraMovement::~CameraMovement()
 }
 
 void CameraMovement::Update(double deltaTime) {
-	if (Input::mouseHidden) {
+	if (Input::cursorHidden) {
 		float horizontalMoveSpeed = lookSpeed * (float)Input::getAxis(InputAxisMouseX);
 		transform->rotate(glm::vec3(0, horizontalMoveSpeed, 0));
 

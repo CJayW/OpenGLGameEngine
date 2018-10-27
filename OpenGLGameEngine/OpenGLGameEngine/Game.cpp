@@ -16,7 +16,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "EditorMode.h"
-
+#include "Time.h"
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 int Game::width;
@@ -101,21 +101,22 @@ void Game::Update(double deltaTime) {
 
 	EditorMode::Update();
 	
-	for (auto gameObject : GameObjects) {
-		gameObject->Update(deltaTime);
+	if (!EditorMode::paused) {
+		for (auto gameObject : GameObjects) {
+			gameObject->Update(deltaTime);
+		}
 	}
-
-	if (Input::getKeyDown(GLFW_KEY_Y)) {
-		std::cout << "Y" << std::endl << std::endl;
-	}
-
 }
 
 void Game::Render() {
-	if(Game::camera)
-		camera->UpdateCameraView();
-	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	if (EditorMode::EditorModeActive) {
+		EditorMode::editorCamera->UpdateCameraView();
+	} else if(camera != NULL){
+		camera->UpdateCameraView();
+	}
+
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();
 	}
@@ -123,7 +124,6 @@ void Game::Render() {
 	EditorMode::Render();
 
 	glfwSwapBuffers(window);
-
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {

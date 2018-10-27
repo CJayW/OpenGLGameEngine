@@ -9,6 +9,7 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+#include "EditorMode.h"
 std::string IconRenderer::name = "IconRenderer";
 
 Shader* IconRenderer::shaderProgram;
@@ -112,7 +113,7 @@ void IconRenderer::loadIcon() {
 
 void IconRenderer::Render()
 {
-	if (!iconLoaded) 
+	if (!iconLoaded || !EditorMode::EditorModeActive) 
 		return;
 
 	if (CurrentShaderProgram != shaderProgram) {

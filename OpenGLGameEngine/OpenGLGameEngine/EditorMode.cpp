@@ -13,11 +13,11 @@
 #include "PointLight.h"
 #include "SpotLight.h"
 
-
 #include "CameraMovement.h"
 #include "TestMove.h"
 
 #include "Time.h"
+#include "Input.h"
 
 EditorMode::EditorMode()
 {
@@ -26,9 +26,17 @@ EditorMode::EditorMode()
 
 EditorMode::~EditorMode()
 {
+	delete editorCamera;
+	editorCamera = NULL;
 }
 
-bool EditorMode::EditorModeActive = true;
+bool EditorMode::EditorModeActive = false;
+bool EditorMode::paused = false;
+
+EditorCamera* EditorMode::editorCamera;
+
+bool EditorMode::cursorShouldBeHidden;
+float EditorMode::playingTimeScale;
 
 bool EditorMode::addingComponent;
 GameObject* EditorMode::addComponentObject;
@@ -39,13 +47,23 @@ void EditorMode::Init() {
 
 	ImGui::StyleColorsDark();
 
+	editorCamera = new EditorCamera();
 }
 
 void EditorMode::Update() {
+	if (Input::getKeyDown(GLFW_KEY_GRAVE_ACCENT)) { // `
+		ChangeEditorMode(!EditorModeActive);
+	}
 
+	if (EditorModeActive) {
+		editorCamera->Update();
+		Input::BlockFurtherInputs = true;
+	}
 }
 
 void EditorMode::Render() {
+	if (!EditorModeActive)
+		return;
 
 	ImGui_ImplGlfwGL3_NewFrame();
 
@@ -106,7 +124,7 @@ void EditorMode::Render() {
 		ImGui::Begin("Time");
 
 		ImGui::DragFloat("TimeScale", &Time::timeScale, 0.1f, 0, 5);
-
+		ImGui::Checkbox("Paused", &paused);
 		ImGui::End();
 	}
 
@@ -114,15 +132,20 @@ void EditorMode::Render() {
 	ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void EditorMode::ChangeEditorMode(bool newMode)
+void EditorMode::ChangeEditorMode(bool active)
 {
-	if (EditorModeActive) {
-
-
+	if (!active) {
+		Input::SetCursorState(!cursorShouldBeHidden);
+		Time::timeScale = playingTimeScale;
+		paused = false;
 	} else {
-
-
+		cursorShouldBeHidden = Input::cursorHidden;
+		Input::SetCursorState(true);
+		playingTimeScale = Time::timeScale;
+		paused = true;
 	}
+
+	EditorModeActive = active;
 }
 
 void EditorMode::OpenAddComponent(GameObject * obj) {

@@ -12,11 +12,13 @@ bool Input::keysDown[GLFW_KEY_LAST];
 bool Input::keysPressed[GLFW_KEY_LAST];
 bool Input::keysReleased[GLFW_KEY_LAST];
 
-bool Input::mouseHidden = false;
+bool Input::cursorHidden = false;
+
+bool Input::BlockFurtherInputs;
 
 Input::Input() {
 	glfwSetCursorPosCallback(Game::window, Input::updateMousePos);
-	SwitchCursorState(false);
+	SetCursorState(false);
 	for (int i = 0; i < GLFW_KEY_MENU; i++) {
 		keysDown[i] = false;
 		keysPressed[i] = false;
@@ -48,10 +50,7 @@ void Input::ProcessInput() {
 	for (unsigned int i = 330; i < GLFW_KEY_MENU; i++) {
 		checkKey(i);
 	}
-
-	if (Input::getKeyDown(GLFW_KEY_ESCAPE)) {
-		SwitchCursorState(mouseHidden);
-	}
+	BlockFurtherInputs = false;
 }
 
 
@@ -91,8 +90,8 @@ void Input::updateMousePos(GLFWwindow* window, double xpos, double ypos) {
 }
 
 
-void Input::SwitchCursorState(bool displayMouse) {
-	mouseHidden = !displayMouse;
+void Input::SetCursorState(bool displayMouse) {
+	cursorHidden = !displayMouse;
 
 	if (displayMouse) {
 		glfwSetInputMode(Game::window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);

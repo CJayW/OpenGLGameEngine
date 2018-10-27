@@ -9,6 +9,7 @@
 #include "Transform.h"
 
 #include "Renderer.h"
+#include "IconRenderer.h"
 
 glm::mat4 Camera::projection;
 glm::mat4 Camera::viewMatrix;
@@ -37,6 +38,7 @@ Camera::~Camera()
 void Camera::Start() {
 	UpdateCameraView();
 	UpdateCameraProjection();
+	gameObject->addComponent<IconRenderer>("CameraIcon.jpg");
 }
 
 void Camera::Update(double deltaTime) {
@@ -52,9 +54,6 @@ void Camera::UpdateCameraProjection() {
 }
 
 void Camera::UpdateCameraView() {
-	if (gameObject == nullptr)
-		return;
-
 	cameraPos = transform->getPosition();
 	
 	glm::vec3 cameraFront = transform->getRotation() * glm::vec3(1, 0, 0);

@@ -161,6 +161,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="EditorCamera.h" />
     <ClInclude Include="EditorMode.h" />
     <ClInclude Include="IconRenderer.h" />
     <ClInclude Include="imGUI\imconfig.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="EditorCamera.cpp" />
     <ClCompile Include="EditorMode.cpp" />
     <ClCompile Include="IconRenderer.cpp" />
     <ClCompile Include="imGUI\imgui.cpp" />

@@ -5,6 +5,6 @@ public:
 	~Time();
 
 	static float timeScale;
-
+	static float deltaTime;
 };
 
