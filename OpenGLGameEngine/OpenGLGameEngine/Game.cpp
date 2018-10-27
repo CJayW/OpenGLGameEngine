@@ -29,8 +29,7 @@ Game::Game() { }
 Game::~Game() { }
 
 void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
-	width = Width;
-	height = Height;
+
 	Running = true;
 
 	glfwInit();
@@ -38,18 +37,24 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	if (FullScreen) {
+		glfwWindowHint(GLFW_MAXIMIZED, 1);
+	}
 
 	#ifdef __APPLE__
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	#endif
 
-	window = glfwCreateWindow(width, height, Title, NULL, NULL);
+	window = glfwCreateWindow(Width, Height, Title, NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Error: Window Not Created" << std::endl;
 		glfwTerminate();
 		Running = false;
 		return;
 	}
+
+	glfwGetWindowSize(window, &width, &height);
+
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
