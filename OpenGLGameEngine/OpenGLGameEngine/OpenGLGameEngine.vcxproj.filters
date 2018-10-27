@@ -43,6 +43,9 @@
     <Filter Include="Libs\imGUI">
       <UniqueIdentifier>{a8c7babe-1ebd-464e-9dc1-8b36e6ef5a5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Editor">
+      <UniqueIdentifier>{bd7fa438-55a2-4fa4-8aaf-faa9960996ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -164,9 +167,6 @@
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGLInclude.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DirectionalLight.cpp">
       <Filter>Source Files\GameObject\Components\Lighting</Filter>
     </ClCompile>
@@ -209,9 +209,6 @@
     <ClCompile Include="imGUI\imgui_impl_glfw_gl3.cpp">
       <Filter>Libs\imGUI</Filter>
     </ClCompile>
-    <ClCompile Include="EditorMode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LevelFileManager.cpp">
       <Filter>Source Files\Loading</Filter>
     </ClCompile>
@@ -230,8 +227,11 @@
     <ClCompile Include="Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EditorMode.cpp">
+      <Filter>Source Files\Editor</Filter>
+    </ClCompile>
     <ClCompile Include="EditorCamera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -13,8 +13,6 @@
 #include "Shader.h"
 #include "IconRenderer.h"
 
-#include <glm/gtc/matrix_transform.hpp>
-
 #include "EditorMode.h"
 #include "Time.h"
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);

@@ -26,6 +26,7 @@ TestMove::~TestMove()
 }
 
 void TestMove::Start() {
+	DisplayName = "TestMove";
 }
 
 
