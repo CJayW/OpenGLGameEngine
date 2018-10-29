@@ -33,19 +33,16 @@ PointLight::PointLight(std::string params) {
 
 void PointLight::Start() {
 	gameObject->addComponent<IconRenderer>("pointLightIcon.jpg");
-
 }
 
 PointLight::~PointLight() {
 	for (int i = 0; (size_t)i < pointLights.size(); i++) {
-		if (pointLights[i]->gameObject == gameObject) {
+		if (pointLights[i]->ID == ID) {
 			pointLights.erase(pointLights.begin() + i);
 			return;
 		}
 	}
-
 	std::cout << "Error Finding PointLight" << std::endl;
-	//TODO, Use an ID for this instead of comparing objects
 }
 
 void PointLight::RenderUIEditor() {

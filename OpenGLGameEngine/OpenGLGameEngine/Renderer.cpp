@@ -8,10 +8,8 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
-	//TODO Add an ID to the components to improve this code
-
 	for (int i = 0; (size_t)i < Renderers.size(); i++) {
-		if (Renderers[i]->gameObject == gameObject) {
+		if (Renderers[i]->ID == ID) {
 			Renderers.erase(Renderers.begin() + i);
 			return;
 		}

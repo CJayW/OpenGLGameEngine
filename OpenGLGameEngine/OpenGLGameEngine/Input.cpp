@@ -13,11 +13,14 @@ bool Input::keysPressed[GLFW_KEY_LAST];
 bool Input::keysReleased[GLFW_KEY_LAST];
 
 bool Input::cursorHidden = false;
+bool Input::WindowMinimized = false;
 
 bool Input::BlockFurtherInputs;
 
 Input::Input() {
 	glfwSetCursorPosCallback(Game::window, Input::updateMousePos);
+	glfwSetScrollCallback(Game::window, Input::updateScrollInput);
+	glfwSetWindowIconifyCallback(Game::window, Input::updateIconifyState);
 	SetCursorState(false);
 	for (int i = 0; i < GLFW_KEY_MENU; i++) {
 		keysDown[i] = false;
@@ -32,12 +35,14 @@ Input::~Input() {
 }
 
 void Input::ProcessInput() {
+
 	for (int i = 0; i < InputAxisCount; i++) {
 		InputAxisValues[i] = 0;
 	}
 
 	glfwPollEvents();
-
+	//The fist call after ^ causes a crash if the window is minimized
+	
 	if (glfwWindowShouldClose(Game::window)) {
 		Game::Running = false;
 	}
@@ -88,6 +93,15 @@ void Input::updateMousePos(GLFWwindow* window, double xpos, double ypos) {
 	mouseX = xpos;
 	mouseY = ypos;
 }
+
+void Input::updateScrollInput(GLFWwindow * window, double X, double Y) {
+	InputAxisValues[InputMouseScroll] = Y;
+}
+
+void Input::updateIconifyState(GLFWwindow * window, int open) {
+	WindowMinimized = (bool)open;
+}
+
 
 
 void Input::SetCursorState(bool displayMouse) {

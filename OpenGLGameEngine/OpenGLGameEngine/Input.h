@@ -5,8 +5,9 @@
 
 #define InputAxisMouseX 0
 #define InputAxisMouseY 1
+#define InputMouseScroll 2
 
-#define InputAxisCount 2
+#define InputAxisCount 3
 
 class Input {
 public:
@@ -31,7 +32,10 @@ public:
 	}
 
 	static void updateMousePos(GLFWwindow* window, double xpos, double ypos);
+	static void updateScrollInput(GLFWwindow* window, double X, double Y);
+	static void updateIconifyState(GLFWwindow* window, int open);
 
+	static bool WindowMinimized;
 	static void SetCursorState(bool displayMouse);
 
 	static bool cursorHidden;

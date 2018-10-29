@@ -11,7 +11,6 @@ public:
 
 	std::vector<Component*> components;
 
-	void Start();
 	void Update(double deltaTime);
 	void Render();
 	
@@ -19,18 +18,24 @@ public:
 
 	GameObject* parent;
 	std::vector<GameObject*> children;
+
+	unsigned int ID;
+
 	//Editor
 	void RenderUIEditor(std::string prefix = "");
 
 	std::string Name;
 	bool componentDetailsOpen;
 #pragma region components 
-
+private:
+	static unsigned int nextCompID;
+public:
 	template <typename componentType, typename... ArgsT>
 	componentType* addComponent(ArgsT&&... Args) {
 		componentType* comp = new componentType(std::forward<ArgsT>(Args)...);
 		comp->gameObject = this;
 		comp->transform = transform;
+		comp->ID = nextCompID++;
 		comp->Start();
 		components.push_back(comp);
 		return comp;

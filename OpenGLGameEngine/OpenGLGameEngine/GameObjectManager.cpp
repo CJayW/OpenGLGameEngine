@@ -8,11 +8,15 @@ GameObjectManager::GameObjectManager() {
 GameObjectManager::~GameObjectManager() {
 }
 
+unsigned int GameObjectManager::nextID = 0;
+
 GameObject* GameObjectManager::Instantiate() {
 	GameObject* obj = new GameObject();
 
 	Game::GameObjects.push_back(obj);
 	obj->Name = getNewUniqueName();
+	obj->ID = nextID++;
+
 	return obj;
 }
 
@@ -21,6 +25,7 @@ GameObject * GameObjectManager::Instantiate(GameObject * parent) {
 	parent->children.push_back(obj);
 	obj->parent = parent;
 	obj->Name = getNewUniqueName();
+	obj->ID = nextID++;
 
 	return obj;
 }

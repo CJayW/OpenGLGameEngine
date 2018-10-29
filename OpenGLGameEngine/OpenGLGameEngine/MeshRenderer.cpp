@@ -109,8 +109,8 @@ void MeshRenderer::Render() {
 
 
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 	glDrawElements(GL_TRIANGLES, triangleCount, GL_UNSIGNED_INT, 0);
 }
@@ -126,7 +126,7 @@ void MeshRenderer::RenderUIEditor() {
 
 	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
 	
-	if (ImGui::InputText("Model", editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
+	if (ImGui::InputText((std::string("Model##") + std::to_string(ID)).c_str(), editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
 		if (ModelLoader::CheckFileExists("Resources/Models/" + std::string(editorModelLocation))) {
 			modelLocation = "Resources/Models/" + std::string(editorModelLocation);
 			loadModel();

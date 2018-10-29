@@ -67,7 +67,7 @@ void Camera::UpdateCameraView() {
 
 void Camera::RenderUIEditor() {
 
-	if (ImGui::DragFloat("FOV", &FOV, 0.1f)) {
+	if (ImGui::DragFloat((std::string("FOV##") + std::to_string(ID)).c_str(), &FOV, 0.1f)) {
 		UpdateCameraProjection();
 	}
 }

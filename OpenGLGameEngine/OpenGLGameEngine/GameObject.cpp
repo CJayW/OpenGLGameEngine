@@ -7,6 +7,8 @@
 #include "EditorMode.h"
 #include "GameObjectManager.h"
 
+unsigned int GameObject::nextCompID = 0;
+
 GameObject::GameObject() {
 	transform = addComponent<Transform>();
 	componentDetailsOpen = false;
@@ -21,15 +23,6 @@ GameObject::~GameObject() {
 		delete children[i];
 	}
 	std::cout << "Decon: " << Name << std::endl;
-}
-
-void GameObject::Start() {
-	for (auto obj : children) {
-		obj->Start();
-	}
-	for (auto component : components) {
-		component->Start();
-	}
 }
 
 void GameObject::Update(double deltaTime) {
@@ -57,10 +50,15 @@ void GameObject::RenderUIEditor(std::string prefix) {
 	if (componentDetailsOpen) {
 
 		ImGui::End();
+		ImGui::Begin((std::string("Object Details##") + std::to_string(ID)).c_str(), &componentDetailsOpen);
 
-		bool open;
-		ImGui::Begin(Name.c_str(), &open);
-		componentDetailsOpen = open;
+
+		static char EditorName[20];
+
+
+		if (ImGui::InputText((std::string("##") + std::to_string(ID)).c_str(), EditorName, sizeof(EditorName),ImGuiInputTextFlags_EnterReturnsTrue)) {
+			Name = EditorName;
+		}
 
 		ImGui::Text(transform->DisplayName.c_str());
 		transform->RenderUIEditor();
@@ -69,9 +67,8 @@ void GameObject::RenderUIEditor(std::string prefix) {
 		for(int i = 1; (size_t)i < components.size(); i++) {
 			ImGui::Text(components[i]->DisplayName.c_str());
 			ImGui::SameLine();
-			
-			if (ImGui::Button((std::string("X##") + components[i]->DisplayName).c_str())) {
-
+	
+			if (ImGui::Button((std::string("X##") + std::to_string(components[i]->ID)).c_str())) {
 				removeComponentByReferance(components[i]);
 			} else {
 				components[i]->RenderUIEditor();
@@ -83,17 +80,15 @@ void GameObject::RenderUIEditor(std::string prefix) {
 
 		if(ImGui::Button("Add Component")) {
 			EditorMode::OpenAddComponent(this);
-
 		}
 		
 		ImGui::End();
 		ImGui::Begin("hierarchy");
-
 	}
 	
 	ImGui::Text(prefix.c_str());
 	ImGui::SameLine();
-	if(ImGui::Button(Name.c_str())) {
+	if(ImGui::Button((Name + std::string("##") + std::to_string(ID)).c_str())) {
 		componentDetailsOpen = !componentDetailsOpen;
 		if (componentDetailsOpen) {
 			for (auto comp : components)
@@ -106,7 +101,7 @@ void GameObject::RenderUIEditor(std::string prefix) {
 	ImGui::SameLine();
 	ImGui::Text("   ");
 	ImGui::SameLine();
-	if (ImGui::Button((std::string("X##") + Name).c_str())) {
+	if (ImGui::Button((std::string("X##") + std::to_string(ID)).c_str())) {
 		GameObjectManager::DestroyObject(this);
 		return;
 	}
@@ -114,7 +109,7 @@ void GameObject::RenderUIEditor(std::string prefix) {
 	ImGui::SameLine();
 	ImGui::Text(" ");
 	ImGui::SameLine();
-	if (ImGui::Button((std::string("+##") + Name).c_str())) {
+	if (ImGui::Button((std::string("+##") + std::to_string(ID)).c_str())) {
 		GameObjectManager::Instantiate(this);
 	}
 

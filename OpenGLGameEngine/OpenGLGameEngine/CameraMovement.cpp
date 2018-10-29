@@ -59,6 +59,6 @@ void CameraMovement::Update(double deltaTime) {
 }
 
 void CameraMovement::RenderUIEditor() {
-	ImGui::DragFloat("moveSpeed", &moveSpeed);
-	ImGui::DragFloat("lookSpeed", &lookSpeed);
+	ImGui::DragFloat((std::string("moveSpeed##") + std::to_string(ID)).c_str() , &moveSpeed);
+	ImGui::DragFloat((std::string("lookSpeed##") + std::to_string(ID)).c_str() , &lookSpeed);
 }

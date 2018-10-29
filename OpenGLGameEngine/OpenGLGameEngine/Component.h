@@ -24,5 +24,7 @@ public:
 	virtual void OpenUIEditor() {};
 
 	std::string DisplayName;
+
+	unsigned int ID;
 };
 

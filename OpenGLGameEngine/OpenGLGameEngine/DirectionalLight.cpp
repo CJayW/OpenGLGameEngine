@@ -30,7 +30,7 @@ DirectionalLight::DirectionalLight(std::string params) {
 
 DirectionalLight::~DirectionalLight() {
 	for (int i = 0; (size_t)i < directionalLights.size(); i++) {
-		if (directionalLights[i]->gameObject == gameObject) {
+		if (directionalLights[i]->ID == ID) {
 			directionalLights.erase(directionalLights.begin() + i);
 			return;
 		}

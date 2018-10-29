@@ -26,7 +26,6 @@ void EditorCamera::UpdateCameraView() {
 }
 
 void EditorCamera::Update() {
-	//Time::Time::deltaTime
 	float lookSpeed = 0.1f;
 	if (Input::cursorHidden){
 		float horizontalMoveSpeed = lookSpeed * (float)Input::getAxis(InputAxisMouseX);
@@ -36,7 +35,7 @@ void EditorCamera::Update() {
 		rotate(glm::vec3(verticalMoveSpeed, 0, verticalMoveSpeed) * (Rot * glm::vec3(0, 0, 1)));
 	}
 
-	float currentMoveSpeed = Input::getKey(GLFW_KEY_LEFT_SHIFT) ? 50 : 5;
+	float currentMoveSpeed = Input::getKey(GLFW_KEY_LEFT_SHIFT) ? 50.0f : 5.0f;
 	if (Input::getKey(GLFW_KEY_W)) {
 		Pos += (Rot * glm::vec3(1, 0, 0)) * glm::vec3(Time::deltaTime * currentMoveSpeed, Time::deltaTime * currentMoveSpeed, Time::deltaTime * currentMoveSpeed);
 	}

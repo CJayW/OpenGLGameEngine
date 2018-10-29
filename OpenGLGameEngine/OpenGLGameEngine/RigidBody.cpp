@@ -79,8 +79,9 @@ void Rigidbody::addForce(float x, float y, float z)
 }
 
 void Rigidbody::RenderUIEditor() {
-	ImGui::DragFloat("Mass", &mass, 0.1f);
-	ImGui::DragFloat("Drag", &drag, 0.1f);
-	ImGui::DragFloat3("Gravity", glm::value_ptr(gravity), 0.1f);
-	ImGui::DragFloat3("Velocity", glm::value_ptr(velocity), 0.1f);
+	std::string idTag = "##" + std::to_string(ID);
+	ImGui::DragFloat ((std::string("Mass"    ) + idTag).c_str(), &mass, 0.1f);
+	ImGui::DragFloat ((std::string("Drag"    ) + idTag).c_str(), &drag, 0.1f);
+	ImGui::DragFloat3((std::string("Gravity" ) + idTag).c_str(), glm::value_ptr(gravity), 0.1f);
+	ImGui::DragFloat3((std::string("Velocity") + idTag).c_str(), glm::value_ptr(velocity), 0.1f);
 }

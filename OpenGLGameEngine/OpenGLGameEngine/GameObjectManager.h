@@ -17,4 +17,6 @@ public:
 	static GameObject* GetChildByName(GameObject* obj, std::string name);
 
 	static void DestroyObject(GameObject* obj);
+
+	static unsigned int nextID;
 };

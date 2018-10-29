@@ -99,6 +99,7 @@ void IconRenderer::loadIcon() {
 
 	unsigned char *data = stbi_load(iconLocation.c_str(), &width, &height, &nrChannels, 0);
 
+
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -141,8 +142,8 @@ void IconRenderer::Render()
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
 	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
@@ -156,7 +157,7 @@ void IconRenderer::RenderUIEditor() {
 
 	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
 
-	if (ImGui::InputText("Model", editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
+	if (ImGui::InputText((std::string("Model##") + std::to_string(ID)).c_str(), editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
 		if (ModelLoader::CheckFileExists("Resources/Icons/" + std::string(editorModelLocation))) {
 			iconLocation = "Resources/Icons/" + std::string(editorModelLocation);
 			
@@ -167,5 +168,5 @@ void IconRenderer::RenderUIEditor() {
 		}
 	}
 
-	ImGui::Text((std::string("  loaded From:  ") + iconLocation).c_str());
+	ImGui::Text((std::string(" loaded From:  ") + iconLocation).c_str());
 }
