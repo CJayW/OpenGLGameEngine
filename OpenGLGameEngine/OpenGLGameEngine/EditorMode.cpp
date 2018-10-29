@@ -19,6 +19,8 @@
 #include "Time.h"
 #include "Input.h"
 
+#include "EditorDebug.h"
+
 EditorMode::EditorMode()
 {
 }
@@ -40,6 +42,7 @@ float EditorMode::playingTimeScale;
 
 bool EditorMode::addingComponent;
 GameObject* EditorMode::addComponentObject;
+
 
 void EditorMode::Init() {
 	ImGui::CreateContext();
@@ -127,6 +130,8 @@ void EditorMode::Render() {
 		ImGui::Checkbox("Paused", &paused);
 		ImGui::End();
 	}
+
+	EditorDebug::Render();
 
 	ImGui::Render();
 	ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());

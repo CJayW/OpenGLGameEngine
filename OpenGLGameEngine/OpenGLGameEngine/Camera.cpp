@@ -31,7 +31,6 @@ Camera::Camera(std::string params) {
 
 Camera::~Camera()
 {	
-	std::cout << "Camera decon" << std::endl;
 	Game::camera = NULL;
 }
 

@@ -4,6 +4,7 @@
 #include "Transform.h"
 #include "IconRenderer.h"
 
+#include "EditorDebug.h"
 std::string DirectionalLight::name = "DirectionalLight";
 
 
@@ -35,7 +36,7 @@ DirectionalLight::~DirectionalLight() {
 			return;
 		}
 	}
-	std::cout << "Error Finding DirectionalLight" << std::endl;
+	EditorDebug::Log("Error Finding DirectionalLight", LogLevelError);
 }
 
 void DirectionalLight::Start() {

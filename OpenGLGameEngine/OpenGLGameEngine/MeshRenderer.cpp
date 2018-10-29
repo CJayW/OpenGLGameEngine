@@ -8,6 +8,7 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+#include "EditorDebug.h"
 
 std::string MeshRenderer::name = "MeshRenderer";
 
@@ -131,7 +132,7 @@ void MeshRenderer::RenderUIEditor() {
 			modelLocation = "Resources/Models/" + std::string(editorModelLocation);
 			loadModel();
 		} else {
-			std::cout << "Cannot Load Model" << std::endl;
+			EditorDebug::Log("Cannot Load Model", LogLevelError);
 		}
 	}
 

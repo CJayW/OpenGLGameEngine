@@ -10,6 +10,7 @@
 #include <glm/gtx/string_cast.hpp>
 
 #include "EditorMode.h"
+#include "EditorDebug.h"
 std::string IconRenderer::name = "IconRenderer";
 
 Shader* IconRenderer::shaderProgram;
@@ -106,7 +107,7 @@ void IconRenderer::loadIcon() {
 		glGenerateMipmap(GL_TEXTURE_2D);
 		iconLoaded = true;
 	} else {
-		std::cout << "Failed to load texture" << std::endl;
+		EditorDebug::Log("Failed to load texture", LogLevelError);
 		iconLoaded = false;
 	}
 	stbi_image_free(data);
@@ -164,7 +165,7 @@ void IconRenderer::RenderUIEditor() {
 			loadIcon();
 		}
 		else {
-			std::cout << "Cannot Load Model" << "Resources/Icons/" + std::string(editorModelLocation) << std::endl;
+			EditorDebug::Log("Cannot Load Model: Resources/Icons/" + std::string(editorModelLocation), LogLevelError);
 		}
 	}
 

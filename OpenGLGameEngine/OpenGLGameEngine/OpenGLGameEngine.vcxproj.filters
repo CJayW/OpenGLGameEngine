@@ -141,6 +141,9 @@
     <ClInclude Include="EditorCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EditorDebug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -232,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="EditorCamera.cpp">
       <Filter>Source Files\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorDebug.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,8 @@
 #include "PointLight.h"
 #include "SpotLight.h"
 
+#include "EditorDebug.h"
+
 LevelFileManager::LevelFileManager() {
 }
 
@@ -128,7 +130,7 @@ void LevelFileManager::loadLevel() {
 			*/
 			else {
 
-				std::cout << "Failed To Find Component: '" << componentName << "'" << std::endl;
+				EditorDebug::Log("Failed To Find Component: '" + componentName + "'", LogLevelError);
 			}
 		}
 	}

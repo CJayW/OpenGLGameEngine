@@ -15,6 +15,8 @@
 
 #include "EditorMode.h"
 #include "Time.h"
+
+#include "EditorDebug.h"
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 int Game::width;

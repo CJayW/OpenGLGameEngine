@@ -48,5 +48,7 @@ void Light::RenderUIEditor() {
 	if (lastDiffuse != diffuse || lastAmbient != ambient) {
 		UpdateLighting = true;
 		std::cout << "Update Lighting" << std::endl;
+		
 	}
+	//TODO Improve this lots
 }

@@ -7,6 +7,8 @@
 #include "EditorMode.h"
 #include "GameObjectManager.h"
 
+#include "EditorDebug.h"
+
 unsigned int GameObject::nextCompID = 0;
 
 GameObject::GameObject() {
@@ -22,7 +24,6 @@ GameObject::~GameObject() {
 	for (int i = 0; (size_t)i < children.size(); i++) {
 		delete children[i];
 	}
-	std::cout << "Decon: " << Name << std::endl;
 }
 
 void GameObject::Update(double deltaTime) {

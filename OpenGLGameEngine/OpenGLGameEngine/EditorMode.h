@@ -1,7 +1,8 @@
 #pragma once
 
 #include "EditorCamera.h"
-
+#include <vector>
+#include <string>
 class GameObject;
 
 class EditorMode

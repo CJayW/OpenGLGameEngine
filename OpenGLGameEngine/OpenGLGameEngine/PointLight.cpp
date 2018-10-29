@@ -9,6 +9,8 @@ std::string PointLight::name = "PointLight";
 
 #include "IconRenderer.h"
 
+#include "EditorDebug.h"
+
 PointLight::PointLight() {
 	pointLights.push_back(this);
 
@@ -42,7 +44,8 @@ PointLight::~PointLight() {
 			return;
 		}
 	}
-	std::cout << "Error Finding PointLight" << std::endl;
+
+	EditorDebug::Log("Error Finding PointLight", LogLevelError);
 }
 
 void PointLight::RenderUIEditor() {
