@@ -62,6 +62,7 @@ void main()
 
 		}else{
 			break;
+			//TODO this will not render lights. Check the comment in Light.h
 		}
 	}
 	// phase 2: Point lights

@@ -5,6 +5,9 @@ std::array<DirectionalLight*, maxLightCount> Light::directionalLights;
 std::array<PointLight*, maxLightCount> Light::pointLights;
 std::array<SpotLight*, maxLightCount> Light::spotLights;
 
+//TODO	either make each light store the index that its at so that it doesnt need to find itself each time it changes
+//		or sort the arrays to remove empty spaces
+
 Light::Light()
 {
 }
