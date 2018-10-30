@@ -21,6 +21,10 @@
 
 #include "EditorDebug.h"
 
+#include "Shader.h"
+
+#include "LevelFileManager.h"
+
 EditorMode::EditorMode()
 {
 }
@@ -42,6 +46,8 @@ float EditorMode::playingTimeScale;
 
 bool EditorMode::addingComponent;
 GameObject* EditorMode::addComponentObject;
+
+glm::vec3 EditorMode::clearColor;
 
 
 void EditorMode::Init() {
@@ -67,6 +73,8 @@ void EditorMode::Update() {
 void EditorMode::Render() {
 	if (!EditorModeActive)
 		return;
+
+	//ImGui::set
 
 	ImGui_ImplGlfwGL3_NewFrame();
 
@@ -129,6 +137,31 @@ void EditorMode::Render() {
 		ImGui::DragFloat("TimeScale", &Time::timeScale, 0.1f, 0, 5);
 		ImGui::Checkbox("Paused", &paused);
 		ImGui::End();
+	}
+
+	//globalLighting
+	{
+		ImGui::Begin("Global Lighting");
+		if (ImGui::ColorEdit3("Ambient", glm::value_ptr(Light::Ambient))) {
+			Light::UpdateAmbient();
+		}
+
+		if (ImGui::ColorEdit3("Clear Colour", glm::value_ptr(Light::ClearColour))){
+			Light::UpdateClearColour();
+		}
+
+		ImGui::End();
+	}
+
+	{
+		ImGui::Begin("Save");
+
+		if (ImGui::Button("Save")) {
+			LevelFileManager::saveLevel();
+		}
+
+		ImGui::End();
+
 	}
 
 	EditorDebug::Render();

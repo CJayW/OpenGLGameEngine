@@ -25,11 +25,9 @@ Rigidbody::Rigidbody(std::string params)
 {
 	std::vector<std::string> sParams = LevelFileManager::splitBy(params, ',');
 
-	velocity = LevelFileManager::stringToVec3(sParams[0]);
+	gravity = LevelFileManager::stringToVec3(sParams[0]);
 	mass = std::stof(sParams[1]);
 	drag = std::stof(sParams[2]);
-
-	gravity = glm::vec3(0, -15.0f, 0);
 
 	DisplayName = name;
 }
@@ -38,13 +36,25 @@ Rigidbody::~Rigidbody()
 {
 }
 
+std::string Rigidbody::ToSaveString() {
+	std::string str = "";
+	str += name;
+	str += "(";
+	str += LevelFileManager::vec3ToSaveString(gravity);
+	str += ",";
+	str += std::to_string(mass);
+	str += ",";
+	str += std::to_string(drag);
+	
+	return str;
+}
+
 void Rigidbody::Start()
 {
 }
 
 void Rigidbody::Update(double deltaTime)
 {
-
 	//Drag
 	glm::vec3 temp = velocity;
 	//TODO velocity^2 ??

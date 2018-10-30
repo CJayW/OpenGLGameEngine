@@ -3191,7 +3191,7 @@ static void ImGui::NavUpdate()
 
     NavUpdateAnyRequestFlag();
 
-    // Scrolling
+	    // Scrolling
     if (g.NavWindow && !(g.NavWindow->Flags & ImGuiWindowFlags_NoNavInputs) && !g.NavWindowingTarget)
     {
         // *Fallback* manual-scroll with NavUp/NavDown when window has no navigable item
@@ -3517,7 +3517,8 @@ void ImGui::NewFrame()
     if (g.HoveredWindow && !g.HoveredWindow->Collapsed && (g.IO.MouseWheel != 0.0f || g.IO.MouseWheelH != 0.0f))
     {
         // If a child window has the ImGuiWindowFlags_NoScrollWithMouse flag, we give a chance to scroll its parent (unless either ImGuiWindowFlags_NoInputs or ImGuiWindowFlags_NoScrollbar are also set).
-        ImGuiWindow* window = g.HoveredWindow;
+        		
+		ImGuiWindow* window = g.HoveredWindow;
         ImGuiWindow* scroll_window = window;
         while ((scroll_window->Flags & ImGuiWindowFlags_ChildWindow) && (scroll_window->Flags & ImGuiWindowFlags_NoScrollWithMouse) && !(scroll_window->Flags & ImGuiWindowFlags_NoScrollbar) && !(scroll_window->Flags & ImGuiWindowFlags_NoInputs) && scroll_window->ParentWindow)
             scroll_window = scroll_window->ParentWindow;

@@ -10,6 +10,8 @@ public:
 	CameraMovement(std::string params);
 	~CameraMovement();
 
+	std::string ToSaveString() override;
+
 	void Update(double deltaTime) override;
 
 private:

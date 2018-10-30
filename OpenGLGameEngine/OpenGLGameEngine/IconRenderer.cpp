@@ -25,7 +25,18 @@ IconRenderer::IconRenderer(std::string params)
 {
 	DisplayName = "Icon Renderer";
 
-	iconLocation = std::string("Resources/Icons/") + params;
+	loadName = params;
+
+	iconLocation = std::string("Resources/Icons/") + loadName;
+}
+
+std::string IconRenderer::ToSaveString() {
+	std::string str;
+	str += name;
+	str += "(";
+	str += loadName;
+	
+	return str;
 }
 
 void IconRenderer::Start()
@@ -107,7 +118,7 @@ void IconRenderer::loadIcon() {
 		glGenerateMipmap(GL_TEXTURE_2D);
 		iconLoaded = true;
 	} else {
-		EditorDebug::Log("Failed to load texture", LogLevelError);
+		EditorDebug::ErrorLog("Failed to load texture");
 		iconLoaded = false;
 	}
 	stbi_image_free(data);
@@ -161,11 +172,11 @@ void IconRenderer::RenderUIEditor() {
 	if (ImGui::InputText((std::string("Model##") + std::to_string(ID)).c_str(), editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
 		if (ModelLoader::CheckFileExists("Resources/Icons/" + std::string(editorModelLocation))) {
 			iconLocation = "Resources/Icons/" + std::string(editorModelLocation);
-			
+			loadName = std::string(editorModelLocation);
 			loadIcon();
 		}
 		else {
-			EditorDebug::Log("Cannot Load Model: Resources/Icons/" + std::string(editorModelLocation), LogLevelError);
+			EditorDebug::ErrorLog("Cannot Load Model: Resources/Icons/" + std::string(editorModelLocation));
 		}
 	}
 

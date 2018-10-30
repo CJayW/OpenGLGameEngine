@@ -24,7 +24,20 @@ MeshRenderer::MeshRenderer()
 MeshRenderer::MeshRenderer(std::string params) {
 	modelLocation =  "Resources/Models/" + params;
 	loadModelFromFile = true;
+
+	loadName = params;
+
 	DisplayName = name;
+}
+
+
+std::string MeshRenderer::ToSaveString() {
+	std::string str;
+	str += name;
+	str += "(";
+	str += loadName;
+
+	return str;
 }
 
 void MeshRenderer::Start() {
@@ -131,8 +144,9 @@ void MeshRenderer::RenderUIEditor() {
 		if (ModelLoader::CheckFileExists("Resources/Models/" + std::string(editorModelLocation))) {
 			modelLocation = "Resources/Models/" + std::string(editorModelLocation);
 			loadModel();
+			loadName = std::string(editorModelLocation);
 		} else {
-			EditorDebug::Log("Cannot Load Model", LogLevelError);
+			EditorDebug::ErrorLog("Cannot Load Model");
 		}
 	}
 

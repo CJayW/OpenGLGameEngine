@@ -5,6 +5,9 @@ std::array<DirectionalLight*, maxLightCount> Light::directionalLights;
 std::array<PointLight*, maxLightCount> Light::pointLights;
 std::array<SpotLight*, maxLightCount> Light::spotLights;
 
+glm::vec3 Light::Ambient = glm::vec3(0);
+glm::vec3 Light::ClearColour = glm::vec3(0);
+
 //TODO	either make each light store the index that its at so that it doesnt need to find itself each time it changes
 //		or sort the arrays to remove empty spaces
 
@@ -15,6 +18,31 @@ Light::Light()
 
 Light::~Light()
 {
+}
+
+std::string Light::attenuationToString() {
+	std::string str = "";
+
+	str += std::to_string(constant);
+	str += ",";
+	str += std::to_string(linear);
+	str += ",";	
+	str += std::to_string(quadratic);
+
+	return str;
+}
+
+void Light::UpdateClearColour(glm::vec3 newColour) {
+	glClearColor(newColour.r, newColour.g, newColour.b, 1);
+	ClearColour = newColour;
+}
+
+void Light::UpdateAmbient(glm::vec3 newColour) {
+	for (auto shader : Shader::Shaders) {
+		if(shader->useLightData)
+			shader->UpdateAmbient = true;
+	}
+	Ambient = newColour;
 }
 
 void Light::RenderUIEditorLightAttenuation() {
@@ -36,7 +64,6 @@ void Light::RenderUIEditor() {
 
 	bool changed = false;
 
-	changed = ImGui::ColorEdit3((std::string("ambient") + idTag).c_str(), glm::value_ptr(ambient));
 	changed = ImGui::ColorEdit3((std::string("diffuse") + idTag).c_str(), glm::value_ptr(diffuse)) ? true : changed;
 
 	if (changed)

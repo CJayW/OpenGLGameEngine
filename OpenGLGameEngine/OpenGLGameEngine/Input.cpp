@@ -34,6 +34,8 @@ Input::Input() {
 Input::~Input() {
 }
 
+#include "EditorDebug.h"
+
 void Input::ProcessInput() {
 
 	for (int i = 0; i < InputAxisCount; i++) {
@@ -96,13 +98,15 @@ void Input::updateMousePos(GLFWwindow* window, double xpos, double ypos) {
 
 void Input::updateScrollInput(GLFWwindow * window, double X, double Y) {
 	InputAxisValues[InputMouseScroll] = Y;
+
+	ImGuiIO& io = ImGui::GetIO();
+	io.MouseWheelH += (float)X;
+	io.MouseWheel += (float)Y;
 }
 
 void Input::updateIconifyState(GLFWwindow * window, int open) {
 	WindowMinimized = (bool)open;
 }
-
-
 
 void Input::SetCursorState(bool displayMouse) {
 	cursorHidden = !displayMouse;

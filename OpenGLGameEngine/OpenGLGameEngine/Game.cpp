@@ -82,6 +82,8 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 void Game::Start() {
 	LevelFileManager::loadLevel();
 
+	return;
+
 	GameObject* obj = GameObjectManager::Instantiate();
 	obj->addComponent<IconRenderer>("pointLightIcon.jpg");
 	obj->Name = "Parent Obj";

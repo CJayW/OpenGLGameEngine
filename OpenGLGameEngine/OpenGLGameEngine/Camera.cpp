@@ -34,6 +34,16 @@ Camera::~Camera()
 	Game::camera = NULL;
 }
 
+std::string Camera::ToSaveString() {
+	std::string str = "";
+	
+	str += name;
+	str += '(';
+	str += std::to_string(FOV);
+
+	return str;
+}
+
 void Camera::Start() {
 	UpdateCameraView();
 	UpdateCameraProjection();

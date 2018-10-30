@@ -12,6 +12,8 @@ public:
 	Rigidbody(std::string params);
 	~Rigidbody();
 
+	std::string ToSaveString() override;
+
 	void Start() override;
 	void Update(double deltaTime) override;
 

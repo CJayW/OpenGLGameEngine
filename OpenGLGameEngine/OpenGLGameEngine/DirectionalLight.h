@@ -14,6 +14,8 @@ public:
 	DirectionalLight(std::string params);
 	~DirectionalLight();
 
+	std::string ToSaveString() override;
+
 	void Start() override;
 
 	void UpdateLight() override;

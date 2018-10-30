@@ -23,12 +23,11 @@ PointLight::PointLight(std::string params) {
 	pointLights[getFirstEmpty(pointLights)] = this;
 
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
-	ambient = LevelFileManager::stringToVec3(splitParams[0]);
-	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
+	diffuse = LevelFileManager::stringToVec3(splitParams[0]);
 	
-	constant = std::stof(splitParams[2]);
-	linear = std::stof(splitParams[3]);
-	quadratic = std::stof(splitParams[4]);
+	constant = std::stof(splitParams[1]);
+	linear = std::stof(splitParams[2]);
+	quadratic = std::stof(splitParams[3]);
 
 	DisplayName = name;
 
@@ -38,6 +37,18 @@ PointLight::PointLight(std::string params) {
 PointLight::~PointLight() {
 	UpdateLight();
 	pointLights[findLightPos()] = nullptr;
+}
+
+std::string PointLight::ToSaveString() {
+	std::string str = "";
+	str += name;
+	str += "(";
+
+	str += LevelFileManager::vec3ToSaveString(diffuse);
+	str += ",";
+	str += attenuationToString();
+
+	return str;
 }
 
 void PointLight::Start() {

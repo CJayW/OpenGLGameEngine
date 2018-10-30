@@ -237,7 +237,7 @@
       <Filter>Source Files\Editor</Filter>
     </ClCompile>
     <ClCompile Include="EditorDebug.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

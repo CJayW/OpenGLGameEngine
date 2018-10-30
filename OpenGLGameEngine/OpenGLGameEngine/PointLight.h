@@ -14,6 +14,8 @@ public:
 	PointLight(std::string params);
 	~PointLight();
 
+	std::string ToSaveString() override;
+
 	void Start() override;
 	
 	void UpdateLight() override;

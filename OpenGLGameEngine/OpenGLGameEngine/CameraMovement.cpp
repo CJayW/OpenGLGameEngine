@@ -28,6 +28,17 @@ CameraMovement::~CameraMovement()
 {
 }
 
+std::string CameraMovement::ToSaveString() {
+	std::string str = "";
+	str += name;
+	str += "(";
+	str += std::to_string(moveSpeed);
+	str += ",";
+	str += std::to_string(lookSpeed);
+
+	return str;
+}
+
 void CameraMovement::Update(double deltaTime) {
 	if (Input::cursorHidden) {
 		float horizontalMoveSpeed = lookSpeed * (float)Input::getAxis(InputAxisMouseX);

@@ -20,6 +20,7 @@ public:
 	std::vector<unsigned int> PointLightsToUpdate;
 	std::vector<unsigned int> DirLightsToUpdate;
 	std::vector<unsigned int> SpotLightsToUpdate;
+	bool UpdateAmbient;
 
 	bool useLightData;
 

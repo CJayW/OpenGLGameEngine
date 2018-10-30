@@ -26,6 +26,8 @@ public:
 	static bool addingComponent;
 	static GameObject* addComponentObject;
 
+	static glm::vec3 clearColor;
+
 private:
 	static bool cursorShouldBeHidden;
 	static float playingTimeScale;

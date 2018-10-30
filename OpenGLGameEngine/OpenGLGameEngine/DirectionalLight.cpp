@@ -12,7 +12,6 @@ DirectionalLight::DirectionalLight()
 {
 	directionalLights[getFirstEmpty(directionalLights)] = this;
 
-	ambient = glm::vec3(0.1f);
 	diffuse = glm::vec3(0.8f);
 	
 	DisplayName = name;
@@ -21,10 +20,7 @@ DirectionalLight::DirectionalLight()
 DirectionalLight::DirectionalLight(std::string params) {
 	directionalLights[getFirstEmpty(directionalLights)] = this;
 
-	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
-
-	ambient = LevelFileManager::stringToVec3(splitParams[0]);
-	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
+	diffuse = LevelFileManager::stringToVec3(params);
 
 	DisplayName = name;
 
@@ -35,6 +31,16 @@ DirectionalLight::~DirectionalLight() {
 	directionalLights[findLightPos()] = nullptr;
 }
 
+std::string DirectionalLight::ToSaveString() {
+	std::string str = "";
+	str += name;
+	str += "(";
+	
+	str += LevelFileManager::vec3ToSaveString(diffuse);
+
+	return str;
+}
+
 void DirectionalLight::Start() {
 	gameObject->addComponent<IconRenderer>("directional_icon.jpg");
 }
@@ -42,8 +48,6 @@ void DirectionalLight::Start() {
 void DirectionalLight::UpdateLight() {
 	unsigned int index = findLightPos();
 	
-	EditorDebug::Log(std::to_string(index));
-
 	for (auto shader : Shader::Shaders) {
 		if (shader->useLightData) {
 			shader->DirLightsToUpdate.push_back(index);

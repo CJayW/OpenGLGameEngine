@@ -201,8 +201,11 @@ void ImGui_ImplGlfw_MouseButtonCallback(GLFWwindow*, int button, int action, int
         g_MouseJustPressed[button] = true;
 }
 
+#include <iostream>
+
 void ImGui_ImplGlfw_ScrollCallback(GLFWwindow*, double xoffset, double yoffset)
 {
+	std::cout << xoffset << std::endl;
     ImGuiIO& io = ImGui::GetIO();
     io.MouseWheelH += (float)xoffset;
     io.MouseWheel += (float)yoffset;
@@ -347,8 +350,10 @@ void    ImGui_ImplGlfwGL3_InvalidateDeviceObjects()
     }
 }
 
+
 static void ImGui_ImplGlfw_InstallCallbacks(GLFWwindow* window)
 {
+	std::cout << "Set Callback" << std::endl;
     glfwSetMouseButtonCallback(window, ImGui_ImplGlfw_MouseButtonCallback);
     glfwSetScrollCallback(window, ImGui_ImplGlfw_ScrollCallback);
     glfwSetKeyCallback(window, ImGui_ImplGlfw_KeyCallback);

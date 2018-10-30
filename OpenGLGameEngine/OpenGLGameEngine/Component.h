@@ -13,6 +13,8 @@ public:
 	Component();
 	virtual ~Component();
 
+	virtual std::string ToSaveString() { return "Comp(NoOverrideAdded"; };
+
 	virtual void Start() {};
 	virtual void Update(double deltaTime) {};
 	virtual void Render() {};

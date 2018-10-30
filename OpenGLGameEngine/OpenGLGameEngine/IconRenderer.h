@@ -10,6 +10,8 @@ public:
 	IconRenderer();
 	IconRenderer(std::string params);
 
+	std::string ToSaveString() override;
+
 	void Start() override;
 	void Render() override;
 	void UpdateCameraProjection() override;
@@ -25,6 +27,8 @@ public:
 	//loading
 	std::string iconLocation;
 	bool iconLoaded;
+
+	std::string loadName;
 
 	//Editor
 	void RenderUIEditor() override;

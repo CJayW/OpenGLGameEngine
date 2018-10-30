@@ -11,7 +11,6 @@ std::string SpotLight::name = "SpotLight";
 
 SpotLight::SpotLight() {
 
-	ambient = glm::vec3(0.05f);
 	diffuse = glm::vec3(0.8f);
 
 	float constant = 1.0f;
@@ -26,30 +25,38 @@ SpotLight::SpotLight() {
 
 SpotLight::SpotLight(std::string params) {
 
-	//ambient = glm::vec3(0);
-	//diffuse = glm::vec3(0.8f);
-	//
-	//constant = 1.0f;
-	//linear = 0.09f;
-	//quadratic = 0.032f;
-	//
-	//width = 15;
-	//blur = 0.17f;
-
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
-	ambient = LevelFileManager::stringToVec3(splitParams[0]);
-	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
+	diffuse = LevelFileManager::stringToVec3(splitParams[0]);
 
-	constant = std::stof(splitParams[2]);
-	linear = std::stof(splitParams[3]);
-	quadratic = std::stof(splitParams[4]);
+	constant = std::stof(splitParams[1]);
+	linear = std::stof(splitParams[2]);
+	quadratic = std::stof(splitParams[3]);
 
-	width = std::stof(splitParams[5]);
-	blur = std::stof(splitParams[6]);
+	width = std::stof(splitParams[4]);
+	blur = std::stof(splitParams[5]);
 
 	DisplayName = name;
 
-	//TODO this
+}
+
+SpotLight::~SpotLight() {
+	UpdateLight();
+	spotLights[findLightPos()] = nullptr;
+}
+
+std::string SpotLight::ToSaveString() {
+	std::string str = "";
+	str += name;
+	str += "(";
+	str += LevelFileManager::vec3ToSaveString(diffuse);
+	str += ",";
+	str += attenuationToString();
+	str += ",";
+	str += std::to_string(width);
+	str += ",";
+	str += std::to_string(blur );
+
+	return str;
 }
 
 void SpotLight::Start() {
@@ -70,10 +77,6 @@ void SpotLight::UpdateLight() {
 	}
 }
 
-SpotLight::~SpotLight() {
-	UpdateLight();
-	spotLights[findLightPos()] = nullptr;
-}
 
 void SpotLight::RenderUIEditor() {
 	Light::RenderUIEditor();

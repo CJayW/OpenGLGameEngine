@@ -9,6 +9,8 @@ public:
 	MeshRenderer();
 	MeshRenderer(std::string modelName);
 	
+	std::string ToSaveString() override;
+
 	void Start() override;
 	void Render() override;
 
@@ -25,6 +27,8 @@ public:
 	bool loadModelFromFile;
 	std::string modelLocation;
 	bool modelLoaded;
+
+	std::string loadName;
 
 	//Editor
 	void RenderUIEditor() override;

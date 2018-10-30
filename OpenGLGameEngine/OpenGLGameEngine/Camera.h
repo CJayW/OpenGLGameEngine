@@ -16,6 +16,8 @@ public:
 	Camera(std::string params);
 	~Camera();
 
+	std::string ToSaveString() override;
+
 	void Start() override;
 	void Update(double deltaTime) override;
 

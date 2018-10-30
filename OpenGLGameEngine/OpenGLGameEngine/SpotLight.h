@@ -12,6 +12,8 @@ public:
 	SpotLight(std::string params);
 	~SpotLight();
 
+	std::string ToSaveString() override;
+
 	void Start() override;
 
 	float width;
