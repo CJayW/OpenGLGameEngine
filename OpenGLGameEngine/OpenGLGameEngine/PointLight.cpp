@@ -11,14 +11,16 @@ std::string PointLight::name = "PointLight";
 
 #include "EditorDebug.h"
 
+#include "Transform.h"
+
 PointLight::PointLight() {
-	pointLights.push_back(this);
+	pointLights[getFirstEmpty(pointLights)] = this;
 
 	DisplayName = name;
 }
 
 PointLight::PointLight(std::string params) {
-	pointLights.push_back(this);
+	pointLights[getFirstEmpty(pointLights)] = this;
 
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
 	ambient = LevelFileManager::stringToVec3(splitParams[0]);
@@ -33,22 +35,33 @@ PointLight::PointLight(std::string params) {
 	//http://wiki.ogre3d.org/tiki-index.php?page=-Point+Light+Attenuation
 }
 
+PointLight::~PointLight() {
+	UpdateLight();
+	pointLights[findLightPos()] = nullptr;
+}
+
 void PointLight::Start() {
+	UpdateLight();
 	gameObject->addComponent<IconRenderer>("pointLightIcon.jpg");
 }
 
-PointLight::~PointLight() {
-	for (int i = 0; (size_t)i < pointLights.size(); i++) {
-		if (pointLights[i]->ID == ID) {
-			pointLights.erase(pointLights.begin() + i);
-			return;
+void PointLight::UpdateLight() {
+	unsigned int index = findLightPos();
+	
+	for (auto shader : Shader::Shaders) {
+		if (shader->useLightData) {
+			shader->PointLightsToUpdate.push_back(index);
 		}
 	}
-
-	EditorDebug::Log("Error Finding PointLight", LogLevelError);
 }
 
 void PointLight::RenderUIEditor() {
 	Light::RenderUIEditor();
 	RenderUIEditorLightAttenuation();
+	bool changed = false;
+
+	if (transform->getPosition() != lastPos) {
+		lastPos = transform->getPosition();
+		UpdateLight();
+	}
 }

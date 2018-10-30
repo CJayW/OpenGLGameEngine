@@ -10,7 +10,7 @@ std::string DirectionalLight::name = "DirectionalLight";
 
 DirectionalLight::DirectionalLight()
 {
-	directionalLights.push_back(this);
+	directionalLights[getFirstEmpty(directionalLights)] = this;
 
 	ambient = glm::vec3(0.1f);
 	diffuse = glm::vec3(0.8f);
@@ -19,36 +19,43 @@ DirectionalLight::DirectionalLight()
 }
 
 DirectionalLight::DirectionalLight(std::string params) {
-	directionalLights.push_back(this);
-	
+	directionalLights[getFirstEmpty(directionalLights)] = this;
+
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
 
 	ambient = LevelFileManager::stringToVec3(splitParams[0]);
 	diffuse = LevelFileManager::stringToVec3(splitParams[1]);
 
 	DisplayName = name;
+
 }
 
 DirectionalLight::~DirectionalLight() {
-	for (int i = 0; (size_t)i < directionalLights.size(); i++) {
-		if (directionalLights[i]->ID == ID) {
-			directionalLights.erase(directionalLights.begin() + i);
-			return;
-		}
-	}
-	EditorDebug::Log("Error Finding DirectionalLight", LogLevelError);
+	UpdateLight();
+	directionalLights[findLightPos()] = nullptr;
 }
 
 void DirectionalLight::Start() {
 	gameObject->addComponent<IconRenderer>("directional_icon.jpg");
+}
 
+void DirectionalLight::UpdateLight() {
+	unsigned int index = findLightPos();
+	
+	EditorDebug::Log(std::to_string(index));
+
+	for (auto shader : Shader::Shaders) {
+		if (shader->useLightData) {
+			shader->DirLightsToUpdate.push_back(index);
+		}
+	}
 }
 
 void DirectionalLight::RenderUIEditor() {
 	Light::RenderUIEditor();
 
 	if (lastRot != transform->rotation) {
-		UpdateLighting = true;
+		UpdateLight();
 		lastRot = transform->rotation;
 	}
 }

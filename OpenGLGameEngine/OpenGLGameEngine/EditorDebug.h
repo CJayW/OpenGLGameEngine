@@ -13,7 +13,6 @@ public:
 	EditorDebug();
 	~EditorDebug();
 
-
 	static void Render();
 
 	static void Log(std::string message, int Level = LogLevelLog);

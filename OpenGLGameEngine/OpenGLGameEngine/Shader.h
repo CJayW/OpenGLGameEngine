@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glad\glad.h>
-
 #include <glm/glm.hpp>
 
 #include <string>
@@ -9,6 +8,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "Light.h"
+#include <algorithm>
 
 class Shader {
 public:
@@ -16,10 +17,16 @@ public:
 	//Reads and builds the shaders
 	Shader(const std::string vertexPath, const std::string fragmentPath, bool useLightData = true);
 
+	std::vector<unsigned int> PointLightsToUpdate;
+	std::vector<unsigned int> DirLightsToUpdate;
+	std::vector<unsigned int> SpotLightsToUpdate;
+
 	bool useLightData;
 
 	//Activates or deactivates the shader
 	void use();
+
+	static std::vector<Shader*> Shaders;
 
 	//Uniform functions
 	void setBool(const std::string &name, bool value) const

@@ -12,13 +12,26 @@ public:
 	SpotLight(std::string params);
 	~SpotLight();
 
-	float constant;
-	float linear;
-	float quadratic;
+	void Start() override;
 
 	float width;
 	float blur;
 
+	void UpdateLight() override;
+
+	int findLightPos() {
+		for (unsigned int i = 0; i < spotLights.size(); i++) {
+			if (spotLights[i] != nullptr && spotLights[i]->ID == ID) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	//Editor
 	void RenderUIEditor() override;
+
+	glm::quat lastRot;
+	glm::vec3 lastPos;
 
 };

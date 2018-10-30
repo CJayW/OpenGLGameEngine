@@ -17,11 +17,12 @@ GameObject::GameObject() {
 }
 
 GameObject::~GameObject() {
+
 	int total = components.size();
 	for (int i = 0; i < total; i++) {
 		delete components[i];
 	}
-	for (int i = 0; (size_t)i < children.size(); i++) {
+	for (unsigned int i = 0; i < children.size(); i++) {
 		delete children[i];
 	}
 }
@@ -51,12 +52,12 @@ void GameObject::RenderUIEditor(std::string prefix) {
 	if (componentDetailsOpen) {
 
 		ImGui::End();
+		
+		//ImGui::SetNextWindowFocus();
+		
 		ImGui::Begin((std::string("Object Details##") + std::to_string(ID)).c_str(), &componentDetailsOpen);
 
-
 		static char EditorName[20];
-
-
 		if (ImGui::InputText((std::string("##") + std::to_string(ID)).c_str(), EditorName, sizeof(EditorName),ImGuiInputTextFlags_EnterReturnsTrue)) {
 			Name = EditorName;
 		}

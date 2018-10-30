@@ -279,5 +279,8 @@
     <Image Include="Resources\Icons\directional_icon.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Icons\CameraIcon.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -47,6 +47,8 @@ in vec3 Color;
 in vec3 Normal;
 in vec3 FragPos;
 
+//TODO Remove the ambience
+
 void main()
 {
 	vec3 norm = normalize(Normal);
@@ -66,7 +68,6 @@ void main()
     for(int i = 0; i < MaxPointLightCount; i++) {
 		if(pointLights[i].ambient != vec3(0) || pointLights[i].diffuse != vec3(0)){
 			 result += CalcPointLight(pointLights[i], norm, FragPos);  
-
 		}else{
 			break;
 		}
@@ -129,7 +130,10 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos)
     // combine results
     vec3 ambient = light.ambient * Color;
     vec3 diffuse = light.diffuse * diff * Color;
-    //ambient *= attenuation * intensity;
+    ambient *= attenuation * intensity;
     diffuse *= attenuation * intensity;
-    return (ambient + diffuse);
+    
+	//return vec3(theta);
+	
+	return (ambient + diffuse);
 }
