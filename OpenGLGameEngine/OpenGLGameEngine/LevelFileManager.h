@@ -13,6 +13,8 @@ public:
 	static void loadLevel();
 	static bool saveLevel();
 
+	static std::string objToString(GameObject* obj, unsigned int childLevel);
+
 	static std::string removeFirstChar(std::string string);
 
 	static std::string vec3ToSaveString(glm::vec3 vec);

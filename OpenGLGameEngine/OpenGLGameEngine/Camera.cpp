@@ -47,7 +47,8 @@ std::string Camera::ToSaveString() {
 void Camera::Start() {
 	UpdateCameraView();
 	UpdateCameraProjection();
-	gameObject->addComponent<IconRenderer>("CameraIcon.jpg");
+	IconRenderer* icon =     gameObject->addComponent<IconRenderer>("CameraIcon.jpg");
+	icon->inSaveFile = false;
 }
 
 void Camera::Update(double deltaTime) {

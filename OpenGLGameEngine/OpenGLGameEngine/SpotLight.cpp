@@ -63,8 +63,8 @@ std::string SpotLight::ToSaveString() {
 void SpotLight::Start() {
 	spotLights[getFirstEmpty(spotLights)] = this;
 
-	gameObject->addComponent<IconRenderer>("spot_icon.jpg");
-
+	IconRenderer* icon = gameObject->addComponent<IconRenderer>("spot_icon.jpg");
+	icon->inSaveFile = false;
 }
 
 void SpotLight::UpdateLight() {

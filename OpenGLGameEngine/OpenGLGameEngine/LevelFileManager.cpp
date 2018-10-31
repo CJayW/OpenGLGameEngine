@@ -169,31 +169,9 @@ bool LevelFileManager::saveLevel() {
 	std::string str = "";
 
 	for (auto obj : Game::GameObjects) {
-		//TODO add parenting to this
-
-		#pragma region 
-		file += obj->Name;
-		file += ':';
-		file += "Translate(";
-		file += vec3ToSaveString(obj->transform->localPos);
-		file += ":Rotate(";
-
-		glm::vec3 rot = glm::eulerAngles(obj->transform->rotation);
-		rot *= 180 / glm::pi<float>();
-		file += vec3ToSaveString(rot);
-
-		file += ":Scale(";
-		file += vec3ToSaveString(obj->transform->scale);
+		file += objToString(obj, 0);
 		
-		#pragma endregion Transform
-
-		unsigned int total = obj->components.size();
-
-		for (int i = 1; i < total; i++) {
-			file += ":";
-
-			file += obj->components[i]->ToSaveString();
-		}
+		int idexFromEnd = 0;
 
 		file += "\n";
 	}
@@ -204,13 +182,50 @@ bool LevelFileManager::saveLevel() {
 	return true;
 }
 
+std::string LevelFileManager::objToString(GameObject * obj, unsigned int childLevel) {
+	std::string str;
+
+#pragma region 
+	str += obj->Name;
+	str += ':';
+	str += "Translate(";
+	str += vec3ToSaveString(obj->transform->localPos);
+	str += ":Rotate(";
+	glm::vec3 rot = glm::eulerAngles(obj->transform->rotation);
+	rot *= 180 / glm::pi<float>();
+	str += vec3ToSaveString(rot);
+	str += ":Scale(";
+	str += vec3ToSaveString(obj->transform->scale);
+
+#pragma endregion Transform
+
+	for (int i = 1; i < obj->components.size(); i++) {
+		if (!obj->components[i]->inSaveFile) continue;
+
+		str += ":";
+
+		str += obj->components[i]->ToSaveString();
+	}
+
+	for (auto child : obj->children) {
+		str += '\n';
+		EditorDebug::Log((int)childLevel);
+		for (int i = 0; i < childLevel + 1; i++) {
+			str += "-";
+		}
+		str += objToString(child, childLevel +1);
+	}
+
+	return str;
+}
+
 std::string LevelFileManager::removeFirstChar(std::string string) {
 	std::string str = "";
 	
-	for (int i = 0; i < string.size() - 2; i++) {
+	for (int i = 0; i < string.size() - 1; i++) {
 		str += string[i + 1];
 	}
-
+	
 	return str;
 }
 

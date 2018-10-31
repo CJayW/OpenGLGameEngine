@@ -42,7 +42,9 @@ std::string DirectionalLight::ToSaveString() {
 }
 
 void DirectionalLight::Start() {
-	gameObject->addComponent<IconRenderer>("directional_icon.jpg");
+	IconRenderer* icon = gameObject->addComponent<IconRenderer>("directional_icon.jpg");
+	icon->inSaveFile = false;
+
 }
 
 void DirectionalLight::UpdateLight() {

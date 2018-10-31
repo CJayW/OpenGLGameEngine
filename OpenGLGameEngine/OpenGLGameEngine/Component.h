@@ -12,7 +12,7 @@ class Component {
 public:
 	Component();
 	virtual ~Component();
-
+	bool inSaveFile = true;
 	virtual std::string ToSaveString() { return "Comp(NoOverrideAdded"; };
 
 	virtual void Start() {};
