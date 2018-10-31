@@ -8,9 +8,6 @@ std::array<SpotLight*, maxLightCount> Light::spotLights;
 glm::vec3 Light::Ambient = glm::vec3(0);
 glm::vec3 Light::ClearColour = glm::vec3(0);
 
-//TODO	either make each light store the index that its at so that it doesnt need to find itself each time it changes
-//		or sort the arrays to remove empty spaces
-
 Light::Light()
 {
 }

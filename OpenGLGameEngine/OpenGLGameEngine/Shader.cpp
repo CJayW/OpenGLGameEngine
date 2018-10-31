@@ -104,6 +104,7 @@ Shader::Shader(const std::string vertexPath, const std::string fragmentPath, boo
 		SpotLightsToUpdate.push_back(i);
 	}
 	UpdateAmbient = true;
+
 }
 
 void Shader::use() {
@@ -112,7 +113,7 @@ void Shader::use() {
 	Renderer::CurrentShaderProgram = this;
 
 	if (!useLightData) return;
-	
+	   
 	if (UpdateAmbient) {
 		setVec3("Ambient", Light::Ambient);
 	}
@@ -121,6 +122,7 @@ void Shader::use() {
 		std::string iStr = std::to_string(i);
 
 		if (Light::directionalLights[i] != nullptr) {
+
 			setVec3("dirLights[" + iStr + "].direction", Light::directionalLights[i]->transform->rotation * glm::vec3(1, 0, 0));
 			setVec3("dirLights[" + iStr + "].diffuse", Light::directionalLights[i]->diffuse);
 		} else {
@@ -149,6 +151,7 @@ void Shader::use() {
 		std::string iStr = std::to_string(i);
 
 		if (Light::spotLights[i] != nullptr) {
+
 
 			setVec3("spotLights[" + iStr + "].position", Light::spotLights[i]->transform->getPosition());
 			setVec3("spotLights[" + iStr + "].direction", Light::spotLights[i]->transform->getRotation() * glm::vec3(1, 0, 0));

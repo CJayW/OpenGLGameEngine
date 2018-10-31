@@ -26,6 +26,7 @@ SpotLight::SpotLight() {
 SpotLight::SpotLight(std::string params) {
 
 	std::vector<std::string> splitParams = LevelFileManager::splitBy(params, ',');
+
 	diffuse = LevelFileManager::stringToVec3(splitParams[0]);
 
 	constant = std::stof(splitParams[1]);
@@ -60,7 +61,6 @@ std::string SpotLight::ToSaveString() {
 }
 
 void SpotLight::Start() {
-	spotLights[getFirstEmpty(spotLights)] = this;
 	spotLights[getFirstEmpty(spotLights)] = this;
 
 	gameObject->addComponent<IconRenderer>("spot_icon.jpg");

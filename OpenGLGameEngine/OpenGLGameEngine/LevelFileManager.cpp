@@ -159,8 +159,6 @@ void LevelFileManager::loadLevel() {
 #define Write() ip.write(file.c_str(), file.size()); file = ""
 #define addLine(newStr) file += newStr; file += "\n";
 bool LevelFileManager::saveLevel() {
-	//TODO Check Mode
-	
 	std::ofstream ip("Resources/Levels/Level2.txt");
 
 	std::string file = "";

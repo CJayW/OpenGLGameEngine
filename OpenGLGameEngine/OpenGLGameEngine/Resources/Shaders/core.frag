@@ -53,22 +53,19 @@ void main()
 
 	vec3 result = Color * Ambient;
 
+	//TODO check for performance difference by removing spaces in arrays and breaking these loops
+
     // phase 1: Directional lighting
 	for(int i = 0; i < MaxLightCount; i++) {
 		if(dirLights[i].diffuse != vec3(0)){
 			 result += CalcDirLight(dirLights[i], norm);
 
-		}else{
-			break;
-			//TODO this will not render lights. Check the comment in Light.h
 		}
 	}
 	// phase 2: Point lights
     for(int i = 0; i < MaxLightCount; i++) {
 		if(pointLights[i].diffuse != vec3(0)){
 			 result += CalcPointLight(pointLights[i], norm, FragPos);  
-		}else{
-			break;
 		}
 	}
 
@@ -76,10 +73,7 @@ void main()
 	for(int i = 0; i < MaxLightCount; i++) {
 		if(spotLights[i].diffuse != vec3(0)){
 			result += CalcSpotLight(spotLights[i], norm, FragPos);
-		}else{
-			break;
 		}
-
 	}
     FragColor = vec4(result, 1.0);
 }
