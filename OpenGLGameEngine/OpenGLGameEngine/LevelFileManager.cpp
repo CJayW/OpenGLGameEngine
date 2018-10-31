@@ -28,6 +28,11 @@ LevelFileManager::LevelFileManager() {
 LevelFileManager::~LevelFileManager() {
 }
 
+#define CheckComp(className) \
+else if (componentName == className::name) {\
+	obj->addComponent<className>(componentInfo[1]);\
+}
+
 void LevelFileManager::loadLevel() {
 
 	std::string file;
@@ -108,43 +113,20 @@ void LevelFileManager::loadLevel() {
 				} else if (componentName == "Scale") {
 					//Scale
 					obj->transform->scale = stringToVec3(componentInfo[1]);
-				} else if (componentName == MeshRenderer::name) {
-					//MeshRenderer
-					obj->addComponent<MeshRenderer>(componentInfo[1]);
 				} else if (componentName == Camera::name) {
 					//Camera
 					Game::camera = obj->addComponent<Camera>(componentInfo[1]);
-				} else if (componentName == CameraMovement::name) {
-					//CameraMovement
-					obj->addComponent<CameraMovement>(componentInfo[1]);
-				} else if (componentName == TestMove::name) {
-					//TestMove
-					obj->addComponent<TestMove>(componentInfo[1]);
-				} else if (componentName == DirectionalLight::name) {
-					//DirectionalLight
-					obj->addComponent<DirectionalLight>(componentInfo[1]);
-				} else if (componentName == PointLight::name) {
-					//PointLight
-					obj->addComponent<PointLight>(componentInfo[1]);
-				} else if (componentName == SpotLight::name) {
-					//spotLight
-					obj->addComponent<SpotLight>(componentInfo[1]);
-				} else if (componentName == Rigidbody::name) {
-					//ComponentTemplate
-					obj->addComponent<Rigidbody>(componentInfo[1]);
-				} else if (componentName == IconRenderer::name) {
-					//Icon Renderer
-					obj->addComponent<IconRenderer>(componentInfo[1]);
 				}
-				
-				//TODO #Define CheckComp(type)
 
-				/*
-				else if (componentName == ComponentTemplate::name) {
-					//ComponentTemplate
-					obj->addComponent<ComponentTemplate>(componentInfo[1]);
-				}
-				*/
+				CheckComp(MeshRenderer)
+				CheckComp(CameraMovement)
+				CheckComp(TestMove)
+				CheckComp(DirectionalLight)
+				CheckComp(PointLight)
+				CheckComp(SpotLight)
+				CheckComp(Rigidbody)
+				CheckComp(IconRenderer)
+				
 				else {
 
 					EditorDebug::ErrorLog("Failed To Find Component: '" + componentName + "'");
