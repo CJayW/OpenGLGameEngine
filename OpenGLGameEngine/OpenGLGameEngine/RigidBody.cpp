@@ -57,7 +57,7 @@ void Rigidbody::Update(double deltaTime)
 {
 	//Drag
 	glm::vec3 temp = velocity;
-	//TODO velocity^2 ??
+	
 	temp *= drag;
 	temp *= deltaTime;
 	velocity -= temp;

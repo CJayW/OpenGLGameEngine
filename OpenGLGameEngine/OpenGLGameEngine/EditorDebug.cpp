@@ -20,6 +20,10 @@ bool EditorDebug::addSpace;
 int EditorDebug::lastLevel;
 
 void EditorDebug::Render() {
+
+	//TODO ImGuiListClipper 
+	//https://github.com/ocornut/imgui/issues/1438
+
 	ImGui::Begin("Debug Log",(bool *)0, ImGuiWindowFlags_NoScrollbar);
 	{
 		for (int i = 0; i < LogMessages.size(); i++) {

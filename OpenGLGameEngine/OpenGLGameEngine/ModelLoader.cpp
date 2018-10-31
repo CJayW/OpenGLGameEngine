@@ -1,10 +1,10 @@
 #include "ModelLoader.h"
 
-#include "LevelFileManager.h"
-
 #include <iostream>
 #include <fstream>
 
+#include "LevelFileManager.h"
+#include "EditorDebug.h"
 ModelLoader::ModelLoader()
 {
 }
@@ -15,8 +15,10 @@ ModelLoader::~ModelLoader()
 }
 
 std::vector<float> ModelLoader::Vertices;
-
 std::vector<unsigned int> ModelLoader::Indices;
+
+std::map<std::string, std::vector<float>> ModelLoader::savedVerticies;
+std::map<std::string, std::vector<unsigned int>> ModelLoader::savedIndices;
 
 bool ModelLoader::CheckFileExists(std::string fileName)
 {
@@ -30,8 +32,12 @@ bool ModelLoader::CheckFileExists(std::string fileName)
 
 void ModelLoader::loadModel(std::string fileName)
 {
-	Vertices.clear();
-	Indices.clear();
+	if (savedVerticies.find(fileName) != savedVerticies.end()) {
+		Vertices = savedVerticies[fileName];
+		Indices = savedIndices[fileName];
+
+		return;
+	}
 
 	bool afterHeader = false;
 	int totalVertexes = -1;
@@ -65,34 +71,38 @@ void ModelLoader::loadModel(std::string fileName)
 				std::getline(ip, line);
 				std::vector<std::string> splitLine = LevelFileManager::splitBy(line, ' ');
 				//pos
-				Vertices.push_back(std::stof(splitLine[1]));
-				Vertices.push_back(std::stof(splitLine[2]));
-				Vertices.push_back(std::stof(splitLine[0]));
+				savedVerticies[fileName].push_back(std::stof(splitLine[1]));
+				savedVerticies[fileName].push_back(std::stof(splitLine[2]));
+				savedVerticies[fileName].push_back(std::stof(splitLine[0]));
 				//rbg
-				Vertices.push_back(std::stof(splitLine[6]) / 255);
-				Vertices.push_back(std::stof(splitLine[7]) / 255);
-				Vertices.push_back(std::stof(splitLine[8]) / 255);
-
-				//Vertices.push_back(1);
-				//Vertices.push_back(1);
-				//Vertices.push_back(1);
+				savedVerticies[fileName].push_back(std::stof(splitLine[6]) / 255);
+				savedVerticies[fileName].push_back(std::stof(splitLine[7]) / 255);
+				savedVerticies[fileName].push_back(std::stof(splitLine[8]) / 255);
 
 				//normals
-				Vertices.push_back(std::stof(splitLine[4]));
-				Vertices.push_back(std::stof(splitLine[5]));
-				Vertices.push_back(std::stof(splitLine[3]));
+				savedVerticies[fileName].push_back(std::stof(splitLine[4]));
+				savedVerticies[fileName].push_back(std::stof(splitLine[5]));
+				savedVerticies[fileName].push_back(std::stof(splitLine[3]));
 			}
 			for (int i = 0; i < totalFaces; i++) {
 				std::getline(ip, line);
 				std::vector<std::string> splitLine = LevelFileManager::splitBy(line, ' ');
 				
-				Indices.push_back(std::stoi(splitLine[1]));
-				Indices.push_back(std::stoi(splitLine[2]));
-				Indices.push_back(std::stoi(splitLine[3]));
+				savedIndices[fileName].push_back(std::stoi(splitLine[1]));
+				savedIndices[fileName].push_back(std::stoi(splitLine[2]));
+				savedIndices[fileName].push_back(std::stoi(splitLine[3]));
 			}
 			break;
 		}
 	}
 	ip.close();
+
+	Vertices = savedVerticies[fileName];
+	Indices = savedIndices[fileName];
+
 }
 
+void ModelLoader::loadImage(std::string filename) {
+
+
+}

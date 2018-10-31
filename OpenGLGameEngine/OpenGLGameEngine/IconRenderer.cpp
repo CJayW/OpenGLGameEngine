@@ -92,7 +92,7 @@ void IconRenderer::Start()
 }
 
 void IconRenderer::loadIcon() {
-
+	//TODO Opimize this
 	if (iconLoaded) {
 		glDeleteTextures(0, &texture);
 	}
