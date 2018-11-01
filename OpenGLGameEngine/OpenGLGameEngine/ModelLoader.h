@@ -12,8 +12,6 @@ public:
 	static bool CheckFileExists(std::string fileName);
 	static void loadModel(std::string fileName);
 
-	static void loadImage(std::string filename);
-
 	static std::vector<float> Vertices;
 	static std::vector<unsigned int> Indices;
 

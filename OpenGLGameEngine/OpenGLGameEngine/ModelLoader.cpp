@@ -5,6 +5,10 @@
 
 #include "LevelFileManager.h"
 #include "EditorDebug.h"
+
+#include <algorithm>
+
+
 ModelLoader::ModelLoader()
 {
 }
@@ -30,8 +34,13 @@ bool ModelLoader::CheckFileExists(std::string fileName)
 	return true;
 }
 
+
 void ModelLoader::loadModel(std::string fileName)
 {
+	std::transform(fileName.begin(), fileName.end(), fileName.begin(), ::tolower);
+	
+	EditorDebug::Log(fileName);
+
 	if (savedVerticies.find(fileName) != savedVerticies.end()) {
 		Vertices = savedVerticies[fileName];
 		Indices = savedIndices[fileName];
@@ -99,10 +108,5 @@ void ModelLoader::loadModel(std::string fileName)
 
 	Vertices = savedVerticies[fileName];
 	Indices = savedIndices[fileName];
-
-}
-
-void ModelLoader::loadImage(std::string filename) {
-
 
 }
