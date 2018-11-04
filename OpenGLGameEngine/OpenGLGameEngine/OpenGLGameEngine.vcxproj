@@ -158,6 +158,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Proj\LocalEditorMode.h" />
+    <ClInclude Include="..\..\..\Proj\LocalLevelFileManager.h" />
+    <ClInclude Include="..\..\..\Proj\move.h" />
+    <ClInclude Include="..\..\Proj\Include.h" />
+    <ClInclude Include="..\..\Proj\LocalEditorMode.h" />
+    <ClInclude Include="..\..\Proj\LocalLevelFileManager.h" />
+    <ClInclude Include="..\..\Proj\move.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Component.h" />
@@ -172,10 +179,6 @@
     <ClInclude Include="imGUI\stb_rect_pack.h" />
     <ClInclude Include="imGUI\stb_textedit.h" />
     <ClInclude Include="imGUI\stb_truetype.h" />
-    <ClInclude Include="Proj\LocalEditorMode.h" />
-    <ClInclude Include="Proj\LocalLevelFileManager.h" />
-    <ClInclude Include="Proj\Include.h" />
-    <ClInclude Include="Proj\move.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="Game.h" />
@@ -196,6 +199,9 @@
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Proj\LocalEditorMode.cpp" />
+    <ClCompile Include="..\..\Proj\LocalLevelFileManager.cpp" />
+    <ClCompile Include="..\..\Proj\move.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -207,9 +213,6 @@
     <ClCompile Include="imGUI\imgui_demo.cpp" />
     <ClCompile Include="imGUI\imgui_draw.cpp" />
     <ClCompile Include="imGUI\imgui_impl_glfw_gl3.cpp" />
-    <ClCompile Include="Proj\LocalEditorMode.cpp" />
-    <ClCompile Include="Proj\LocalLevelFileManager.cpp" />
-    <ClCompile Include="Proj\move.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Game.cpp" />

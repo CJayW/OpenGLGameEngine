@@ -25,7 +25,7 @@
 
 #include "LevelFileManager.h"
 
-#include "Proj/LocalEditorMode.h"
+#include "F:/OpenGLGameEngine/Proj/LocalEditorMode.h"
 
 EditorMode::EditorMode()
 {

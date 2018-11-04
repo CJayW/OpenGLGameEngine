@@ -1,5 +1,5 @@
 #include "LocalEditorMode.h"
-#include "../EditorMode.h"
+#include "F:/OpenGLGameEngine/OpenGLGameEngine/OpenGLGameEngine/EditorMode.h"
 
 #include "move.h" 
 //IncludeHere
@@ -20,6 +20,6 @@ EditorMode::addComponentObject->addComponent<ComponentType>();\
 void LocalEditorMode::AddComponent() {
 	
 	editorAddComponent(move, "Move"); 
-//AddNewComponentsHere
+	//AddNewComponentsHere
 	//^ Needed to auto add classes
 }
