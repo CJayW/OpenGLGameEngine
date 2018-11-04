@@ -4,6 +4,7 @@
 #include <string>
 
 #include "move.h" 
+#include "PlayerMovement.h" 
 //IncludeHere
 
 LocalLevelFileManager::LocalLevelFileManager() {
@@ -20,6 +21,7 @@ if(componentName == compType::name){\
 
 bool LocalLevelFileManager::LoadLevel(std::string componentName, std::string params, GameObject* obj) {
 	checkComp(move);
+checkComp(PlayerMovement);
 //AddNewComponentsHere
 
 	return false;

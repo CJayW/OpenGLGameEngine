@@ -21,7 +21,6 @@ std::string move::ToSaveString() {
 
 void move::Start() {
 	DisplayName = name;
-	EditorDebug::Log("Move Added");
 }
 
 void move::Render() {

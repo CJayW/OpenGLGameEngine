@@ -153,26 +153,20 @@
     <ClInclude Include="EditorDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Proj\LocalEditorMode.h">
+    <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Proj\LocalLevelFileManager.h">
+    <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Proj\move.h">
+    <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Proj\Include.h">
-      <Filter>Game\headers</Filter>
+    <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Proj\LocalEditorMode.h">
-      <Filter>Game\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Proj\LocalLevelFileManager.h">
-      <Filter>Game\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Proj\move.h">
-      <Filter>Game\headers</Filter>
+    <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -269,14 +263,17 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Proj\move.cpp">
-      <Filter>Game</Filter>
+    <ClCompile Include="F:\OpenGLGameEngine\Proj\*.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Proj\LocalEditorMode.cpp">
-      <Filter>Game\source</Filter>
+    <ClCompile Include="F:\OpenGLGameEngine\Proj\*.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Proj\LocalLevelFileManager.cpp">
-      <Filter>Game\source</Filter>
+    <ClCompile Include="F:\OpenGLGameEngine\Proj\*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OpenGLGameEngine\Proj\*.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,7 +286,6 @@
     <None Include="Resources\Models\house.ply">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="imgui.ini" />
     <None Include="ClassDiagram.cd" />
     <None Include="Shaders\core.frag">
       <Filter>Source Files\Shaders</Filter>
