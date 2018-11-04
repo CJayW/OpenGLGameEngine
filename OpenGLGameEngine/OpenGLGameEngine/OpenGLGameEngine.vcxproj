@@ -158,13 +158,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Proj\LocalEditorMode.h" />
-    <ClInclude Include="..\..\..\Proj\LocalLevelFileManager.h" />
-    <ClInclude Include="..\..\..\Proj\move.h" />
-    <ClInclude Include="..\..\Proj\Include.h" />
-    <ClInclude Include="..\..\Proj\LocalEditorMode.h" />
-    <ClInclude Include="..\..\Proj\LocalLevelFileManager.h" />
-    <ClInclude Include="..\..\Proj\move.h" />
+    <!--H-->
+    <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Component.h" />
@@ -199,9 +194,8 @@
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Proj\LocalEditorMode.cpp" />
-    <ClCompile Include="..\..\Proj\LocalLevelFileManager.cpp" />
-    <ClCompile Include="..\..\Proj\move.cpp" />
+    <!--CPP-->
+    <ClCompile Include="F:\OpenGLGameEngine\Proj\*.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -236,7 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="imgui.ini" />
     <None Include="Resources\Models\FlipTest.ply" />
     <None Include="Resources\Models\house.ply" />
     <None Include="Resources\Models\TreeTest.ply" />
