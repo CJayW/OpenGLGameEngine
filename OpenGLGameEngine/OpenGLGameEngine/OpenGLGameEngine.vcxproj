@@ -240,10 +240,10 @@
     <None Include="Resources\Models\FlipTest.ply" />
     <None Include="Resources\Models\house.ply" />
     <None Include="Resources\Models\TreeTest.ply" />
-    <None Include="Resources\Shaders\core.frag" />
-    <None Include="Resources\Shaders\core.vert" />
-    <None Include="Resources\Shaders\icon.frag" />
-    <None Include="Resources\Shaders\icon.vert" />
+    <None Include="Shaders\core.frag" />
+    <None Include="Shaders\core.vert" />
+    <None Include="Shaders\icon.frag" />
+    <None Include="Shaders\icon.vert" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Levels\Level.txt" />

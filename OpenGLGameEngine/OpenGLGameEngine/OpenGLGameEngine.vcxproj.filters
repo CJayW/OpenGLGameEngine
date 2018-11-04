@@ -49,8 +49,11 @@
     <Filter Include="Game">
       <UniqueIdentifier>{9911f5cb-ffe3-42b9-8d9a-164ed4b95fa5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Components">
-      <UniqueIdentifier>{21a84fde-a4d4-4282-b5d1-a822ac964cf7}</UniqueIdentifier>
+    <Filter Include="Game\headers">
+      <UniqueIdentifier>{f953b9d5-1163-42ab-9944-9bdd07062f7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\source">
+      <UniqueIdentifier>{f9839a7e-8287-4e57-8d77-f95d928ec6e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -160,16 +163,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Proj\Include.h">
-      <Filter>Game</Filter>
+      <Filter>Game\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Proj\LocalEditorMode.h">
-      <Filter>Game</Filter>
+      <Filter>Game\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Proj\LocalLevelFileManager.h">
-      <Filter>Game</Filter>
+      <Filter>Game\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Proj\move.h">
-      <Filter>Game</Filter>
+      <Filter>Game\headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,23 +269,17 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Proj\LocalEditorMode.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Proj\LocalLevelFileManager.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Proj\move.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Proj\LocalEditorMode.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Shaders\core.frag">
-      <Filter>Source Files\Shaders</Filter>
-    </None>
-    <None Include="Resources\Shaders\core.vert">
-      <Filter>Source Files\Shaders</Filter>
-    </None>
     <None Include="Resources\Models\TreeTest.ply">
       <Filter>Resource Files</Filter>
     </None>
@@ -293,13 +290,19 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="imgui.ini" />
-    <None Include="Resources\Shaders\icon.frag">
-      <Filter>Source Files\Shaders</Filter>
-    </None>
-    <None Include="Resources\Shaders\icon.vert">
-      <Filter>Source Files\Shaders</Filter>
-    </None>
     <None Include="ClassDiagram.cd" />
+    <None Include="Shaders\core.frag">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\core.vert">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\icon.frag">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\icon.vert">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Levels\Level.txt">

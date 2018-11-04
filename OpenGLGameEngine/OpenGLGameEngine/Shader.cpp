@@ -33,8 +33,8 @@ Shader::Shader(const std::string vertexPath, const std::string fragmentPath, boo
 	try
 	{
 		//open files
-		vShaderFile.open("Resources/Shaders/" + vertexPath);
-		fShaderFile.open("Resources/Shaders/" + fragmentPath);
+		vShaderFile.open("Shaders/" + vertexPath);
+		fShaderFile.open("Shaders/" + fragmentPath);
 		std::stringstream vShaderStream, fShaderStream;
 		//read file's buffer contents into streams
 		vShaderStream << vShaderFile.rdbuf();
