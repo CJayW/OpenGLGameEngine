@@ -46,6 +46,18 @@
     <Filter Include="Source Files\Editor">
       <UniqueIdentifier>{bd7fa438-55a2-4fa4-8aaf-faa9960996ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{9911f5cb-ffe3-42b9-8d9a-164ed4b95fa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Header">
+      <UniqueIdentifier>{386b6501-70f0-4e9d-8b0f-a7093216b6ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Source">
+      <UniqueIdentifier>{b15dc9ea-ee0d-4574-9758-d8d6be262128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Components">
+      <UniqueIdentifier>{21a84fde-a4d4-4282-b5d1-a822ac964cf7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -144,11 +156,20 @@
     <ClInclude Include="EditorDebug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Proj\Include.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Proj\LocalLevelFileManager.h">
+      <Filter>Game\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Proj\LocalEditorMode.h">
+      <Filter>Game\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Proj\move.h">
+      <Filter>Game\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -239,6 +260,18 @@
     <ClCompile Include="EditorDebug.cpp">
       <Filter>Source Files\Editor</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Proj\LocalLevelFileManager.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Proj\LocalEditorMode.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Proj\move.cpp">
+      <Filter>Game\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\core.frag">
@@ -263,6 +296,7 @@
     <None Include="Resources\Shaders\icon.vert">
       <Filter>Source Files\Shaders</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Levels\Level.txt">

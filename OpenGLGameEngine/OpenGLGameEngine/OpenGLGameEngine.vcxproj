@@ -172,6 +172,10 @@
     <ClInclude Include="imGUI\stb_rect_pack.h" />
     <ClInclude Include="imGUI\stb_textedit.h" />
     <ClInclude Include="imGUI\stb_truetype.h" />
+    <ClInclude Include="Proj\LocalEditorMode.h" />
+    <ClInclude Include="Proj\LocalLevelFileManager.h" />
+    <ClInclude Include="Proj\Include.h" />
+    <ClInclude Include="Proj\move.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="Game.h" />
@@ -203,6 +207,9 @@
     <ClCompile Include="imGUI\imgui_demo.cpp" />
     <ClCompile Include="imGUI\imgui_draw.cpp" />
     <ClCompile Include="imGUI\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="Proj\LocalEditorMode.cpp" />
+    <ClCompile Include="Proj\LocalLevelFileManager.cpp" />
+    <ClCompile Include="Proj\move.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -225,6 +232,7 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="imgui.ini" />
     <None Include="Resources\Models\FlipTest.ply" />
     <None Include="Resources\Models\house.ply" />

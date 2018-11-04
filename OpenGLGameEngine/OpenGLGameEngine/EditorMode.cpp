@@ -25,6 +25,8 @@
 
 #include "LevelFileManager.h"
 
+#include "Proj/LocalEditorMode.h"
+
 EditorMode::EditorMode()
 {
 }
@@ -70,12 +72,12 @@ void EditorMode::Update() {
 	}
 }
 
+#define editorAddComponent(ComponentType, DisplayName) \
+if (ImGui::Button(DisplayName)) {\
+addComponentObject->addComponent<ComponentType>();\
+} else
+
 void EditorMode::Render() {
-	if (!EditorModeActive)
-		return;
-
-	//ImGui::set
-
 	ImGui_ImplGlfwGL3_NewFrame();
 
 	//GameObjects
@@ -106,6 +108,21 @@ void EditorMode::Render() {
 
 			ImGui::Text((std::string("Adding Component To:  ") + addComponentObject->Name).c_str());
 
+			editorAddComponent(Rigidbody, "Rigidbody");
+			editorAddComponent(Camera, "Camera");
+			editorAddComponent(MeshRenderer, "Mesh Renderer");
+			editorAddComponent(IconRenderer, "Icon Renderer");
+			editorAddComponent(DirectionalLight, "Directional Light");
+			editorAddComponent(PointLight, "Point Light");
+			editorAddComponent(SpotLight, "Spot Light");
+			editorAddComponent(CameraMovement, "Camera Movement");
+			editorAddComponent(TestMove, "Test Movement");
+			{
+				LocalEditorMode::AddComponent();
+			}
+
+
+			/*
 			if (ImGui::Button("RigidBody")) {
 				addComponentObject->addComponent<Rigidbody>();
 			} else if (ImGui::Button("Camera")) {
@@ -120,11 +137,11 @@ void EditorMode::Render() {
 				addComponentObject->addComponent<PointLight>();
 			} else if (ImGui::Button("Spot Light")) {
 				addComponentObject->addComponent<SpotLight>();
-			} else if (ImGui::Button("CameraMovement")) {
+			} else if (ImGui::Button("Camera Movement")) {
 				addComponentObject->addComponent<CameraMovement>();
 			} else if (ImGui::Button("Test Movement")) {
 				addComponentObject->addComponent<TestMove>();
-			}
+			} else */
 
 			ImGui::End();
 		}

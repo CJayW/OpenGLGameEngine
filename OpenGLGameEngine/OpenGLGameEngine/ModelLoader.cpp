@@ -39,8 +39,6 @@ void ModelLoader::loadModel(std::string fileName)
 {
 	std::transform(fileName.begin(), fileName.end(), fileName.begin(), ::tolower);
 	
-	EditorDebug::Log(fileName);
-
 	if (savedVerticies.find(fileName) != savedVerticies.end()) {
 		Vertices = savedVerticies[fileName];
 		Indices = savedIndices[fileName];

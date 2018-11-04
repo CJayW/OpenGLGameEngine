@@ -127,8 +127,8 @@ void Game::Render() {
 	for (auto gameObject : GameObjects) {
 		gameObject->Render();
 	}
-
-	EditorMode::Render();
+	if (EditorMode::EditorModeActive) 
+		EditorMode::Render();
 
 	glfwSwapBuffers(window);
 }

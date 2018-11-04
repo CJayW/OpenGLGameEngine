@@ -22,6 +22,8 @@
 
 #include "Shader.h"
 
+#include "proj/LocalLevelFileManager.h"
+
 LevelFileManager::LevelFileManager() {
 }
 
@@ -128,8 +130,9 @@ void LevelFileManager::loadLevel() {
 				CheckComp(IconRenderer)
 				
 				else {
-
-					EditorDebug::ErrorLog("Failed To Find Component: '" + componentName + "'");
+					if (!LocalLevelFileManager::LoadLevel(componentName, componentInfo[1], obj)) {
+						EditorDebug::ErrorLog("Failed To Find Component: '" + componentName + "'");
+					}
 				}
 			}
 		}
