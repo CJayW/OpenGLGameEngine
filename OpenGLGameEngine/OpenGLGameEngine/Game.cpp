@@ -19,6 +19,9 @@
 #include "EditorDebug.h"
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
+//Project Location String
+std::string Game::ProjectLocation = "this here";
+
 int Game::width;
 int Game::height;
 bool Game::Running;
@@ -141,3 +144,5 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 	Camera::UpdateCameraProjection();
 }
+
+//This line needs to be unique so that the programmer assistance app doesn't add an extra new line

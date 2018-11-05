@@ -21,6 +21,9 @@ class Game {
 public:
 	Game();
 	~Game();
+	
+	static std::string ProjectLocation;
+
 	void Init(int width, int height, bool fullscreen, const char* title);
 	void Start();
 
