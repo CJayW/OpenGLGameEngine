@@ -64,7 +64,6 @@ void SpotLight::Start() {
 	spotLights[getFirstEmpty(spotLights)] = this;
 
 	IconRenderer* icon = gameObject->addComponent<IconRenderer>("spot_icon.jpg");
-	icon->inSaveFile = false;
 }
 
 void SpotLight::UpdateLight() {

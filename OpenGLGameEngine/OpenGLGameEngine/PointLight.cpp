@@ -54,7 +54,6 @@ std::string PointLight::ToSaveString() {
 void PointLight::Start() {
 	UpdateLight();
 	IconRenderer* icon = gameObject->addComponent<IconRenderer>("pointLightIcon.jpg");
-	icon->inSaveFile = false;
 }
 
 void PointLight::UpdateLight() {

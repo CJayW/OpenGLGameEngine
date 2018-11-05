@@ -48,7 +48,6 @@ void Camera::Start() {
 	UpdateCameraView();
 	UpdateCameraProjection();
 	IconRenderer* icon =     gameObject->addComponent<IconRenderer>("CameraIcon.jpg");
-	icon->inSaveFile = false;
 }
 
 void Camera::Update(double deltaTime) {

@@ -27,7 +27,7 @@ IconRenderer::IconRenderer(std::string params)
 
 	loadName = params;
 
-	iconLocation = std::string("Resources/Icons/") + loadName;
+	iconLocation = "Editor Resources/Icons/" + loadName;
 }
 
 std::string IconRenderer::ToSaveString() {
@@ -41,6 +41,8 @@ std::string IconRenderer::ToSaveString() {
 
 void IconRenderer::Start()
 {
+	inSaveFile = false;
+
 	Renderer::Start();
 
 	float vertices[] = {
@@ -111,6 +113,7 @@ void IconRenderer::loadIcon() {
 
 	unsigned char *data = stbi_load(iconLocation.c_str(), &width, &height, &nrChannels, 0);
 
+	EditorDebug::Log(iconLocation);
 
 	if (data)
 	{
@@ -170,13 +173,13 @@ void IconRenderer::RenderUIEditor() {
 	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
 
 	if (ImGui::InputText((std::string("Model##") + std::to_string(ID)).c_str(), editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
-		if (ModelLoader::CheckFileExists("Resources/Icons/" + std::string(editorModelLocation))) {
-			iconLocation = "Resources/Icons/" + std::string(editorModelLocation);
+		if (ModelLoader::CheckFileExists("Editor Resources/Icons/" + std::string(editorModelLocation))) {
+			iconLocation = "Editor Resources/Icons/" + std::string(editorModelLocation);
 			loadName = std::string(editorModelLocation);
 			loadIcon();
 		}
 		else {
-			EditorDebug::ErrorLog("Cannot Load Model: Resources/Icons/" + std::string(editorModelLocation));
+			EditorDebug::ErrorLog("Cannot Load Model: Editor Resources/Icons/" + std::string(editorModelLocation));
 		}
 	}
 

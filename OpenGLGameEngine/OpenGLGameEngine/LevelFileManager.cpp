@@ -40,7 +40,7 @@ void LevelFileManager::loadLevel() {
 
 	std::string file;
 
-	std::ifstream ip("Resources/Levels/Level2.txt");
+	std::ifstream ip(Game::ProjectLocation + "/Resources/Levels/Level2.txt");
 	//while there are more lines
 	while (ip.good()) {
 		std::getline(ip, file);
@@ -145,7 +145,7 @@ void LevelFileManager::loadLevel() {
 #define Write() ip.write(file.c_str(), file.size()); file = ""
 #define addLine(newStr) file += newStr; file += "\n";
 bool LevelFileManager::saveLevel() {
-	std::ofstream ip("Resources/Levels/Level2.txt");
+	std::ofstream ip(Game::ProjectLocation + "/Resources/Levels/Level2.txt");
 
 	std::string file = "";
 	

@@ -22,7 +22,7 @@ MeshRenderer::MeshRenderer()
 }
 
 MeshRenderer::MeshRenderer(std::string params) {
-	modelLocation =  "Resources/Models/" + params;
+	modelLocation = Game::ProjectLocation + "/Resources/Models/" + params;
 	loadModelFromFile = true;
 
 	loadName = params;
@@ -141,8 +141,8 @@ void MeshRenderer::RenderUIEditor() {
 	unsigned int flags = ImGuiInputTextFlags_EnterReturnsTrue;
 	
 	if (ImGui::InputText((std::string("Model##") + std::to_string(ID)).c_str(), editorModelLocation, IM_ARRAYSIZE(editorModelLocation), flags)) {
-		if (ModelLoader::CheckFileExists("Resources/Models/" + std::string(editorModelLocation))) {
-			modelLocation = "Resources/Models/" + std::string(editorModelLocation);
+		if (ModelLoader::CheckFileExists(Game::ProjectLocation + "/Resources/Models/" + std::string(editorModelLocation))) {
+			modelLocation = Game::ProjectLocation + "/Resources/Models/" + std::string(editorModelLocation);
 			loadModel();
 			loadName = std::string(editorModelLocation);
 		} else {
