@@ -20,7 +20,7 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 //Project Location String
-std::string Game::ProjectLocation = "this here";
+std::string Game::ProjectLocation = "F:/OpenGLGameEngine/Proj";
 
 int Game::width;
 int Game::height;
