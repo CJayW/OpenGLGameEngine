@@ -159,7 +159,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <!--H-->
-    <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h" />
+    <ClInclude Include="F:/OpenGLGameEngine/Proj/*.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMovement.h" />
     <ClInclude Include="Component.h" />
@@ -195,7 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <!--CPP-->
-    <ClCompile Include="F:\OpenGLGameEngine\Proj\*.cpp" />
+    <ClCompile Include="F:/OpenGLGameEngine/Proj/*.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
     <ClCompile Include="Component.cpp" />
