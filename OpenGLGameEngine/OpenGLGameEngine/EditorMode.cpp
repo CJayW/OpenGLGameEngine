@@ -25,6 +25,7 @@
 
 #include "LevelFileManager.h"
 
+//Include Project Location
 #include "F:/OpenGLGameEngine/Proj/LocalEditorMode.h"
 
 EditorMode::EditorMode()
@@ -208,3 +209,5 @@ void EditorMode::OpenAddComponent(GameObject * obj) {
 	addingComponent = true;
 	addComponentObject = obj;
 }
+
+//End Of File

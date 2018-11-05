@@ -22,7 +22,8 @@
 
 #include "Shader.h"
 
-#include "F:/OpenGLGameEngine/proj/LocalLevelFileManager.h"
+//Include Project Location
+#include "F:/OpenGLGameEngine/Proj/LocalLevelFileManager.h"
 
 LevelFileManager::LevelFileManager() {
 }
@@ -256,3 +257,5 @@ glm::vec3 LevelFileManager::stringToVec3(std::string str) {
 
 	return vec;
 }
+
+//End Of File
