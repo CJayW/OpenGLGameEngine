@@ -26,7 +26,7 @@ void EditorDebug::Render() {
 
 	ImGui::Begin("Debug Log",(bool *)0, ImGuiWindowFlags_NoScrollbar);
 	{
-		for (int i = 0; i < LogMessages.size(); i++) {
+		for (unsigned int i = 0; i < LogMessages.size(); i++) {
 			if (ImGui::Button((names[i] + std::string(" ") + std::to_string(LogMessages[i].size())).c_str())) {
 				currentDisplayLog = i;
 			}

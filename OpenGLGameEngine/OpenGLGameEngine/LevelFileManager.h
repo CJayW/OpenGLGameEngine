@@ -10,9 +10,14 @@ public:
 	LevelFileManager();
 	~LevelFileManager();
 
+
+	static bool checkLevelName(std::string name);
+
 	static void loadLevel(std::string fileName);
 
 	static bool saveLevel(std::string fileName);
+
+	static void clearLevel();
 
 	static std::string levelName;
 

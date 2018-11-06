@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "GameObjectManager.h"
 
+//Components
 #include "Rigidbody.h"
 #include "MeshRenderer.h"
 #include "IconRenderer.h"
@@ -18,15 +19,18 @@
 
 #include "Time.h"
 #include "Input.h"
-
 #include "EditorDebug.h"
-
 #include "Shader.h"
 
 #include "LevelFileManager.h"
 
+#include <fstream>
+
+
 //Include Project Location
-#include "F:/OpenGLGameEngine/Proj/LocalEditorMode.h"
+#include "E:/OpenGLGameEngine/Proj/LocalEditorMode.h"
+//^ Needed for the programming assistant
+
 
 EditorMode::EditorMode()
 {
@@ -52,6 +56,9 @@ GameObject* EditorMode::addComponentObject;
 
 glm::vec3 EditorMode::clearColor;
 
+char EditorMode::saveFileNameBuff[32];
+std::string EditorMode::nameErrorMessages;
+std::string EditorMode::saveFileNameString;
 
 void EditorMode::Init() {
 	ImGui::CreateContext();
@@ -125,28 +132,6 @@ void EditorMode::Render() {
 				LocalEditorMode::AddComponent();
 			}
 
-
-			/*
-			if (ImGui::Button("RigidBody")) {
-				addComponentObject->addComponent<Rigidbody>();
-			} else if (ImGui::Button("Camera")) {
-				addComponentObject->addComponent<Camera>();
-			} else if (ImGui::Button("Mesh Renderer")) {
-				addComponentObject->addComponent<MeshRenderer>();
-			} else if (ImGui::Button("Icon Renderer")) {
-				addComponentObject->addComponent<IconRenderer>();
-			} else if (ImGui::Button("Directional Light")) {
-				addComponentObject->addComponent<DirectionalLight>();
-			} else if (ImGui::Button("Point Light")) {
-				addComponentObject->addComponent<PointLight>();
-			} else if (ImGui::Button("Spot Light")) {
-				addComponentObject->addComponent<SpotLight>();
-			} else if (ImGui::Button("Camera Movement")) {
-				addComponentObject->addComponent<CameraMovement>();
-			} else if (ImGui::Button("Test Movement")) {
-				addComponentObject->addComponent<TestMove>();
-			} else */
-
 			ImGui::End();
 		}
 	}
@@ -173,16 +158,37 @@ void EditorMode::Render() {
 
 		ImGui::End();
 	}
-
 	{
-		ImGui::Begin("Save");
+		ImGui::Begin("Level Manager");
 
-		if (ImGui::Button("Save")) {
-			LevelFileManager::saveLevel("level 3");
+		if (ImGui::InputText("LevelName", saveFileNameBuff, 32)) {
+			saveFileNameString = std::string(saveFileNameBuff);
+
+			if (LevelFileManager::checkLevelName(saveFileNameString)) {
+				nameErrorMessages = "Level File Found";
+			} else {
+				nameErrorMessages = "No Level File";
+			}
 		}
 
-		ImGui::End();
+		if (ImGui::Button("Save")) {			
+			if (saveFileNameString != "") {
+				LevelFileManager::saveLevel(saveFileNameString);
+			}
+		}
 
+		ImGui::SameLine();
+
+		if (ImGui::Button("Load")) {
+			if (LevelFileManager::checkLevelName(saveFileNameString)) {
+				LevelFileManager::loadLevel(saveFileNameString);
+
+			}
+		}
+		
+		ImGui::Text(nameErrorMessages.c_str());
+
+		ImGui::End();
 	}
 
 	EditorDebug::Render();
@@ -197,6 +203,11 @@ void EditorMode::ChangeEditorMode(bool active)
 		Input::SetCursorState(!cursorShouldBeHidden);
 		Time::timeScale = playingTimeScale;
 		paused = false;
+
+		if (Renderer::CurrentShaderProgram) {
+			Renderer::CurrentShaderProgram->setMat4("view", Camera::viewMatrix);
+		}
+
 	} else {
 		cursorShouldBeHidden = Input::cursorHidden;
 		Input::SetCursorState(true);

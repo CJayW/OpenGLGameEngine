@@ -31,4 +31,8 @@ public:
 private:
 	static bool cursorShouldBeHidden;
 	static float playingTimeScale;
+
+	static char saveFileNameBuff[32];
+	static std::string nameErrorMessages;
+	static std::string saveFileNameString;
 };

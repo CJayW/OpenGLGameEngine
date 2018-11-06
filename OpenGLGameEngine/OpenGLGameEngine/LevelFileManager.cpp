@@ -23,7 +23,7 @@
 #include "Shader.h"
 
 //Include Project Location
-#include "F:/OpenGLGameEngine/Proj/LocalLevelFileManager.h"
+#include "E:/OpenGLGameEngine/Proj/LocalLevelFileManager.h"
 
 LevelFileManager::LevelFileManager() {
 }
@@ -38,7 +38,16 @@ else if (componentName == className::name) {\
 
 std::string LevelFileManager::levelName;
 
+bool LevelFileManager::checkLevelName(std::string name)
+{
+	std::ifstream ip(Game::ProjectLocation + "/Resources/Levels/" + name);
+	bool open = ip.is_open();
+	ip.close();
+	return open;
+}
+
 void LevelFileManager::loadLevel(std::string loadFrom) {
+	clearLevel();
 
 	levelName = loadFrom;
 
@@ -145,7 +154,6 @@ void LevelFileManager::loadLevel(std::string loadFrom) {
 	ip.close();
 }
 
-
 #define Write() ip.write(file.c_str(), file.size()); file = ""
 #define addLine(newStr) file += newStr; file += "\n";
 bool LevelFileManager::saveLevel(std::string fileName) {
@@ -172,6 +180,13 @@ bool LevelFileManager::saveLevel(std::string fileName) {
 	return true;
 }
 
+void LevelFileManager::clearLevel() {
+	//																  4294967295 = -1
+	for (unsigned int i = Game::GameObjects.size() - 1; i >= 0 && i < 10000000; i--) {
+		GameObjectManager::DestroyObject(Game::GameObjects[i]);
+	}
+}
+
 std::string LevelFileManager::objToString(GameObject * obj, unsigned int childLevel) {
 	std::string str;
 
@@ -186,10 +201,9 @@ std::string LevelFileManager::objToString(GameObject * obj, unsigned int childLe
 	str += vec3ToSaveString(rot);
 	str += ":Scale(";
 	str += vec3ToSaveString(obj->transform->scale);
-
 #pragma endregion Transform
 
-	for (int i = 1; i < obj->components.size(); i++) {
+	for (unsigned int i = 1; i < obj->components.size(); i++) {
 		if (!obj->components[i]->inSaveFile) continue;
 
 		str += ":";
@@ -200,7 +214,7 @@ std::string LevelFileManager::objToString(GameObject * obj, unsigned int childLe
 	for (auto child : obj->children) {
 		str += '\n';
 		EditorDebug::Log((int)childLevel);
-		for (int i = 0; i < childLevel + 1; i++) {
+		for (unsigned int i = 0; i < childLevel + 1; i++) {
 			str += "-";
 		}
 		str += objToString(child, childLevel +1);
@@ -212,7 +226,7 @@ std::string LevelFileManager::objToString(GameObject * obj, unsigned int childLe
 std::string LevelFileManager::removeFirstChar(std::string string) {
 	std::string str = "";
 	
-	for (int i = 0; i < string.size() - 1; i++) {
+	for (unsigned int i = 0; i < string.size() - 1; i++) {
 		str += string[i + 1];
 	}
 	

@@ -121,14 +121,11 @@ void MeshRenderer::Render() {
 		}
 	}
 
+	shaderProgram->setMat4("view", Camera::viewMatrix);
 
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(transform->GetModelMat()));
-	
-
 
 	glBindVertexArray(VAO);
-	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 
 	glDrawElements(GL_TRIANGLES, triangleCount, GL_UNSIGNED_INT, 0);
 }
