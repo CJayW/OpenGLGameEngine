@@ -15,7 +15,7 @@
 
     <main>
         <h1>
-            OpenGL Game Enginge
+            OpenGL Game Engine 
         </h1>
         
 <!--
@@ -34,7 +34,7 @@
             <li>And a Project folder with the correct project files</li>
         </ul>
         <p>
-            the !Docs folder is in the openGL Engine project. This means that if you want to move where the engine is, you simply need to move the containing file of this folder. 
+            The !Docs folder is in the openGL Engine project. This means that if you want to move where the engine is, you simply need to move the containing file of this folder. 
             The folder will also contain the .SLN file.
         </p>
         <p>
@@ -44,7 +44,7 @@
         <p>
             The first thing to do is to move the project file into a suitable location.             
             <br/>
-            At the moment, changing this location of the editor is not supported, I would therefore recomend picking a location that will never change.
+            At the moment, changing this location of the editor is not supported, I would therefore recommend picking a location that will never change.
         </p>
 
         <p>
@@ -54,14 +54,14 @@
         </p>
 
         <p>
-            Once you have picked the two locations, its time to start the linking with the Programming Assistant.
+            Once you have picked the two locations, it's time to start the linking with the Programming Assistant.
         </p>
 
         <!--Basic Rules System to follow  --------------------> 
         <h3>Basic Rules System to follow</h3>
 
         <p>
-            All 3D models should be .ply files, exported with vertext positions, normalData, and vertext colour.
+            All 3D models should be .ply files, exported with vertex positions, normalData, and vertex colour.
             <br/>
             Here is an example of the correct data: 1.000000 -1.000000 -1.000000 -0.000000 -0.000000 -1.000000 255 0 158
             <br/>
@@ -79,7 +79,7 @@
         </p>
 
         <p>
-            Icons are main used for the editor. they are therefore saved in the icons folder in the Editor Folder.
+            Icons are main used for the editor. They are therefore saved in the icons folder in the Editor Folder.
         </p>
 
         <h3> Extra Info </h3>
@@ -110,24 +110,24 @@
         <p>
             The Programming assistant executable can be found in the editor containing folder.  It's called "Game Engine Programmer Assistant.exe"
             <br/>
-            The executable has no dependencies and can therefore be moved or coppied anywhere.
+            The executable has no dependencies and can therefore be moved or copied anywhere.
         </p>
 
         <!--Linking ---------------------------------->
         <h3>Linking</h3>
 
         <p>
-            When you open the programming assistant, The first thing that will happen is that you will be prompted to sellect the Project and Editor location.
+            When you open the programming assistant, The first thing that will happen is that you will be prompted to select the Project and Editor location.
         </p>
 
         <p>
-            For the editor location, I would reccomend that you go to the .sln file for the editor in file explorer, then open the folder called "OpenGLGameEngine", then coppy the link from the address bar and paste it into the editor location input. 
+            For the editor location, I would recommend that you go to the .sln file for the editor in file explorer, then open the folder called "OpenGLGameEngine", then copy the link from the address bar and paste it into the editor location input. 
             <br/>
-            switching between "/" and "\" will be automatically sorted by the program.
+            Switching between"/" and "\" will be automatically sorted by the program.
         </p>
 
         <p>
-            For the project, You should open the project folder, and coppy and paste the address into the project location input.
+            For the project, You should open the project folder, and copy and paste the address into the project location input.
             <br/>
             The Project folder should contain a file called "Include.h" along as some other file.
         </p>
@@ -143,15 +143,15 @@
         </p>
 
         <p>
-            To tell the editor where the project is, you need to press "Update Project Location".  I recomend that you backup any changes before pressing "Update". 
+            To tell the editor where the project is, you need to press "Update Project Location".  I recommend that you backup any changes before pressing "Update". 
         </p>
         <p>
             Pressing continue will make several changes to the editor and its files. Including the ".vcxproj".
         </p>
         <p>
-            Unfortunatly, Updating the editor location is not currently supported, meaning that you will need manually do this.
+            Unfortunately, Updating the editor location is not currently supported, meaning that you will need manually do this.
             <br/>
-            You will need to go through all of the following files, from the project folder, and repalce "Editor Location" with the location that you used for the Editor Location Input.
+            You will need to go through all of the following files, from the project folder, and replace "Editor Location" with the location that you used for the Editor Location Input.
         </p>
         <ul>
             <li>Include.h</li>
@@ -187,8 +187,8 @@
         </p>
 
         <p>
-            After adding a class, its likley that you will need to refresh you visual studios project. I would strongly reccomend that you do not click add an existing file, 
-            This is largley untested and could cause severer issues in the future with the editor.
+            After adding a class, it's likely that you will need to refresh you visual studios project. I would strongly recommend that you do not click add an existing file, 
+            This is largely untested and could cause severe issues in the future with the editor.
         </p>
 
         <!--Find All classes  --------------------> 
@@ -200,7 +200,7 @@
         </p>
 
         <p>
-            this check is currently only partially implamented, meaning that it can easilly return incorrect results.  Ive never had any issues with it, but I would note that it find classes based off whether the following are not included in the file name: 
+            This check is currently only partially implemented, meaning that it can easily return incorrect results.  I've never had any issues with it, but I would note that it find classes based off whether the following are not included in the file name: 
         </p>
         
         <ul>
@@ -222,7 +222,7 @@
         <ul>
             <li>Pause the game</li>
             <li>Enter a free Look mode</li>
-            <li>Move objects arround the scene</li>
+            <li>Move objects around the scene</li>
             <li>add and remove Objects</li>
             <li>add and remove Components</li>
             <li>Edit Component variables</li>
@@ -232,7 +232,7 @@
             <li>save changes for any part of the level</li>
         </ul>
         <p>
-            Some of the above functions are not yet complete, and still require either minor tweeks or large changes.
+            Some of the above functions are not yet complete, and still require either minor tweaks or large changes.
         </p>
         
         <!--Game Object Management  --------------------> 
@@ -263,7 +263,7 @@
         <h3>Component Management</h3>
 
         <p>
-            Managaning components is ver important in game engines. Having the ability to do this will allow a developer to quickly test games and see what they can do.
+            Managing components is very important in game engines. Having the ability to do this will allow a developer to quickly test games and see what they can do.
         </p>
 
         <p>
@@ -276,7 +276,7 @@
         </p>
 
         <p>
-            To remove a component, simply click on the "X" next to its name in the detaild GameObject view.
+            To remove a component, simply click on the "X" next to its name in the detailed GameObject view.
         </p>
 
         <!--Programmer Guide  --------------------> 
@@ -307,7 +307,7 @@
             T: the type that is used - This is a template function
         </p>
         <p>
-            all paramiters are the same as EditorDebug::Log
+            all parameters are the same as EditorDebug::Log
         </p>
 
 
@@ -319,7 +319,7 @@
             T: the type that is used - This is a template function
         </p>
         <p>
-            all paramiters are the same as EditorDebug::Log
+            all parameters are the same as EditorDebug::Log
             <br/>
             This would be used for logs that will never be removed
         </p>
