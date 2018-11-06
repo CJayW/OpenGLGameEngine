@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Documentatin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+</head>
+<body>
+    <aside>
+        <ul id="sideUL">
+        </ul>
+    </aside>
+
+    <main>
+        <h1>
+            OpenGL Game Enginge
+        </h1>
+        
+<!--
+    Export PLY / Format it needs to be in
+-->
+        <!--Starting A Project  --------------------> 
+
+        <h2>project Setup</h2>
+        <h3> Start A new Project</h3>
+
+        <p>
+            There are two folders that are required to make a new project
+        </p>
+        <ul>
+            <li>The OpenGL Game Engine</li>
+            <li>And a Project folder with the correct project files</li>
+        </ul>
+        <p>
+            the !Docs folder is in the openGL Engine project. This means that if you want to move where the engine is, you simply need to move the containing file of this folder. 
+            The folder will also contain the .SLN file.
+        </p>
+        <p>
+            A template Project file can also be found in the containing file of the !Docs file.
+        </p>
+
+        <p>
+            The first thing to do is to move the project file into a suitable location.             
+            <br/>
+            At the moment, changing this location of the editor is not supported, I would therefore recomend picking a location that will never change.
+        </p>
+
+        <p>
+            The next thing to do is to pick a location for the project.
+            <br/>
+            You can freely change this location.
+        </p>
+
+        <p>
+            Once you have picked the two locations, its time to start the linking with the Programming Assistant.
+        </p>
+
+        <!--Basic Rules System to follow  --------------------> 
+        <h3>Basic Rules System to follow</h3>
+
+        <p>
+            All 3D models should be .ply files, exported with vertext positions, normalData, and vertext colour.
+            <br/>
+            Here is an example of the correct data: 1.000000 -1.000000 -1.000000 -0.000000 -0.000000 -1.000000 255 0 158
+            <br/>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp X &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Y  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Z &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp NormalX &nbsp NormalY NormalZ R &nbsp&nbsp G &nbsp&nbsp B
+        </p>
+
+        <p>
+            All 3D models should be saved in the "/Resources/Models" folder from the project file
+            <br/>
+            they can then be used in the editor with only their name
+        </p>
+
+        <p>
+            All Levels should be saved in the "/Resources/Levels" folder from the project file
+        </p>
+
+        <p>
+            Icons are main used for the editor. they are therefore saved in the icons folder in the Editor Folder.
+        </p>
+
+        <h3> Extra Info </h3>
+
+        <p>
+            You can pick where the level is loaded from in the Game.cpp script. Where LevelFileManager::loadLevel() is called
+            <br/>
+            If the file does not exist, an empty level will be created.
+        </p>
+
+        <p>
+            You can pick where the level is saved to in the EditorMode.cpp script. Where LevelFileManager::saveLevel() is called
+            <br/>
+            If the file already exists, it will be written over without warning - make sure to check before saving
+        </p>
+
+        <p>
+            Adding some components can cause strange issues. Saving the level then loading it usually fixes these.
+            <br/>
+            If it does not, You should be able to check the level file and find the issue.
+        </p>
+        
+
+        <!--Programmer Assistant  --------------------> 
+        <h2>Programmer Assistant</h2>
+        <h3>Setup</h3>
+
+        <p>
+            The Programming assistant executable can be found in the editor containing folder.  It's called "Game Engine Programmer Assistant.exe"
+            <br/>
+            The executable has no dependencies and can therefore be moved or coppied anywhere.
+        </p>
+
+        <!--Linking ---------------------------------->
+        <h3>Linking</h3>
+
+        <p>
+            When you open the programming assistant, The first thing that will happen is that you will be prompted to sellect the Project and Editor location.
+        </p>
+
+        <p>
+            For the editor location, I would reccomend that you go to the .sln file for the editor in file explorer, then open the folder called "OpenGLGameEngine", then coppy the link from the address bar and paste it into the editor location input. 
+            <br/>
+            switching between "/" and "\" will be automatically sorted by the program.
+        </p>
+
+        <p>
+            For the project, You should open the project folder, and coppy and paste the address into the project location input.
+            <br/>
+            The Project folder should contain a file called "Include.h" along as some other file.
+        </p>
+
+        <p>
+            When you press save, your inputs will be checked to make sure that they are correct before continuing. Any errors will be displayed.
+        </p>
+
+        <p>
+            If there are no issues, the program will continue onto the main menu.
+            <br/>
+            At this point, the programming assistant knows the exact location of the editor and the project. This does not mean that they know the same thing!
+        </p>
+
+        <p>
+            To tell the editor where the project is, you need to press "Update Project Location".  I recomend that you backup any changes before pressing "Update". 
+        </p>
+        <p>
+            Pressing continue will make several changes to the editor and its files. Including the ".vcxproj".
+        </p>
+        <p>
+            Unfortunatly, Updating the editor location is not currently supported, meaning that you will need manually do this.
+            <br/>
+            You will need to go through all of the following files, from the project folder, and repalce "Editor Location" with the location that you used for the Editor Location Input.
+        </p>
+        <ul>
+            <li>Include.h</li>
+            <li>LocalEditorMode.cpp</li>
+            <li>LocalLevelFileManager.cpp</li>
+            <li>LocalLevelFileManager.h</li>
+        </ul>
+
+        <p>
+            Note you can only use forward slashes for this, not backwards one.
+        </p>
+
+        <p>
+            You will now be able to open the editor .sln file with Visual Studios, and Start making a game.
+        </p>
+
+        <!--Creating Classes  --------------------> 
+        <h3>Creating Components</h3>
+
+        <p>
+            If the project has been linked correctly, creating a new class should be fairly simple.  All you need to do is click "Add Component", and type in a className and DisplayName.
+        </p>
+        <p>
+            The className Must:
+        </p>
+        <ul>
+            <li>Not be left empty</li>
+            <li>Only Contain Alphabetical letters, Uppercase or Lower</li>
+            <li>Not be already in use</li>
+        </ul>
+        <p>
+            The Programming assistant will display an error message if any of the above are true. 
+        </p>
+
+        <p>
+            After adding a class, its likley that you will need to refresh you visual studios project. I would strongly reccomend that you do not click add an existing file, 
+            This is largley untested and could cause severer issues in the future with the editor.
+        </p>
+
+        <!--Find All classes  --------------------> 
+
+        <h4>Find All classes </h4>
+        
+        <p>
+            You can get a list of all classes that are in the project by click the "Find All Classes", then "Update".
+        </p>
+
+        <p>
+            this check is currently only partially implamented, meaning that it can easilly return incorrect results.  Ive never had any issues with it, but I would note that it find classes based off whether the following are not included in the file name: 
+        </p>
+        
+        <ul>
+            <li>.cpp</li>
+            <li>Include</li>
+            <li>LocalEditorMode</li>
+            <li>LocalLevelFileManager</li>
+        </ul>
+        <p>
+            If none of the above are true, the fileName is longer than 3, and ".h" are the last two chars from the name, .h is removed and the fileName is displayed. 
+        </p>
+
+        <!--Game Editor  --------------------> 
+        <h2>Game Editor</h2>
+        <p>
+            The Game Editor is arguably the most powerful part of this whole setup. It allows you to:
+        </p>
+
+        <ul>
+            <li>Pause the game</li>
+            <li>Enter a free Look mode</li>
+            <li>Move objects arround the scene</li>
+            <li>add and remove Objects</li>
+            <li>add and remove Components</li>
+            <li>Edit Component variables</li>
+            <li>manipulate the time scale</li>
+            <li>View a debug log</li>
+            <li>Change lighting</li>
+            <li>save changes for any part of the level</li>
+        </ul>
+        <p>
+            Some of the above functions are not yet complete, and still require either minor tweeks or large changes.
+        </p>
+        
+        <!--Game Object Management  --------------------> 
+        <h3>Game Object Management</h3>
+        <p>
+            Managing Game Objects in the editor still requires some work. But most of the functionality is now there. The main part being that you Create and Destroy GameObjects, these can optionally be children of other objects. 
+        </p>
+
+        <p>
+            To make a base Object, all you need to do is click the New GameObject button at the top of the hierarchy.
+            <br/>
+            This will create an empty GameObject call "New Object 1".
+        </p>
+
+        <p>
+            To remove GameObjects you can simply click the "X" next to its name.
+            <br/>
+            This will remove the GameObject and all of its children.
+        </p>
+
+        <p>
+            To add a child GameObject, You simply click the "+" button next to the GameObject that you want to be the parent.
+            <br/>
+            This will make a GameObject with a parent.
+        </p>
+        
+        <!--Component Management  --------------------> 
+        <h3>Component Management</h3>
+
+        <p>
+            Managaning components is ver important in game engines. Having the ability to do this will allow a developer to quickly test games and see what they can do.
+        </p>
+
+        <p>
+            To add a Component, you first need to open the GameObject detailed view, this is done by clicking on its name in the hierarchy.
+        </p>
+        <p>
+            You can then scroll down and click add Component.
+            <br/>
+            This will open a AddComponent menu. You can then click on the component name, and it will be added to the GameObejct.
+        </p>
+
+        <p>
+            To remove a component, simply click on the "X" next to its name in the detaild GameObject view.
+        </p>
+
+        <!--Programmer Guide  --------------------> 
+        <h2>Programmer Guide</h2>
+
+        <h2>EditorDebug</h2>
+        <h4>Log</h4>
+        <code>
+            static void Log(std::string message, int Level = LogLevelLog);
+        </code>
+        <p>
+            Message: the message that can be displayed
+            <br/>
+            can also be used with; int, float, double, glm::vec3, glm::quat
+        </p>
+        <p>
+            Level: the level of severity, on a scale from 0 to 2, that the message is displayed as.
+            <br/>
+            other options include: LogLevelLog 0, LogLevelWarning 1, LogLevelError 2
+        </p>
+
+
+        <h4>Error Log</h4>
+        <code>
+            static void ErrorLog(T message, int Level = LogLevelLog);
+        </code>
+        <p>
+            T: the type that is used - This is a template function
+        </p>
+        <p>
+            all paramiters are the same as EditorDebug::Log
+        </p>
+
+
+        <h4>Perm Log</h4>
+        <code>
+            static void PermLog(T message, int Level = LogLevelLog);
+        </code>
+        <p>
+            T: the type that is used - This is a template function
+        </p>
+        <p>
+            all paramiters are the same as EditorDebug::Log
+            <br/>
+            This would be used for logs that will never be removed
+        </p>
+
+        <h2>Time</h2>
+        <h4>Delta Time</h4>
+        <code>
+            static float deltaTime;
+        </code>
+        <p>
+            the time that it took for the last frame.
+        </p>
+
+
+        <h4>Time Scale</h4>
+        <code>
+            static float timeScale;
+        </code>
+        <p>
+            The value that deltaTime is multiplied by before being set.
+        </p>
+
+        <h2>GameObjectManager</h2>
+        <h4>Instantiate</h4>
+        <code>
+            static GameObject* Instantiate()
+        </code>
+        <p>
+            Creates a new GameObject with no parent
+        </p>
+        <p>
+            returns the new GameObject
+        </p>
+
+
+        <h4>Instantiate with Parent</h4>
+        <code>
+            static GameObject* Instantiate(GameObject* parent)
+        </code>
+        <p>
+            parent: the parent that the GameObject will have after being created
+        </p>
+        <p>
+            Creates a new GameObject with the specified parent
+        </p>
+        <p>
+            returns the new GameObject
+        </p>
+
+
+        <h4>Get Object By Name</h4>
+        <code>
+            static GameObject* GetObjectByName(std::string name)
+        </code>
+        <p>
+            name: the name to search for
+        </p>
+        <p>
+            returns the first GameObject with the correct name
+        </p>
+
+
+        <h4>Destroy Object</h4>
+        <code>
+            static void DestroyObject(GameObject* obj);
+        </code>
+        <p>
+            obj: The Object to get Destroyed
+        </p>
+        <p>
+            Destroys Obj and its children
+        </p>
+
+        <h2>GameObject</h2>
+        <h4>Add Component</h4>
+        <code>
+            componentType* addComponent&LTComponentType&GT(ArgsT&&... Args)
+        </code>
+        <p>
+            Args: the arguments that are passed onto the component, ArgsT&& means that they are picked when the function is called, so check the constructor of the component below
+        </p>
+        <p>
+            ComponentType: a template argument for the type of component to spawn. Check the components below.
+        </p>
+        <p>
+            returns the new component
+        </p>
+
+
+        <h4>Get Component by type</h4>
+        <code> 
+            componentType* getComponent&LTComponentType&GT()
+        </code>
+        <p>
+            ComponentType: a template argument for the type of you want to get. Check the components below.
+        </p>
+        <p>
+            returns the component found, or nullptr if there are none
+        </p>
+
+
+        <h4>Remove Component By Type</h4>
+        <code>
+            void removeComponent&LTComponentType&GT()
+        </code>
+        <p>
+            ComponentType: a template argument for the type of remove. Check the components below.
+        </p>
+        <p>
+            removes the first component of the componentType type
+        </p>
+
+
+        <h4>Remove Component By Referance</h4>
+        <code>
+            void removeComponentByReferance(Component* comp)
+        </code>
+        <p>
+            comp: the component that will be removed
+        </p>
+        <p>
+            should be used in cases where you have the specific component saved.
+        </p>
+
+
+
+
+        <h2 style="margin-bottom: 0; margin-top: 60px">
+            Components:
+        </h2>
+        <div id="Elements"> </div>
+    </main>
+</body>
+<script src="main.js"></script>
+
+</html>

@@ -1,0 +1,61 @@
+body{
+
+    display: grid;
+    grid-template-columns: 200px auto;
+    margin: 0;
+}
+
+aside{
+    background-color: rgb(241, 241, 241);
+}
+
+#sideUL {
+    position: fixed;
+
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#sideUL li{
+    padding: 10px;
+    margin: 10px;
+
+    background-color: rgb(216, 216, 216);
+    list-style-type: none;
+}
+
+#sideUL li a{
+    font-size: 1em;
+
+    color: black;
+    text-decoration: none;
+}
+
+#sideUL li a:hover{
+    text-decoration: underline;
+}
+
+main{
+    padding-left: 30px;
+    padding-right: 100px;
+}
+
+code{
+    padding: 5px;
+    background-color: lightgray;
+}
+
+#Elements h4{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+#Elements p{
+    margin: 5px;
+    margin-left: 0;
+}
+
+#Elements .Element{
+    padding: 10px;
+    padding-bottom: 30px;
+}

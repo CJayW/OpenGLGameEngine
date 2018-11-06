@@ -1,0 +1,23 @@
+#Ambient:0.1~ 0.1~ 0.1
+#ClearColour:0.1~ 0.1~ 0.1
+
+Dir Light:Translate(0~ 0~ 0:Rotate(0~ 30~ -60:Scale(1~ 1~ 1:DirectionalLight(0.8~ 0.8~ 0.8
+
+Player:Translate(-5~ 0~ 0 :Rotate(0~ 0~ 0:Scale(1~ 1~ 1:Camera(60:CameraMovement(5,0.1
+
+Point Light 1:Translate(0.7~  0.2~  1.7 :Rotate(0~ 0~ 0 :Scale(0.5~ 0.5~ 0.5 :PointLight(0.8~ 0.8~ 0.8, 1.0, 0.09, 0.032
+Point Light 2:Translate(2.3~  -3.3~ -4  :Rotate(0~ 0~ 0 :Scale(0.5~ 0.5~ 0.5 :PointLight(0.8~ 0.8~ 0.8, 1.0, 0.09, 0.032
+Point Light 3:Translate(-4~   2~    -12 :Rotate(0~ 0~ 0 :Scale(0.5~ 0.5~ 0.5  :PointLight(0.8~ 0.8~ 0.8, 1.0, 0.09, 0.032
+Point Light 4:Translate(0~    0~    -3  :Rotate(0~ 0~ 0 :Scale(0.5~ 0.5~ 0.5   :PointLight(0.8~ 0.8~ 0.8, 1.0, 0.09, 0.032
+Point Light 4:Translate(0~    0~    -3  :Rotate(0~ 0~ 0 :Scale(0.5~ 0.5~ 0.5  :PointLight(0.8~ 0.8~ 0.8, 1.0, 0.09, 0.032
+
+Spot Light:Translate(0~ 0~ -3:Rotate(0~ 0~ 0:Scale(0.5~ 0.5~ 0.5:SpotLight(0.8~ 0.8~ 0.8, 1.0, 0.19, 0.132, 15.02, 1
+
+//Spot Light:Translate(0~ 3~ -10:Rotate(0~ -110~ 90:Scale(1,1,1:SpotLight(
+
+Flip test:Translate(0~ 0~ 0:Rotate(0~ 0~ 0:Scale(1~ 1~ 1 :MeshRenderer(FlipTest.ply
+
+House:Translate(0~ 0~ 3:Rotate(0~ 0~ 0:Scale(1~ 1~ 1:MeshRenderer(house.ply
+
+Physics Tree:Translate(0~ 100~ -5:Rotate(0~ 0~ 0:Scale(1~ 1~ 1:MeshRenderer(TreeTest.ply:Rigidbody(0.0~ -15.0~ 0.0, 1, 0.5
+Tree:Translate(0~ 0~ -100:Rotate(0~ 0~ 0:Scale(1~ 1~ 1:MeshRenderer(TreeTest.ply
