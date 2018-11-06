@@ -113,8 +113,6 @@ void IconRenderer::loadIcon() {
 
 	unsigned char *data = stbi_load(iconLocation.c_str(), &width, &height, &nrChannels, 0);
 
-	EditorDebug::Log(iconLocation);
-
 	if (data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -183,5 +181,5 @@ void IconRenderer::RenderUIEditor() {
 		}
 	}
 
-	ImGui::Text((std::string(" loaded From:  ") + iconLocation).c_str());
+	ImGui::Text((std::string(" loaded From:  ") + loadName).c_str());
 }

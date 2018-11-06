@@ -48,7 +48,9 @@ void MeshRenderer::Start() {
 	}
 	if (CurrentShaderProgram != shaderProgram) {
 		shaderProgram->use();
-		shaderProgram->setMat4("view", Camera::viewMatrix);
+		if (Game::camera != nullptr) {
+			shaderProgram->setMat4("view", Camera::viewMatrix);
+		}
 		UpdateCameraProjection();
 	}
 
@@ -113,8 +115,10 @@ void MeshRenderer::Render() {
 
 	if (CurrentShaderProgram != shaderProgram) {
 		shaderProgram->use();
-		shaderProgram->setMat4("view", Camera::viewMatrix);
-		UpdateCameraProjection();
+		if (Game::camera != nullptr) {
+			shaderProgram->setMat4("view", Camera::viewMatrix);
+			UpdateCameraProjection();
+		}
 	}
 
 
@@ -150,5 +154,5 @@ void MeshRenderer::RenderUIEditor() {
 		}
 	}
 
-	ImGui::Text((std::string("Loaded From: ") + modelLocation).c_str());
+	ImGui::Text((std::string("Loaded From: ") + loadName).c_str());
 }

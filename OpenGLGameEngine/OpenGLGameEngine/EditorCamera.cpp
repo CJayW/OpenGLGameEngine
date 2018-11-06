@@ -19,10 +19,14 @@ void EditorCamera::UpdateCameraView() {
 	glm::vec3 cameraFront = Rot * glm::vec3(1, 0, 0);
 
 	glm::vec3 cameraUp = Rot * glm::vec3(0, 1, 0);
+	float ratio = ((float)Game::width / (float)Game::height);
+
+	Camera::projection = glm::perspective(glm::radians(60.0f), ratio, 0.1f, 100.0f);
 
 	Camera::viewMatrix = glm::lookAt(Pos, Pos + cameraFront, cameraUp);
-	
-	Renderer::CurrentShaderProgram->setMat4("view", Camera::viewMatrix);
+
+	if(Renderer::CurrentShaderProgram != nullptr)
+		Renderer::CurrentShaderProgram->setMat4("view", Camera::viewMatrix);
 }
 
 void EditorCamera::Update() {

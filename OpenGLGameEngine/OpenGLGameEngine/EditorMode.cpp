@@ -39,8 +39,8 @@ EditorMode::~EditorMode()
 	editorCamera = NULL;
 }
 
-bool EditorMode::EditorModeActive = false;
-bool EditorMode::paused = false;
+bool EditorMode::EditorModeActive = true;
+bool EditorMode::paused = true;
 
 EditorCamera* EditorMode::editorCamera;
 
@@ -60,6 +60,9 @@ void EditorMode::Init() {
 	ImGui::StyleColorsDark();
 
 	editorCamera = new EditorCamera();
+
+	cursorShouldBeHidden = true;
+	playingTimeScale = 1;
 }
 
 void EditorMode::Update() {
@@ -175,7 +178,7 @@ void EditorMode::Render() {
 		ImGui::Begin("Save");
 
 		if (ImGui::Button("Save")) {
-			LevelFileManager::saveLevel();
+			LevelFileManager::saveLevel("level 3");
 		}
 
 		ImGui::End();

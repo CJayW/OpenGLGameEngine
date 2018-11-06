@@ -36,11 +36,15 @@ else if (componentName == className::name) {\
 	obj->addComponent<className>(componentInfo[1]);\
 }
 
-void LevelFileManager::loadLevel() {
+std::string LevelFileManager::levelName;
+
+void LevelFileManager::loadLevel(std::string loadFrom) {
+
+	levelName = loadFrom;
 
 	std::string file;
 
-	std::ifstream ip(Game::ProjectLocation + "/Resources/Levels/Level2.txt");
+	std::ifstream ip(Game::ProjectLocation + "/Resources/Levels/" + levelName);
 	//while there are more lines
 	while (ip.good()) {
 		std::getline(ip, file);
@@ -144,8 +148,8 @@ void LevelFileManager::loadLevel() {
 
 #define Write() ip.write(file.c_str(), file.size()); file = ""
 #define addLine(newStr) file += newStr; file += "\n";
-bool LevelFileManager::saveLevel() {
-	std::ofstream ip(Game::ProjectLocation + "/Resources/Levels/Level2.txt");
+bool LevelFileManager::saveLevel(std::string fileName) {
+	std::ofstream ip(Game::ProjectLocation + "/Resources/Levels/" + fileName);
 
 	std::string file = "";
 	

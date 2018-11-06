@@ -70,8 +70,9 @@ void Camera::UpdateCameraView() {
 	glm::vec3 cameraUp = transform->getRotation() * glm::vec3(0, 1, 0);
 
 	viewMatrix = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
-	Renderer::CurrentShaderProgram->setMat4("view", viewMatrix);
+	if (!Game::camera) {
+		Renderer::CurrentShaderProgram->setMat4("view", viewMatrix);
+	}
 }
 
 void Camera::RenderUIEditor() {

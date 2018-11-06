@@ -27,7 +27,7 @@ int Game::height;
 bool Game::Running;
 std::vector<GameObject*> Game::GameObjects;
 GLFWwindow* Game::window;
-Camera* Game::camera;
+Camera* Game::camera = nullptr;
 
 Game::Game() { }
 
@@ -83,28 +83,7 @@ void Game::Init(int Width, int Height, bool FullScreen, const char* Title) {
 }
 
 void Game::Start() {
-	LevelFileManager::loadLevel();
-
-	return;
-
-	GameObject* obj = GameObjectManager::Instantiate();
-	obj->addComponent<IconRenderer>("pointLightIcon.jpg");
-	obj->Name = "Parent Obj";
-
-	obj = GameObjectManager::Instantiate(obj);
-	obj->Name = "Child OBJ";
-	obj->addComponent<MeshRenderer>("house.ply");
-
-	obj = GameObjectManager::Instantiate();
-	obj->addComponent<IconRenderer>("pointLightIcon.jpg");
-	obj->Name = "Parent Obj 2";
-
-	obj = GameObjectManager::Instantiate(obj);
-	obj->Name = "Child OBJ 2";
-	obj->addComponent<MeshRenderer>("house.ply");
-
-	GameObjectManager::Instantiate(GameObjectManager::GetObjectByName("Player"));
-
+	LevelFileManager::loadLevel("Level2.txt");
 }
 
 void Game::Update(double deltaTime) {

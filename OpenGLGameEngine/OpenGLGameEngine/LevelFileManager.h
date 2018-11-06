@@ -10,8 +10,11 @@ public:
 	LevelFileManager();
 	~LevelFileManager();
 
-	static void loadLevel();
-	static bool saveLevel();
+	static void loadLevel(std::string fileName);
+
+	static bool saveLevel(std::string fileName);
+
+	static std::string levelName;
 
 	static std::string objToString(GameObject* obj, unsigned int childLevel);
 
