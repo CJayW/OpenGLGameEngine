@@ -15,6 +15,7 @@ DirectionalLight::DirectionalLight()
 	diffuse = glm::vec3(0.8f);
 	
 	DisplayName = name;
+	UpdateLight();
 }
 
 DirectionalLight::DirectionalLight(std::string params) {
@@ -24,6 +25,7 @@ DirectionalLight::DirectionalLight(std::string params) {
 
 	DisplayName = name;
 
+	UpdateLight();
 }
 
 DirectionalLight::~DirectionalLight() {

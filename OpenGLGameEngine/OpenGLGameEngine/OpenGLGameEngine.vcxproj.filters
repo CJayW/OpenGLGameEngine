@@ -168,6 +168,180 @@
     <ClInclude Include="F:\OpenGLGameEngine\Proj\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\move.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\PlayerMovement.h">
+      <Filter>Game\source</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Game\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalEditorMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\OpenGLGameEngine\Proj\shipController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:/OpenGLGameEngine/Proj/*.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -274,6 +448,138 @@
     </ClCompile>
     <ClCompile Include="F:\OpenGLGameEngine\Proj\*.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game\source</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\move.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\PlayerMovement.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:/OpenGLGameEngine/Proj/*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:/OpenGLGameEngine/Proj/*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:/OpenGLGameEngine/Proj/*.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="E:/OpenGLGameEngine/Proj/*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\LocalLevelFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\OpenGLGameEngine\Proj\shipController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:/OpenGLGameEngine/Proj/*.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

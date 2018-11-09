@@ -33,4 +33,6 @@ public:
 
 private:
 	static float FOV;
+	static float NearClippingPlane;
+	static float FarClippingPlane;
 };
